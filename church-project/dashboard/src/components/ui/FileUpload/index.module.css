@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: sans-serif;
+  }
+  
+  .label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .uploadBox {
+    position: relative;
+    border: 2px dashed #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: left;
+  }
+  
+  .input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #0070f3;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  .fileName {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .clearButton {
+    background: transparent;
+    border: none;
+    color: #d00;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  

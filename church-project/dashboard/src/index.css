@@ -1,1 +1,14 @@
 @import "tailwindcss";
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #6366f1;
+  --positive: #10b981;
+  --positive-hover: #059669;
+  --negative: #ef4444;
+  --negative-hover: #dc2626;
+  --tablebg: #ffffff;
+  --tablehead: black;
+  --fontfamily: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+

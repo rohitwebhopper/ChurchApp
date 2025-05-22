@@ -1,0 +1,253 @@
+/* Sidebar CSS */
+
+.sidebarWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  height: 100%;
+  width: 16rem; 
+  background-color: white;
+  border-right: 1px solid #e5e7eb; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Show sidebar on medium screens and up */
+@media (min-width: 768px) {
+  .sidebarWrapper {
+    transform: translateX(0) !important;
+  }
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.header {
+  padding: 1rem;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  padding: 1rem;
+  font-size: 0.875rem; 
+  font-weight: 500;
+  color: #374151; 
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+  color: #374151; 
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background-color: #f9fafb; 
+}
+
+.activeLink {
+  background-color: #f3f4f6;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.dropdownToggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdownToggle:hover {
+  background-color: #f9fafb; 
+}
+
+.dropdownList {
+  overflow: hidden;
+  padding-left: 2.5rem;
+  color: #4b5563; 
+  transition: max-height 0.3s ease-in-out;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.25rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropdownItem:hover {
+  color: var(--primary);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+}
+
+/* Hide overlay on desktop */
+@media (min-width: 768px) {
+  .mobileOverlay {
+    display: none;
+  }
+}
+
+.mobileToggle {
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobileToggle {
+    display: none;
+  }
+}
+
+/* End Sidebar CSS */
+
+/* Navbar CSS */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); 
+  padding: 1rem 1.5rem; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #3b82f6;
+  letter-spacing: -0.025em;
+  user-select: none;
+}
+
+.rightUtilities {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #4b5563;
+}
+
+.notificationButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.notificationButton:hover {
+  color: #3b82f6;
+}
+
+.icon {
+  font-size: 1.25rem;
+}
+
+.notificationDot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: #3b82f6;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.75;
+}
+
+/* Ping animation */
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+}
+
+.profileIcon {
+  font-size: 1.5rem;
+}
+
+.profileName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  user-select: none;
+  display: none;
+}
+
+/* Show profileName on sm screens and up */
+@media (min-width: 640px) {
+  .profileName {
+    display: inline;
+  }
+}
+
+/* End Navbar CSS */
+
+/* Footer CSS */
+
+.footer {
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+  user-select: none;
+}
+
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.brand {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* End Footer CSS */

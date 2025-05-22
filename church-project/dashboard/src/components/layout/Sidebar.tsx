@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  HiOutlineMenu,
-  HiOutlineX,
-  HiOutlineHome,
-  HiOutlineViewGrid,
-  HiOutlineLockClosed,
-  HiChevronDown,
-} from "react-icons/hi";
+import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
+import { navItems } from "./Navigation/navmenu";
+import styles from "./index.module.css";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [authOpen, setAuthOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname.startsWith(path);
+  const toggleDropdown = (label: string) =>
+    setOpenDropdown(openDropdown === label ? null : label);
 
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <div className="md:hidden p-4 bg-white shadow-sm">
+      {/* Mobile Toggle */}
+      <div className={styles.mobileToggle}>
         <button
           onClick={() => setSidebarOpen(true)}
           className="text-primary text-2xl"
@@ -28,99 +25,98 @@ const Sidebar = () => {
         </button>
       </div>
 
-      {/* Overlay (Mobile Only) */}
+      {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          className={styles.mobileOverlay}
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white border-r shadow-lg transform transition-transform duration-300 md:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`${styles.sidebarWrapper} ${
+          sidebarOpen ? styles.sidebarOpen : ""
         }`}
       >
         {/* Header */}
-        <div className="p-6 bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-between">
-          <h1 className="text-xl font-bold tracking-wide">MyChurch</h1>
+        <div className={styles.header}>
+          <h1 className="text-xl font-bold tracking-wide">Church</h1>
           <button
-            className="text-white text-xl md:hidden"
             onClick={() => setSidebarOpen(false)}
+            className="text-white text-xl md:hidden"
           >
             <HiOutlineX />
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="p-4 space-y-3 text-sm font-medium text-gray-700">
-          <LinkItem
-            to="/dashboard"
-            icon={<HiOutlineHome />}
-            label="Dashboard"
-          />
-          <LinkItem
-            to="/layouts"
-            icon={<HiOutlineViewGrid />}
-            label="Layouts"
-          />
+        {/* Nav Items */}
+        <nav className={styles.nav}>
+          {navItems.map((item, index) => {
+            if (item.type === "link") {
+              const Icon = item.icon;
+              const isCurrent = location.pathname === item.to;
 
-          {/* Collapsible Auth Section */}
-          <div>
-            <button
-              onClick={() => setAuthOpen(!authOpen)}
-              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all ${
-                isActive("/auth")
-                  ? "bg-gray-100 text-primary font-semibold"
-                  : "hover:bg-gray-50"
-              }`}
-            >
-              <span className="flex items-center gap-2">
-                <HiOutlineLockClosed className="text-lg" />
-                Authentication
-              </span>
-              <HiChevronDown
-                className={`transform transition-transform duration-200 ${
-                  authOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+              return (
+                <Link
+                  key={index}
+                  to={item.to}
+                  className={`${styles.navLink} ${
+                    isCurrent ? styles.activeLink : ""
+                  }`}
+                >
+                  <Icon className="text-lg" />
+                  {item.label}
+                </Link>
+              );
+            }
 
-            {/* Animated dropdown */}
-            <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                authOpen ? "max-h-40 mt-2" : "max-h-0"
-              }`}
-            >
-              <ul className="pl-10 space-y-1 text-gray-600">
-                <li>
-                  <Link
-                    to="/auth/login"
-                    className="block py-1 hover:text-primary"
+            if (item.type === "dropdown") {
+              const Icon = item.icon;
+              const isOpen = openDropdown === item.label;
+
+              return (
+                <div key={index}>
+                  <button
+                    onClick={() => toggleDropdown(item.label)}
+                    className={`${styles.dropdownToggle} ${
+                      isActive(item.basePath) ? styles.activeLink : ""
+                    }`}
                   >
-                    • Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/auth/register"
-                    className="block py-1 hover:text-primary"
+                    <span className="flex items-center gap-2">
+                      <Icon className="text-lg" />
+                      {item.label}
+                    </span>
+                    <HiChevronDown
+                      className={`transform transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    className={styles.dropdownList}
+                    style={{
+                      maxHeight: isOpen ? "160px" : "0",
+                      marginTop: isOpen ? "0.5rem" : "0",
+                    }}
                   >
-                    • Register
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/auth/forgot-password"
-                    className="block py-1 hover:text-primary"
-                  >
-                    • Forgot Password
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+                    <ul>
+                      {item.children.map((child, childIndex) => (
+                        <li key={childIndex}>
+                          <Link to={child.to} className={styles.dropdownItem}>
+                            • {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
+
+            return null;
+          })}
         </nav>
       </aside>
     </>
@@ -128,31 +124,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-// Reusable Nav Link
-const LinkItem = ({
-  to,
-  icon,
-  label,
-}: {
-  to: string;
-  icon: React.ReactNode;
-  label: string;
-}) => {
-  const location = useLocation();
-  const active = location.pathname === to;
-
-  return (
-    <Link
-      to={to}
-      className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${
-        active
-          ? "bg-gray-100 text-primary font-semibold"
-          : "text-gray-700 hover:bg-gray-50"
-      }`}
-    >
-      {icon}
-      {label}
-    </Link>
-  );
-};

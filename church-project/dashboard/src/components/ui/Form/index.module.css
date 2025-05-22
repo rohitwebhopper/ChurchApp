@@ -1,0 +1,59 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.input,
+.textarea,
+select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+/* Size variants */
+.mini {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.small {
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.medium {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.large {
+  font-size: 1.125rem;
+  padding: 1rem 1.25rem;
+}
+
+/* Error styles */
+.errorInput {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.875rem;
+}
