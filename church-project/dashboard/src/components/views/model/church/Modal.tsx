@@ -1,28 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@/components/ui/Button/Index";
 import FileUpload from "@/components/ui/FileUpload/Index";
 import { FormInput } from "@/components/ui/Form/Index";
 import Grid from "@/components/ui/Grid/Index";
 import Modal from "@/components/ui/Modal/Index";
 import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
-import { useState } from "react";
+import type { AddEditInterface } from "@/components/interface/ModalProps";
 
-const AddEditChurch = React.FC<ModalProp> () => {
-
-
+const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phonenumber: "",
-    registrationnumber: "",
+    phone: "",
+    regNo: "",
     bankname: "",
-    accountno: "",
+    accno: "",
     isccode: "",
     payeename: "",
     location: "",
     churchrule: "",
   });
 
+  useEffect(() => {
+    if (data) {
+      // Populate form fields with data
+    }
+  }, [data]);
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -50,13 +53,13 @@ const AddEditChurch = React.FC<ModalProp> () => {
 
   return (
     <Modal
-      title="Add Church"
+      title={data ? "Edit Church " : "Add Church"}
       size="large"
-      isOpen={openModal}
-      onClose={handleClose}
+      isOpen={open}
+      onClose={close}
       actions={
         <>
-          <Button variant="negative" size="small" onClick={handleClose}>
+          <Button variant="negative" size="small" onClick={close}>
             Cancel
           </Button>
           <Button variant="positive" size="small" onClick={handleSubmit}>
@@ -68,7 +71,11 @@ const AddEditChurch = React.FC<ModalProp> () => {
       <form onSubmit={handleSubmit}>
         <Grid gap="lg">
           <Grid.Row>
-            <Grid.Column className="mb-4" span={{ base: 12, md: 12 }} justify="center">
+            <Grid.Column
+              className="mb-4"
+              span={{ base: 12, md: 12 }}
+              justify="center"
+            >
               <ProfileImageUpload
                 currentImage=""
                 onChange={handleImageChange}
@@ -93,7 +100,7 @@ const AddEditChurch = React.FC<ModalProp> () => {
                 size="small"
                 label="Phone Number"
                 name="phonenumber"
-                value={formData.phonenumber}
+                value={formData.phone}
                 onChange={handleChange}
                 placeholder="Enter phone number"
                 required
@@ -107,7 +114,7 @@ const AddEditChurch = React.FC<ModalProp> () => {
                 size="small"
                 label="Registration Number"
                 name="registrationnumber"
-                value={formData.registrationnumber}
+                value={formData.regNo}
                 onChange={handleChange}
                 placeholder="Enter registration number"
                 required
@@ -132,7 +139,7 @@ const AddEditChurch = React.FC<ModalProp> () => {
                 size="small"
                 label="Bank Account No"
                 name="accountno"
-                value={formData.accountno}
+                value={formData.accno}
                 onChange={handleChange}
                 placeholder="Enter account number"
                 required

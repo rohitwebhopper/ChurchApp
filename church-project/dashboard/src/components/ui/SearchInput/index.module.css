@@ -1,0 +1,45 @@
+.searchWrapper {
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  font-size: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: #0070f3;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.searching {
+  animation: floatDiagonal 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes floatDiagonal {
+  0% {
+    transform: translate(0, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-1px, -60%) rotate(5deg);
+  }
+  100% {
+    transform: translate(1px, -70%) rotate(-5deg);
+  }
+}

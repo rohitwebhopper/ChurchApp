@@ -12,6 +12,7 @@ const DashboardLayout = lazy(
 const DashboardPage = lazy(
   () => import("@/components/views/pages/dashboard/Index")
 );
+const ChurchManagment = lazy(() => import("@/pages/managment/Church"));
 const UserManagment = lazy(() => import("@/pages/managment/User"));
 
 const AppRoutes = () => {
@@ -46,7 +47,18 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/user-management"
+          path="/management/church"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <ChurchManagment />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/management/user"
           element={
             <PrivateRoute>
               <DashboardLayout>

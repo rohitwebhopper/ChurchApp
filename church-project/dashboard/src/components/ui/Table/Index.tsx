@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Index.module.css";
 import type { IconType } from "react-icons";
 import { FaTrash, FaEdit, FaToggleOn, FaToggleOff } from "react-icons/fa";
+import AddEditChurch from "@/components/views/model/church/Modal";
 
 export type Column<T> = {
   key: keyof T;
@@ -15,7 +16,7 @@ export type ActionType = "update" | "delete" | "toggle";
 
 export type ActionButton<T> = {
   type: ActionType;
-  onClick: (item: T) => void;
+  onClick?: (item: T) => void;
   show?: (item: T) => boolean;
 };
 
@@ -32,6 +33,19 @@ function Table<T extends Record<string, any>>({
   actions,
   keyField,
 }: ModernTableProps<T>) {
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<T | null>(null);
+
+  const handleClose = () => {
+    setOpenModal(false);
+    setSelectedItem(null);
+  };
+
+  const handleEdit = (item: T) => {
+    setSelectedItem(item);
+    setOpenModal(true);
+  };
+
   const visibleColumns = columns.filter(({ hideIfEmpty, key }) => {
     if (!hideIfEmpty) return true;
     return data.some((item) => {
@@ -40,9 +54,16 @@ function Table<T extends Record<string, any>>({
     });
   });
 
-  const effectiveActions = actions?.map((action) =>
-    action.type === "delete" ? { ...action, show: undefined } : action
-  );
+  const effectiveActions: ActionButton<T>[] =
+    actions?.map((action) => {
+      if (action.type === "update") {
+        return {
+          ...action,
+          onClick: handleEdit,
+        };
+      }
+      return action;
+    }) || [];
 
   const actionIcons: Record<
     ActionType,
@@ -78,7 +99,7 @@ function Table<T extends Record<string, any>>({
             ? styles.active
             : styles.inactive
         }`}
-        onClick={() => action.onClick(item)}
+        onClick={() => action.onClick?.(item)}
         aria-label={tooltip}
       >
         {action.type === "toggle" && !isActive ? <FaToggleOff /> : <Icon />}
@@ -88,66 +109,74 @@ function Table<T extends Record<string, any>>({
   };
 
   return (
-    <div className={styles.tableWrapper}>
-      <div className={styles.tableScrollWrapper}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              {visibleColumns.map(({ label, key, width }, index) => (
-                <th
-                  key={String(key)}
-                  style={{ width }}
-                  className={index === 0 ? styles.leftSticky : ""}
-                >
-                  {label}
-                </th>
-              ))}
-              {effectiveActions?.length ? (
-                <th
-                  className={`${styles.fixedCell} ${styles.rightSticky}`}
-                  style={{ width: "120px" }}
-                >
-                  Actions
-                </th>
-              ) : null}
-            </tr>
-          </thead>
-          <tbody>
-            {data.length === 0 ? (
+    <>
+      <div className={styles.tableWrapper}>
+        <div className={styles.tableScrollWrapper}>
+          <table className={styles.table}>
+            <thead>
               <tr>
-                <td
-                  colSpan={visibleColumns.length + (effectiveActions ? 1 : 0)}
-                >
-                  No data found
-                </td>
+                {visibleColumns.map(({ label, key, width }, index) => (
+                  <th
+                    key={String(key)}
+                    style={{ width }}
+                    className={index === 0 ? styles.leftSticky : ""}
+                  >
+                    {label}
+                  </th>
+                ))}
+                {effectiveActions.length > 0 && (
+                  <th
+                    className={`${styles.fixedCell} ${styles.rightSticky}`}
+                    style={{ width: "120px" }}
+                  >
+                    Actions
+                  </th>
+                )}
               </tr>
-            ) : (
-              data.map((item) => (
-                <tr key={String(item[keyField])}>
-                  {visibleColumns.map(({ key, render }, index) => (
-                    <td
-                      key={String(key)}
-                      className={index === 0 ? styles.leftSticky : ""}
-                    >
-                      {render ? render(item) : item[key]}
-                    </td>
-                  ))}
-                  {effectiveActions?.length ? (
-                    <td className={`${styles.fixedCell} ${styles.rightSticky}`}>
-                      <div className={styles.actionsContainer}>
-                        {effectiveActions.map((action, idx) =>
-                          renderActionButton(action, item, idx)
-                        )}
-                      </div>
-                    </td>
-                  ) : null}
+            </thead>
+            <tbody>
+              {data.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={
+                      visibleColumns.length + (effectiveActions.length ? 1 : 0)
+                    }
+                  >
+                    No data found
+                  </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                data.map((item) => (
+                  <tr key={String(item[keyField])}>
+                    {visibleColumns.map(({ key, render }, index) => (
+                      <td
+                        key={String(key)}
+                        className={index === 0 ? styles.leftSticky : ""}
+                      >
+                        {render ? render(item) : item[key]}
+                      </td>
+                    ))}
+                    {effectiveActions.length > 0 && (
+                      <td
+                        className={`${styles.fixedCell} ${styles.rightSticky}`}
+                      >
+                        <div className={styles.actionsContainer}>
+                          {effectiveActions.map((action, idx) =>
+                            renderActionButton(action, item, idx)
+                          )}
+                        </div>
+                      </td>
+                    )}
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+
+      <AddEditChurch open={openModal} close={handleClose} data={selectedItem} />
+    </>
   );
 }
 

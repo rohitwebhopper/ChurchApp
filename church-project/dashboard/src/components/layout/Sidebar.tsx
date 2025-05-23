@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
 import { navItems } from "./Navigation/navmenu";
-import styles from "./index.module.css";
+import styles from "./sidebar.module.css";
 
 const Sidebar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,12 +17,15 @@ const Sidebar: React.FC = () => {
     <>
       {/* Mobile Toggle */}
       <div className={styles.mobileToggle}>
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="text-primary text-2xl"
-        >
-          <HiOutlineMenu />
-        </button>
+        {!sidebarOpen && (
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className={styles.menuButton}
+            aria-label="Open sidebar"
+          >
+            <HiOutlineMenu size={24} />
+          </button>
+        )}
       </div>
 
       {/* Mobile Overlay */}
@@ -41,10 +44,10 @@ const Sidebar: React.FC = () => {
       >
         {/* Header */}
         <div className={styles.header}>
-          <h1 className="text-xl font-bold tracking-wide">Church</h1>
+          <h1 className={styles.logo}>Church</h1>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="text-white text-xl md:hidden"
+            className={styles.closeButton}
           >
             <HiOutlineX />
           </button>
@@ -65,8 +68,8 @@ const Sidebar: React.FC = () => {
                     isCurrent ? styles.activeLink : ""
                   }`}
                 >
-                  <Icon className="text-lg" />
-                  {item.label}
+                  <Icon className={styles.linkIcon} />
+                  <span>{item.label}</span>
                 </Link>
               );
             }
@@ -76,20 +79,20 @@ const Sidebar: React.FC = () => {
               const isOpen = openDropdown === item.label;
 
               return (
-                <div key={index}>
+                <div key={index} className={styles.dropdownSection}>
                   <button
                     onClick={() => toggleDropdown(item.label)}
                     className={`${styles.dropdownToggle} ${
                       isActive(item.basePath) ? styles.activeLink : ""
                     }`}
                   >
-                    <span className="flex items-center gap-2">
-                      <Icon className="text-lg" />
+                    <span className={styles.dropdownLabel}>
+                      <Icon className={styles.linkIcon} />
                       {item.label}
                     </span>
                     <HiChevronDown
-                      className={`transform transition-transform duration-200 ${
-                        isOpen ? "rotate-180" : ""
+                      className={`${styles.chevronIcon} ${
+                        isOpen ? styles.chevronOpen : ""
                       }`}
                     />
                   </button>
@@ -97,18 +100,21 @@ const Sidebar: React.FC = () => {
                   <div
                     className={styles.dropdownList}
                     style={{
-                      maxHeight: isOpen ? "160px" : "0",
-                      marginTop: isOpen ? "0.5rem" : "0",
+                      maxHeight: isOpen ? "300px" : "0",
                     }}
                   >
                     <ul>
-                      {item.children.map((child, childIndex) => (
-                        <li key={childIndex}>
-                          <Link to={child.to} className={styles.dropdownItem}>
-                            • {child.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {item.children.map((child, childIndex) => {
+                        const ChildIcon = child.icon;
+                        return (
+                          <li key={childIndex}>
+                            <Link to={child.to} className={styles.dropdownItem}>
+                              <ChildIcon className={styles.childIcon} />
+                              {child.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>

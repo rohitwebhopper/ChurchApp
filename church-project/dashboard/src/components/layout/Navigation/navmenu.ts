@@ -1,7 +1,7 @@
 import { HiOutlineHome, HiOutlineLockClosed } from "react-icons/hi";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { FiUsers } from "react-icons/fi";
+import { FaChurch } from "react-icons/fa";
 
-// Define nav item types
 export type NavLinkItem = {
   type: "link";
   label: string;
@@ -17,6 +17,7 @@ export type NavDropdownItem = {
   children: {
     label: string;
     to: string;
+    icon: React.ElementType;
   }[];
 };
 
@@ -29,21 +30,15 @@ export const navItems: NavItem[] = [
     to: "/dashboard",
     icon: HiOutlineHome,
   },
-  {
-    type: "link",
-    label: "User Management",
-    to: "/user-management",
-    icon: MdAdminPanelSettings,
-  },
+
   {
     type: "dropdown",
-    label: "Authenticaton",
-    basePath: "/auth",
+    label: "Management",
+    basePath: "/management",
     icon: HiOutlineLockClosed,
     children: [
-      { label: "Login", to: "/auth/login" },
-      { label: "Register", to: "/auth/register" },
-      { label: "Forgot Password", to: "/auth/forgot-password" },
+      { label: "Church", to: "/management/church", icon: FaChurch },
+      { label: "Users", to: "/management/user", icon: FiUsers },
     ],
   },
 ];

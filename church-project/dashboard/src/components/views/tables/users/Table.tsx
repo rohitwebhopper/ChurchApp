@@ -5,49 +5,44 @@ import type { Column, ActionButton } from "@components/ui/Table/Index";
 type Church = {
   id: number;
   name: string;
-  location: string;
-  donation: string;
-  message: string;
+  email: string;
+  phone: string;
   address: string;
   status: "Active" | "Inactive" | "Pending";
 };
 
-export default function ChurchManagement() {
+export default function UserTable() {
   const [churches, setChurches] = useState<Church[]>([
     {
       id: 1,
       name: "Grace Church",
-      location: "NY",
+      email: "gracechurch@gmail.com",
       status: "Active",
-      donation: "20",
-      message: "The Message the let be chect to content ricid rej",
-      address: "The Message the let be chect to content ricid rej",
+      phone: "9876543210",
+      address: "Zirkpur",
     },
     {
       id: 2,
       name: "Hope Church",
-      location: "LA",
+      email: "hopechurch@gmail.com",
       status: "Pending",
-      donation: "20",
-      message: "The Message the let be chect to content ricid rej",
-      address: "The Message the let be chect to content ricid rej",
+      phone: "9876543210",
+      address: "Punjab",
     },
     {
       id: 3,
       name: "Faith Church",
-      location: "TX",
-      status: "Inactive",
-      donation: "20",
-      message: "The Message the let be chect to content ricid rej",
-      address: "The Message the let be chect to content ricid rej",
+      email: "faithchurch@gmail.com",
+      status: "Active",
+      phone: "9876543210",
+      address: "Chandigarh",
     },
   ]);
 
   const columns: Column<Church>[] = [
-    { key: "name", label: "Church Name" },
-    { key: "location", label: "Location" },
-    { key: "donation", label: "Donation" },
-    { key: "message", label: "Message" },
+    { key: "name", label: "Name" },
+    { key: "phone", label: "Phone" },
+    { key: "email", label: "Email" },
     { key: "address", label: "Address" },
 
     {
@@ -91,7 +86,6 @@ export default function ChurchManagement() {
     {
       type: "delete",
       onClick: (church) => alert(`Delete ${church.name}`),
-      show: (church) => church.status !== "Inactive",
     },
     {
       type: "toggle",

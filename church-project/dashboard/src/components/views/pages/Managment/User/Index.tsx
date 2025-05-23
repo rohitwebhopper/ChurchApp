@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { FaChurch } from "react-icons/fa";
+import { FiUsers } from "react-icons/fi";
 import Button from "@/components/ui/Button/Index";
-import Grid from "@/components/ui/Grid/Index";
 import SearchInput from "@/components/ui/SearchInput/Index";
-import AddEditChurch from "@/components/views/model/church/Modal";
-import ChurchManagementTable from "@/components/views/tables/church/Table";
+import AddEditUser from "@/components/views/model/users/Modal";
+import UserTable from "@/components/views/tables/users/Table";
+import Grid from "@/components/ui/Grid/Index";
 
-const ChurchManagment = () => {
+const UserManagment = () => {
   const [openModal, SetOpenModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleClose = () => SetOpenModal(false);
+
   return (
     <>
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-4">
-          <FaChurch className="text-2xl text-primary" />
-          <h2 className="text-xl font-semibold">Church</h2>
+          <FiUsers className="text-2xl text-primary" />
+          <h2 className="text-xl font-semibold">Users</h2>
         </div>
 
         <Grid gap="md">
@@ -37,16 +38,17 @@ const ChurchManagment = () => {
                 variant="primary"
                 onClick={() => SetOpenModal(true)}
               >
-                Add Church
+                Add User
               </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>
-      <ChurchManagementTable />
-      <AddEditChurch open={openModal} close={handleClose} />
+
+      <UserTable />
+      <AddEditUser open={openModal} close={handleClose} />
     </>
   );
 };
 
-export default ChurchManagment;
+export default UserManagment;
