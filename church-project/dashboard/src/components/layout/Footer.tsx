@@ -6,7 +6,7 @@ const Footer = () => {
       <div className={styles.container}>
         <p>
           &copy; {new Date().getFullYear()}{" "}
-          <span className={styles.brand}>MyChurch</span>. All rights reserved.
+          <span className={styles.brand}>Mon Eglise</span>. WebHopers All rights reserved.
         </p>
       </div>
     </footer>

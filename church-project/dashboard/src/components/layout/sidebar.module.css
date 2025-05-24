@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 .sidebarWrapper {
   position: fixed;
@@ -14,8 +12,10 @@
   flex-direction: column;
   transition: transform 0.3s ease;
   z-index: 1000;
-  overflow-y: auto;
+  overflow-y: auto; 
+  overflow-x: hidden;
   transform: translateX(-100%);
+box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .sidebarOpen {
@@ -23,18 +23,25 @@
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1.5rem;
+  padding: 9.3px 1.5rem;
   border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff; /* ensure it doesn’t look transparent while scrolling */
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
 }
+
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
   user-select: none;
+  font-family: var(--font-marcellus);
 }
 
 .closeButton {
@@ -51,10 +58,19 @@
   color: var(--primary);
 }
 
+.sidebarWrapper::-webkit-scrollbar {
+  width: 0;
+}
+.sidebarWrapper {
+  scrollbar-width: none; 
+}
+
+
 @media (min-width: 768px) {
   .closeButton {
     display: none;
   }
+ 
 }
 
 .nav {
@@ -102,6 +118,7 @@
   background: var(--primary);
   border: none;
   padding: 0.5rem 0.75rem;
+  margin-top: -8.9px;
   border-radius: 6px;
   color: white;
   cursor: pointer;
@@ -124,9 +141,11 @@
 
 .mobileOverlay {
   position: fixed;
+  top: 0;
   inset: 0;
   background: rgba(0, 0, 0, 0.2);
   z-index: 999;
+
 }
 
 @media (min-width: 768px) {

@@ -4,9 +4,6 @@ import styles from "./index.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      {/* Title */}
-      <h1 className={styles.title}>Dashboard</h1>
-
       {/* Right utilities */}
       <div className={styles.rightUtilities}>
         {/* Notification icon */}

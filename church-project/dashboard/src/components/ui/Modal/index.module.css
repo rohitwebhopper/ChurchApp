@@ -5,8 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999; 
 }
+
 
 .modal {
   background-color: #ffffff;
@@ -19,7 +20,15 @@
   flex-direction: column;
   animation: fadeIn 0.3s ease-in-out;
   padding: 0;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;  
 }
+
+.modal::-webkit-scrollbar {
+  display: none; 
+}
+
 
 .small {
   max-width: 24rem; /* 384px */

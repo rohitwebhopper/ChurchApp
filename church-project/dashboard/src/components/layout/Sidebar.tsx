@@ -15,7 +15,6 @@ const Sidebar: React.FC = () => {
   const toggleDropdown = (label: string) =>
     setOpenDropdown(openDropdown === label ? null : label);
 
-  // 🔁 Automatically open dropdown if route matches a child
   useEffect(() => {
     const activeDropdown = navItems.find(
       (item) => item.type === "dropdown" && isChildActive(item.children)
@@ -25,17 +24,21 @@ const Sidebar: React.FC = () => {
     } else {
       setOpenDropdown(null);
     }
+
+    // Close sidebar on mobile route change
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
   }, [location.pathname]);
 
   return (
     <>
-      {/* Mobile Toggle */}
+      {/* Mobile Menu Button */}
       <div className={styles.mobileToggle}>
         {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}
             className={styles.menuButton}
-            aria-label="Open sidebar"
           >
             <HiOutlineMenu size={24} />
           </button>
@@ -56,9 +59,8 @@ const Sidebar: React.FC = () => {
           sidebarOpen ? styles.sidebarOpen : ""
         }`}
       >
-        {/* Header */}
         <div className={styles.header}>
-          <h1 className={styles.logo}>Church</h1>
+          <h1 className={styles.logo}>Mon Eglise</h1>
           <button
             onClick={() => setSidebarOpen(false)}
             className={styles.closeButton}
@@ -67,7 +69,6 @@ const Sidebar: React.FC = () => {
           </button>
         </div>
 
-        {/* Nav Items */}
         <nav className={styles.nav}>
           {navItems.map((item, index) => {
             if (item.type === "link") {
@@ -111,7 +112,6 @@ const Sidebar: React.FC = () => {
                       }`}
                     />
                   </button>
-
                   <div
                     className={styles.dropdownList}
                     style={{
