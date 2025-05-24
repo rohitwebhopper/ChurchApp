@@ -14,9 +14,9 @@ const ChurchManagment = () => {
   return (
     <>
       <div className="mb-6">
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-4" style={{color:"var(--secondary_black)"}}>
           <FaChurch className="text-2xl text-primary" />
-          <h2 className="text-xl font-semibold">Church</h2>
+          <h2 className="text-xl" style={{fontFamily:"var( --font-marcellus)", fontWeight:"600"}}>Church</h2>
         </div>
 
         <Grid gap="md">

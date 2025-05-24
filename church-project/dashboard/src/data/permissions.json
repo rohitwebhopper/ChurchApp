@@ -1,0 +1,4 @@
+{
+  "user": ["create", "edit", "delete"],
+  "post": ["create", "edit", "delete", "publish"]
+}

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Button from "@/components/ui/Button/Index";
-import FileUpload from "@/components/ui/FileUpload/Index";
 import { FormInput } from "@/components/ui/Form/Index";
 import Grid from "@/components/ui/Grid/Index";
 import Modal from "@/components/ui/Modal/Index";
 import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
-import type { AddEditInterface } from "@/components/interface/ModalProps";
+import type { AddEditInterface } from "@/components/interface/ModalInterface";
 
 const AddEditUser: React.FC<AddEditInterface> = ({ open, close, data }) => {
   const [formData, setFormData] = useState({

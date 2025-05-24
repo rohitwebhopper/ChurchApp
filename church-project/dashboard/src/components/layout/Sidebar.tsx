@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
 import { navItems } from "./Navigation/navmenu";
@@ -9,9 +9,23 @@ const Sidebar: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  const isActive = (path: string) => location.pathname.startsWith(path);
+  const isChildActive = (children: { to: string }[]) =>
+    children.some((child) => location.pathname.startsWith(child.to));
+
   const toggleDropdown = (label: string) =>
     setOpenDropdown(openDropdown === label ? null : label);
+
+  // 🔁 Automatically open dropdown if route matches a child
+  useEffect(() => {
+    const activeDropdown = navItems.find(
+      (item) => item.type === "dropdown" && isChildActive(item.children)
+    );
+    if (activeDropdown) {
+      setOpenDropdown(activeDropdown.label);
+    } else {
+      setOpenDropdown(null);
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -76,14 +90,15 @@ const Sidebar: React.FC = () => {
 
             if (item.type === "dropdown") {
               const Icon = item.icon;
-              const isOpen = openDropdown === item.label;
+              const childActive = isChildActive(item.children);
+              const isOpen = openDropdown === item.label || childActive;
 
               return (
                 <div key={index} className={styles.dropdownSection}>
                   <button
                     onClick={() => toggleDropdown(item.label)}
                     className={`${styles.dropdownToggle} ${
-                      isActive(item.basePath) ? styles.activeLink : ""
+                      childActive ? styles.activeLink : ""
                     }`}
                   >
                     <span className={styles.dropdownLabel}>
@@ -101,14 +116,24 @@ const Sidebar: React.FC = () => {
                     className={styles.dropdownList}
                     style={{
                       maxHeight: isOpen ? "300px" : "0",
+                      overflow: "hidden",
+                      transition: "max-height 0.3s ease",
                     }}
                   >
                     <ul>
                       {item.children.map((child, childIndex) => {
                         const ChildIcon = child.icon;
+                        const isChildCurrent =
+                          location.pathname === child.to;
+
                         return (
                           <li key={childIndex}>
-                            <Link to={child.to} className={styles.dropdownItem}>
+                            <Link
+                              to={child.to}
+                              className={`${styles.dropdownItem} ${
+                                isChildCurrent ? styles.activeChild : ""
+                              }`}
+                            >
                               <ChildIcon className={styles.childIcon} />
                               {child.label}
                             </Link>

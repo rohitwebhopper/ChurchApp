@@ -14,6 +14,13 @@ const DashboardPage = lazy(
 );
 const ChurchManagment = lazy(() => import("@/pages/managment/Church"));
 const UserManagment = lazy(() => import("@/pages/managment/User"));
+const CreateRolesPage = lazy(() => import("@/pages/managment/CreateRole"));
+const RolesPage = lazy(() => import("@/pages/managment/Roles"));
+const Activity = lazy(() => import("@/pages/managment/Activity"));
+const SermonsPage = lazy(() => import("@/pages/PublicContent/Sermons"));
+const EventsPage = lazy(() => import("@/pages/PublicContent/Events"));
+const PrayerRequest = lazy(() => import("@/pages/PublicContent/PrayerRequest"));
+const GetConnected = lazy(() => import("@/pages/PublicContent/GetConnected"));
 
 const AppRoutes = () => {
   return (
@@ -67,6 +74,98 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/management/roles"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <RolesPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+          <Route
+          path="/management/roles/create"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <CreateRolesPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+            <Route
+          path="/management/roles/create/:id"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <CreateRolesPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+              <Route
+          path="/management/activity"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Activity />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+                  <Route
+          path="/public/sermons"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <SermonsPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        
+                  <Route
+          path="/public/events"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <EventsPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+
+                     <Route
+          path="/public/prayer_requests"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <PrayerRequest />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+
+        
+                     <Route
+          path="/public/get_connected"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+            <GetConnected/>
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+        
+
 
         {/* Redirect unknown paths */}
         <Route path="*" element={<Navigate to="/login" replace />} />

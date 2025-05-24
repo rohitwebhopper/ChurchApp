@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import classNames from "classnames";
-import type { ModalProps } from "@/components/interface/ModalProps";
+import type { ModalProps } from "@/components/interface/ModalInterface";
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,

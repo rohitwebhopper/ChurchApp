@@ -1,6 +1,7 @@
-import { useState } from "react";
+import  { useState } from "react";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
+import AddEditUser from "@components/views/model/users/Modal";
 
 type Church = {
   id: number;
@@ -19,7 +20,7 @@ export default function UserTable() {
       email: "gracechurch@gmail.com",
       status: "Active",
       phone: "9876543210",
-      address: "Zirkpur",
+      address: "Zirakpur",
     },
     {
       id: 2,
@@ -39,12 +40,24 @@ export default function UserTable() {
     },
   ]);
 
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedChurch, setSelectedChurch] = useState<Church | null>(null);
+
+  const handleEdit = (church: Church) => {
+    setSelectedChurch(church);
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+    setSelectedChurch(null);
+  };
+
   const columns: Column<Church>[] = [
     { key: "name", label: "Name" },
     { key: "phone", label: "Phone" },
     { key: "email", label: "Email" },
     { key: "address", label: "Address" },
-
     {
       key: "status",
       label: "Status",
@@ -73,7 +86,6 @@ export default function UserTable() {
           {c.status}
         </span>
       ),
-
       hideIfEmpty: true,
     },
   ];
@@ -81,7 +93,7 @@ export default function UserTable() {
   const actions: ActionButton<Church>[] = [
     {
       type: "update",
-      onClick: (church) => alert(`Edit ${church.name}`),
+      onClick: handleEdit,
     },
     {
       type: "delete",
@@ -111,6 +123,7 @@ export default function UserTable() {
         actions={actions}
         keyField="id"
       />
+      <AddEditUser open={openModal} close={handleClose} data={selectedChurch} />
     </div>
   );
 }

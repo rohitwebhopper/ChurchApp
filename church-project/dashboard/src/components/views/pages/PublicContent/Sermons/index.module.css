@@ -1,0 +1,121 @@
+.galleryContainer {
+  padding: 0.5rem;
+}
+
+.galleryTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: var(--font-marcellus);
+  color: var(--primary);
+}
+
+.card {
+  cursor: pointer;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+}
+
+.thumbnailWrapper {
+  width: 100%;
+  position: relative;
+  padding-top: 50%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardTitle {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.25rem;
+  text-align: center;
+  min-height: 40px;
+}
+
+.uploadButton {
+  margin-top: 0.75rem;
+  border: none;
+  background-color: transparent;
+  color: #007bff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.uploadButton:hover {
+  background-color: #007bff;
+  color: white;
+  width: 80px;
+  font-size: 1rem;
+}
+
+.plusIcon {
+  display: inline-block;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.uploadButton:hover .plusIcon {
+  opacity: 0;
+}
+
+.uploadText {
+  display: none;
+  margin-left: 8px;
+  user-select: none;
+}
+
+.uploadButton:hover .uploadText {
+  display: inline-block;
+}
+
+
+.deleteIcon {
+  color: #dc3545;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.deleteIcon:hover {
+  color: #a71d2a;
+}
+.deletebtn{
+  display: flex;
+  justify-content: flex-end;
+}

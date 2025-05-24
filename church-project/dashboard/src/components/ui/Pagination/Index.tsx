@@ -26,16 +26,11 @@ export default function Pagination({
   }
 
   return (
-    <nav
-      className={styles.paginationWrapper}
-      aria-label="Pagination Navigation"
-    >
+    <nav className={styles.paginationWrapper} aria-label="Pagination">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`${styles.paginationBtn} ${
-          currentPage === 1 ? styles.disabled : ""
-        }`}
+        className={`${styles.paginationBtn} ${currentPage === 1 ? styles.disabled : ""}`}
         aria-label="Previous Page"
       >
         &lt;
@@ -43,38 +38,28 @@ export default function Pagination({
 
       {startPage > 1 && (
         <>
-          <button
-            onClick={() => onPageChange(1)}
-            className={styles.paginationBtn}
-          >
+          <button onClick={() => onPageChange(1)} className={styles.paginationBtn}>
             1
           </button>
-          {startPage > 2 && <span className={styles.ellipsis}>...</span>}
+          {startPage > 2 && <span className={styles.ellipsis}>…</span>}
         </>
       )}
 
-      {pages.map((p) => (
+      {pages.map((page) => (
         <button
-          key={p}
-          onClick={() => onPageChange(p)}
-          className={`${styles.paginationBtn} ${
-            p === currentPage ? styles.active : ""
-          }`}
-          aria-current={p === currentPage ? "page" : undefined}
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`${styles.paginationBtn} ${page === currentPage ? styles.active : ""}`}
+          aria-current={page === currentPage ? "page" : undefined}
         >
-          {p}
+          {page}
         </button>
       ))}
 
       {endPage < totalPages && (
         <>
-          {endPage < totalPages - 1 && (
-            <span className={styles.ellipsis}>...</span>
-          )}
-          <button
-            onClick={() => onPageChange(totalPages)}
-            className={styles.paginationBtn}
-          >
+          {endPage < totalPages - 1 && <span className={styles.ellipsis}>…</span>}
+          <button onClick={() => onPageChange(totalPages)} className={styles.paginationBtn}>
             {totalPages}
           </button>
         </>
@@ -83,9 +68,7 @@ export default function Pagination({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`${styles.paginationBtn} ${
-          currentPage === totalPages ? styles.disabled : ""
-        }`}
+        className={`${styles.paginationBtn} ${currentPage === totalPages ? styles.disabled : ""}`}
         aria-label="Next Page"
       >
         &gt;

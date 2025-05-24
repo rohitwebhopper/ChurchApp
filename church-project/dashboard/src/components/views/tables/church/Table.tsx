@@ -1,7 +1,9 @@
 import { useState } from "react";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
-import type { Church } from "@/components/interface/ChurchProps";
+import type { Church } from "@/components/interface/ChurchInterface";
+import AddEditChurch from "../../model/church/Modal";
+import Pagination from "@/components/ui/Pagination/Index";
 
 export default function ChurchManagement() {
   const [churches, setChurches] = useState<Church[]>([
@@ -14,6 +16,7 @@ export default function ChurchManagement() {
       bankname: "First National Bank",
       accno: 1234567890,
       isccode: "FNB12345",
+      status: "Pending",
       payeename: "Grace Church",
       location: "123 Faith St, Springfield",
       churchrule: "Rulebook v1.0",
@@ -26,6 +29,7 @@ export default function ChurchManagement() {
       regNo: "REG-002",
       bankname: "Unity Bank",
       accno: 9876543210,
+      status: "Active",
       isccode: "UBK56789",
       payeename: "Trinity Chapel",
       location: "456 Worship Way, Riverdale",
@@ -39,12 +43,26 @@ export default function ChurchManagement() {
       regNo: "REG-003",
       bankname: "Kingdom Trust Bank",
       accno: 1122334455,
+      status: "Pending",
       isccode: "KTB43210",
       payeename: "New Life Church",
       location: "789 Renewal Rd, Centerville",
       churchrule: "Bylaws Rev. 3",
     },
   ]);
+
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedChurch, setSelectedChurch] = useState<Church | null>(null);
+  
+    const handleEdit = (church: Church) => {
+      setSelectedChurch(church);
+      setOpenModal(true);
+    };
+  
+    const handleClose = () => {
+      setOpenModal(false);
+      setSelectedChurch(null);
+    };
 
   const columns: Column<Church>[] = [
     { key: "name", label: "Church Name" },
@@ -94,7 +112,7 @@ export default function ChurchManagement() {
   const actions: ActionButton<Church>[] = [
     {
       type: "update",
-      onClick: (church) => alert(`Edit ${church.name}`),
+      onClick:handleEdit,
     },
     {
       type: "delete",
@@ -116,6 +134,10 @@ export default function ChurchManagement() {
     },
   ];
 
+  const handlePageChange = ()=>{
+
+  }
+
   return (
     <div>
       <ModernTable
@@ -124,6 +146,8 @@ export default function ChurchManagement() {
         actions={actions}
         keyField="id"
       />
+      <Pagination currentPage={1} totalPages={5} onPageChange={handlePageChange}/>
+      <AddEditChurch open={openModal} close={handleClose} data={selectedChurch} />
     </div>
   );
 }

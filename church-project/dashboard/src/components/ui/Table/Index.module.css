@@ -3,14 +3,14 @@
   border-radius: 8px;
   border-top: 2px solid var(--secondary, #ccc);
   background: #fff;
-  font-family: var(--fontfamily, sans-serif);
+  font-family: var(--font-marcellus, sans-serif);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
 }
 
 .tableScrollWrapper {
-  overflow-x: auto;
-  width: 100%;
+  overflow-x: auto;      /* enables horizontal scrolling */
+  min-width: 100%;
   scroll-behavior: smooth;
 }
 
@@ -26,9 +26,9 @@
 .table {
   border-collapse: collapse;
   font-size: 13px;
-  width: max-content;
-  min-width: 100%;
-  table-layout: fixed;
+  width: max-content;      /* allows table width to extend with content */
+  min-width: 100%;        /* at least fills container width */
+  table-layout: auto;     /* changed from fixed to auto to avoid forced truncation */
 }
 
 /* Table cells */
@@ -36,9 +36,9 @@ th,
 td {
   padding: 10px 12px;
   border-bottom: 1px solid #f0f0f0;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  white-space: nowrap;        /* no wrapping */
+  text-overflow: clip;        /* changed from ellipsis to clip to avoid '...' */
+  overflow: visible;          /* allow full content to be visible */
   text-align: left;
   background: #fff;
   min-width: 120px;
@@ -62,6 +62,9 @@ th {
   border-right: 1px solid #eaeaea;
   min-width: 150px;
   max-width: 150px;
+  white-space: normal;
+  padding-right: 12px;
+  word-break: break-word;
 }
 
 /* Sticky actions column right */
@@ -72,6 +75,7 @@ th {
   border-left: 1px solid #eaeaea;
   min-width: 120px;
   max-width: 120px;
+  white-space: nowrap;
 }
 
 .rightSticky {
@@ -150,3 +154,42 @@ tbody tr td[colspan] {
   color: #888;
   font-style: italic;
 }
+
+.badgeWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.upcomingBadge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background-color: var(--primary); 
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  z-index: 2;
+  letter-spacing: 0.5px;
+  animation: pulseBadge 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseBadge {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+

@@ -1,6 +1,7 @@
 import type { FormEvent } from "react";
-import React, { useState } from "react";
-import { FaChurch } from "react-icons/fa";
+import  { useState } from "react";
+import ChurchIcon from "@/assets/churchlogo.svg?react";
+
 import { HiOutlineUser, HiOutlineLockClosed } from "react-icons/hi";
 
 const ChurchLogin = () => {
@@ -15,13 +16,10 @@ const ChurchLogin = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-6">
       <div className="bg-white rounded-3xl shadow-xl w-full max-w-md p-8 text-center space-y-6">
-        {/* Church icon with shine/glow effect */}
         <div className="flex flex-col items-center">
-          <FaChurch className="text-6xl text-purple-500  mb-2" />
-          <h1 className="text-2xl font-bold text-gray-800">
-            Church Admin Login
-          </h1>
-        </div>
+    <ChurchIcon  />
+    <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: "var(--font-marcellus)" }}>Admin Login</h1>
+  </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           <div className="relative">
@@ -62,8 +60,8 @@ const ChurchLogin = () => {
           </button>
         </form>
 
-        <p className="text-xs text-gray-400 mt-6">
-          &copy; {new Date().getFullYear()} Church Admin Panel
+        <p style={{ fontFamily: "var(--font-marcellus)" }} className="text-xs text-gray-400 mt-6">
+          &copy; {new Date().getFullYear()} Mon Eglise Admin Panel
         </p>
       </div>
     </div>

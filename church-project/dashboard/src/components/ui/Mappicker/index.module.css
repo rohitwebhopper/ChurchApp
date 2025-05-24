@@ -1,0 +1,60 @@
+.mapContainer {
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.leaflet-control.geosearch {
+  top: 12px !important;
+  left: 12px !important;
+  width: calc(100% - 24px);
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+  z-index: 1000;
+}
+
+.leaflet-control.geosearch form {
+  position: relative;
+}
+
+.leaflet-control.geosearch input {
+  width: 100%;
+  padding: 10px 38px 10px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.leaflet-control.geosearch input:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+  transition: transform 0.3s ease;
+}
+
+.searching .searchIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

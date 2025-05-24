@@ -1,0 +1,73 @@
+
+.container {
+  width: 85%;
+}
+.container h2{
+  display: flex;
+  justify-content: center;
+}
+.pageTitle{
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.permissionGroup {
+  margin-top: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222;
+  border-bottom: 2px solid var(--primary); 
+  padding-bottom: 0.3rem;
+  max-width: max-content;
+}
+
+.permissionCategory {
+  margin-bottom: 1.5rem;
+}
+
+.permissionCategoryTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.permissionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem 1rem;
+}
+
+.permissionItem {
+  display: flex;
+  align-items: center;
+  background: #f9fafb; 
+  border: 1.5px solid #d1d5db; 
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.permissionItem:hover {
+  background: #eef2ff; 
+  border-color: var(--primary);
+}
+
+.permissionItem input[type='checkbox'] {
+  margin-right: 0.6rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary); 
+  cursor: pointer;
+}
+
+.permissionLabelText {
+  font-size: 0.95rem;
+  color: #1f2937; 
+}

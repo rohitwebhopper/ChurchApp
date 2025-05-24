@@ -1,0 +1,85 @@
+/* index.module.css */
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.fileUploadWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+.uploadBtn:hover {
+  background-color: #0056b3;
+}
+
+.fileName {
+  font-size: 0.9rem;
+  color: #555;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thumbnailPreview {
+  margin-top: 0.5rem;
+  max-width: 100%;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.videoPreview {
+  margin-top: 0.75rem;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: #e53935;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.btnlyt{
+  display: flex;
+  justify-content: flex-end;
+  gap:10px
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+

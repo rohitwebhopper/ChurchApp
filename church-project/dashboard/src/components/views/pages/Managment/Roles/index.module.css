@@ -1,0 +1,20 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.topBar h2{
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--secondary_black);
+}
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}

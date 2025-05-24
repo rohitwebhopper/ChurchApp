@@ -1,8 +1,11 @@
 @import "tailwindcss";
 :root {
   --primary: #3b82f6;
+  --softprimary:rgba(0, 123, 255, 0.2);
+  --sidebarindicator: #23ff91;
   --primary-hover: #2563eb;
   --secondary: #6366f1;
+  --secondary_black: #696969b2;
   --positive: #10b981;
   --positive-hover: #059669;
   --negative: #ef4444;
@@ -10,5 +13,6 @@
   --tablebg: #ffffff;
   --tablehead: black;
   --fontfamily: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-marcellus: "Marcellus", "Roboto", "Inter", sans-serif;
 }
 
