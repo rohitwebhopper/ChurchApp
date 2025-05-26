@@ -21,6 +21,7 @@ const SermonsPage = lazy(() => import("@/pages/PublicContent/Sermons"));
 const EventsPage = lazy(() => import("@/pages/PublicContent/Events"));
 const PrayerRequest = lazy(() => import("@/pages/PublicContent/PrayerRequest"));
 const GetConnected = lazy(() => import("@/pages/PublicContent/GetConnected"));
+const Projects = lazy(() => import("@/pages/PublicContent/Projects"));
 
 const AppRoutes = () => {
   return (
@@ -163,6 +164,18 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+
+                          <Route
+          path="/public/projects"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+            <Projects/>
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
 
         
 
