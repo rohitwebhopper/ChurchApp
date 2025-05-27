@@ -4,19 +4,14 @@ import Modal from "@/components/ui/Modal/Index";
 import Button from "@/components/ui/Button/Index";
 import Grid from "@/components/ui/Grid/Index";
 import { FormInput, FormTextArea } from "@/components/ui/Form/Index";
+import type { ProjectData } from "@/components/interface/Projects";
 
-interface ProjectData {
-  name: string;
-  description: string;
-  setAmount: number;
-  receiveAmount: number;
-  active: boolean;
-}
+
 
 interface AddEditProjectsProps {
   open: boolean;
   close: () => void;
-  data?: ProjectData;
+  data?: ProjectData | null;
 }
 
 const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) => {
@@ -24,7 +19,6 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
     name: "",
     description: "",
     setAmount: 0,
-    receiveAmount: 0,
     active: false,
   });
 
@@ -39,12 +33,17 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const { name, type, value } = e.target;
+    const newValue =
+      type === "checkbox"
+        ? (e.target as HTMLInputElement).checked
+        : type === "number"
+        ? Number(value)
+        : value;
+
+    setFormData((prev) => ({ ...prev, [name]: newValue }));
   };
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,8 +52,8 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
 
   return (
     <Modal
-      title={data ? "Edit Church" : "Add Church"}
-      size="large"
+      title={data ? "Edit Project" : "Add Project"}
+      size="medium"
       isOpen={open}
       onClose={close}
       actions={
@@ -69,12 +68,12 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
       }
     >
       <form onSubmit={handleSubmit}>
-        <Grid gap="lg">
+        <Grid gap="sm">
           <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 6 }}>
+            <Grid.Column span={{ base: 12, md: 12 }}>
               <FormInput
                 size="small"
-                label="Church Name"
+                label="Project Name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -82,7 +81,7 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
                 required
               />
             </Grid.Column>
-            <Grid.Column span={{ base: 12, md: 6 }}>
+            <Grid.Column span={{ base: 12, md: 12 }}>
               <FormTextArea
                 size="medium"
                 label="Description"
@@ -96,33 +95,24 @@ const AddEditProjects: React.FC<AddEditProjectsProps> = ({ open, close, data }) 
           </Grid.Row>
 
           <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 6 }}>
+            <Grid.Column span={{ base: 12, md: 12 }}>
               <FormInput
                 size="small"
                 label="Set Amount"
                 name="setAmount"
                 type="number"
-                // value={formData.setAmount}
+                value={formData.setAmount.toString()}
                 onChange={handleChange}
                 placeholder="Enter set amount"
-              />
-            </Grid.Column>
-            <Grid.Column span={{ base: 12, md: 6 }}>
-              <FormInput
-                size="small"
-                label="Receive Amount"
-                name="receiveAmount"
-                type="number"
-                // value={formData.receiveAmount}
-                onChange={handleChange}
-                placeholder="Enter received amount"
               />
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>
             <Grid.Column span={{ base: 12, md: 6 }}>
-              <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <label
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
                 <input
                   type="checkbox"
                   name="active"

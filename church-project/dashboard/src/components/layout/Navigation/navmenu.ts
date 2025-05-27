@@ -9,6 +9,11 @@ import { MdEventNote } from "react-icons/md";
 import { PiHandsPrayingBold } from "react-icons/pi";
 import { MdOutlineConnectWithoutContact } from "react-icons/md";
 import { GoProjectSymlink } from "react-icons/go";
+import { FaHandHoldingUsd } from "react-icons/fa";
+import { FaBeer } from "react-icons/fa";
+import { MdReport } from "react-icons/md";
+import { FaHistory } from "react-icons/fa";
+import { MdNotifications } from "react-icons/md";
 
 export type NavLinkItem = {
   type: "link";
@@ -48,11 +53,11 @@ export const navItems: NavItem[] = [
       { label: "Church", to: "/management/church", icon: FaChurch },
       { label: "Users", to: "/management/user", icon: FiUsers },
       { label: "Roles", to: "/management/roles", icon: FaUserShield },
-      { label: "Activity", to:  "/management/activity", icon: LuSquareActivity },     
+      { label: "Activity", to: "/management/activity", icon: LuSquareActivity },
     ],
   },
 
-    {
+  {
     type: "dropdown",
     label: "Public Content",
     basePath: "/public",
@@ -60,9 +65,43 @@ export const navItems: NavItem[] = [
     children: [
       { label: "Sermons", to: "/public/sermons", icon: MdOndemandVideo },
       { label: "Events", to: "/public/events", icon: MdEventNote },
-      { label: "Prayer Requests", to: "/public/prayer_requests", icon: PiHandsPrayingBold },
-      { label: "Get Connected", to:  "/public/get_connected", icon: MdOutlineConnectWithoutContact },     
-      { label: "Projects", to:  "/public/projects", icon: GoProjectSymlink },     
+      {
+        label: "Prayer Requests",
+        to: "/public/prayer_requests",
+        icon: PiHandsPrayingBold,
+      },
+      {
+        label: "Get Connected",
+        to: "/public/get_connected",
+        icon: MdOutlineConnectWithoutContact,
+      },
+      { label: "Projects", to: "/public/projects", icon: GoProjectSymlink },
     ],
+  },
+
+  {
+    type: "dropdown",
+    label: "Donation",
+    basePath: "/donation",
+    icon: FaHandHoldingUsd,
+    children: [
+      { label: "Type", to: "/donation/type", icon: FaBeer },
+      {
+        label: "Reports",
+        to: "/donation/reports",
+        icon: MdReport,
+      },
+      {
+        label: "Transaction",
+        to: "/donation/transaction-history",
+        icon: FaHistory,
+      },
+    ],
+  },
+  {
+    type: "link",
+    label: "Notifications",
+    to: "/notifications",
+    icon: MdNotifications,
   },
 ];

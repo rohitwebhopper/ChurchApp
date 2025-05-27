@@ -1,7 +1,7 @@
-import React from 'react';
-import { FaUserShield, FaEdit, FaTrash } from 'react-icons/fa';
-import styles from './index.module.css';
-import type { Role } from '@/components/interface/RoleInterface';
+import React from "react";
+import { FaUserShield, FaEdit, FaTrash } from "react-icons/fa";
+import styles from "./index.module.css";
+import type { Role } from "@/components/interface/RoleInterface";
 
 interface Props {
   role: Role;
@@ -27,27 +27,32 @@ const RoleCard: React.FC<Props> = ({ role, onEdit, onDelete }) => {
         </div>
 
         <div className={styles.permissions}>
-          {visiblePermissions.map((perm) => (
-            <div key={perm} className={styles.circle} title={perm}>
-              {perm[0].toUpperCase()}
-            </div>
-          ))}
+          {visiblePermissions.map(
+            (perm) =>
+              role.name !== "Admin" && (
+                <div key={perm} className={styles.circle} title={perm}>
+                  {perm[0].toUpperCase()}
+                </div>
+              )
+          )}
           {hiddenCount > 0 && (
             <div className={styles.circle}>+{hiddenCount}</div>
           )}
         </div>
 
-          <div className={styles.actions}>
-        <button onClick={() => onEdit(role.id)} title="Edit">
-          <FaEdit />
-        </button>
-        <button onClick={() => onDelete(role.id)} title="Delete">
-          <FaTrash />
-        </button>
+        <div className={styles.actions}>
+          {role.name !== "Admin" && (
+            <>
+              <button onClick={() => onEdit(role.id)} title="Edit">
+                <FaEdit />
+              </button>
+              <button onClick={() => onDelete(role.id)} title="Delete">
+                <FaTrash />
+              </button>
+            </>
+          )}
+        </div>
       </div>
-      </div>
-
-    
     </div>
   );
 };

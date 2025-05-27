@@ -1,8 +1,10 @@
 @import "tailwindcss";
 :root {
   --primary: #3b82f6;
+  --warning: #ffc107;
   --softprimary:rgba(0, 123, 255, 0.2);
   --sidebarindicator: #23ff91;
+  --primarywhite:#ffff;
   --primary-hover: #2563eb;
   --secondary: #6366f1;
   --secondary_black: #696969b2;

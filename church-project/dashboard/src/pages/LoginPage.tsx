@@ -1,66 +1,71 @@
 import type { FormEvent } from "react";
-import  { useState } from "react";
+import { useState } from "react";
 import ChurchIcon from "@/assets/churchlogo.svg?react";
-
 import { HiOutlineUser, HiOutlineLockClosed } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+import styles from "./login.module.css";
 
 const ChurchLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("123456");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+
     console.log("Login:", { username, password });
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/dashboard");
+    }, 1500); // simulate loading
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-6">
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-md p-8 text-center space-y-6">
+    <div className={styles.container}>
+      <div className={styles.card}>
         <div className="flex flex-col items-center">
-    <ChurchIcon  />
-    <h1 className="text-2xl font-bold text-gray-800" style={{ fontFamily: "var(--font-marcellus)" }}>Admin Login</h1>
-  </div>
+          <ChurchIcon />
+          <h1 className={styles.title}>Admin Login</h1>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
-          <div className="relative">
-            <HiOutlineUser className="absolute top-3 left-4 text-gray-400 text-lg" />
+          <div className={styles.inputWrapper}>
+            <HiOutlineUser className={styles.icon} />
             <input
               type="text"
               required
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className={styles.input}
             />
           </div>
 
-          <div className="relative">
-            <HiOutlineLockClosed className="absolute top-3 left-4 text-gray-400 text-lg" />
+          <div className={styles.inputWrapper}>
+            <HiOutlineLockClosed className={styles.icon} />
             <input
               type="password"
               required
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className={styles.input}
             />
           </div>
 
-          <div className="flex justify-end text-sm">
-            <a href="#" className="text-purple-600 hover:underline font-medium">
-              Forgot password?
-            </a>
+          <div className={styles.forgotLink}>
+            <a href="#">Forgot password?</a>
           </div>
 
-          <button
-            type="submit"
-            className="w-full py-2 text-white font-bold rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition"
-          >
-            LOGIN
+          <button type="submit" className={styles.loginBtn} disabled={loading}>
+            {loading ? <div className={styles.loader}></div> : "LOGIN"}
           </button>
         </form>
 
-        <p style={{ fontFamily: "var(--font-marcellus)" }} className="text-xs text-gray-400 mt-6">
+        <p className={styles.footer}>
           &copy; {new Date().getFullYear()} Mon Eglise Admin Panel
         </p>
       </div>

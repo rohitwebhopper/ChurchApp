@@ -68,16 +68,11 @@ export default function UserTable() {
             borderRadius: 15,
             backgroundColor:
               c.status === "Active"
-                ? "rgba(0,128,0,0.15)"
+                ? "var(--positive)"
                 : c.status === "Inactive"
-                ? "rgba(128,128,128,0.15)"
-                : "rgba(255,165,0,0.15)",
-            color:
-              c.status === "Active"
-                ? "green"
-                : c.status === "Inactive"
-                ? "gray"
-                : "orange",
+                ? "var(--negative)"
+                : "var(--warning)",
+            color:"var(--primarywhite)",
             fontWeight: "600",
             fontSize: "12px",
             userSelect: "none",

@@ -1,22 +1,25 @@
-import { HiOutlineBell, HiOutlineUserCircle } from "react-icons/hi";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
+import logo from "@/assets/churchlogo.svg";
+import NotificationDropdown from "@/components/ui/NotificationDropDown/Index";
+import Tooltip from "@/components/ui/ToolTip/Index";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <nav className={styles.navbar}>
-      {/* Right utilities */}
       <div className={styles.rightUtilities}>
-        {/* Notification icon */}
-        <button className={styles.notificationButton}>
-          <HiOutlineBell className={styles.icon} />
-          <span className={styles.notificationDot}></span>
-        </button>
-
-        {/* Profile */}
-        <div className={styles.profile}>
-          <HiOutlineUserCircle className={styles.profileIcon} />
-          <span className={styles.profileName}>Admin</span>
-        </div>
+        <NotificationDropdown />
+        <Tooltip text="View Profile" position="bottom">
+          <div
+            className={styles.profile}
+            onClick={() => navigate("/profile/view")}
+          >
+            <img className={styles.profileimg} src={logo} alt="profile" />
+            <span className={styles.profileName}>Mon Eglise</span>
+          </div>
+        </Tooltip>
       </div>
     </nav>
   );

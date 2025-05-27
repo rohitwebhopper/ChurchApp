@@ -1,0 +1,65 @@
+.container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fafafa;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .pageTitle {
+    font-size: 1.75rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: white;
+  }
+  
+  .select[multiple],
+  .textarea {
+    min-height: 100px;
+  }
+  
+  .textarea {
+    resize: vertical;
+  }
+  
+  .sendButton {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sendButton:hover {
+    background-color: #1e40af;
+  }
+  

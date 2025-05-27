@@ -1,5 +1,3 @@
-/* Navbar CSS */
-
 .navbar {
   position: sticky;
   top: 0;
@@ -7,17 +5,30 @@
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
-  padding: 15.3px 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 0.9rem 1.5rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  height: 50px;
 }
 
+.logo {
+  height: 38px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
 
 .rightUtilities {
   display: flex;
-  gap: 1rem;
-  color: #4b5563;
+  gap: 1.25rem;
+  color: #374151;
+  align-items: center;
 }
 
 .notificationButton {
@@ -49,7 +60,6 @@
   opacity: 0.75;
 }
 
-/* Ping animation */
 @keyframes ping {
   0% {
     transform: scale(1);
@@ -67,20 +77,29 @@
   align-items: center;
   gap: 0.5rem;
   color: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0rem 0.6rem;
+  border-radius: 0.5rem;
 }
 
-.profileIcon {
-  font-size: 1.5rem;
+.profile:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.profileimg {
+  width: 50px;
+  height: auto;
+  border-radius: 0.25rem;
 }
 
 .profileName {
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   font-weight: 500;
   user-select: none;
   display: none;
 }
 
-/* Show profileName on sm screens and up */
 @media (min-width: 640px) {
   .profileName {
     display: inline;
@@ -90,23 +109,23 @@
 /* End Navbar CSS */
 
 /* Footer CSS */
-
 .footer {
-  background-color: #f9fafb;
-  border-top: 1px solid #e5e7eb;
+  background-color: #f8f9fa;
   padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
   text-align: center;
-  font-size: 0.875rem;
-  color: #4b5563;
-  user-select: none;
 }
 
 .container {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
 }
 
 .brand {
@@ -114,4 +133,19 @@
   color: var(--primary);
 }
 
-/* End Footer CSS */
+.webhopersLink {
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.web {
+  color: #126cdc;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.hopers {
+  color: #ff7713;
+  font-weight: bold;
+  font-size: 12px;
+}

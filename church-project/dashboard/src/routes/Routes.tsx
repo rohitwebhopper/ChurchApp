@@ -22,6 +22,13 @@ const EventsPage = lazy(() => import("@/pages/PublicContent/Events"));
 const PrayerRequest = lazy(() => import("@/pages/PublicContent/PrayerRequest"));
 const GetConnected = lazy(() => import("@/pages/PublicContent/GetConnected"));
 const Projects = lazy(() => import("@/pages/PublicContent/Projects"));
+const DonationType = lazy(() => import("@/pages/donation/type/Index"));
+const DonationReports = lazy(() => import("@/pages/donation/reports/Index"));
+const DonationTransaction = lazy(
+  () => import("@/pages/donation/transaction/Index")
+);
+const Notifications = lazy(() => import("@/pages/notifications/Index"));
+const Profile = lazy(() => import("@/pages/profile/Index"));
 
 const AppRoutes = () => {
   return (
@@ -85,7 +92,7 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
-          <Route
+        <Route
           path="/management/roles/create"
           element={
             <PrivateRoute>
@@ -96,7 +103,7 @@ const AppRoutes = () => {
           }
         />
 
-            <Route
+        <Route
           path="/management/roles/create/:id"
           element={
             <PrivateRoute>
@@ -107,7 +114,7 @@ const AppRoutes = () => {
           }
         />
 
-              <Route
+        <Route
           path="/management/activity"
           element={
             <PrivateRoute>
@@ -118,7 +125,7 @@ const AppRoutes = () => {
           }
         />
 
-                  <Route
+        <Route
           path="/public/sermons"
           element={
             <PrivateRoute>
@@ -128,8 +135,8 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
-        
-                  <Route
+
+        <Route
           path="/public/events"
           element={
             <PrivateRoute>
@@ -140,8 +147,7 @@ const AppRoutes = () => {
           }
         />
 
-
-                     <Route
+        <Route
           path="/public/prayer_requests"
           element={
             <PrivateRoute>
@@ -152,33 +158,82 @@ const AppRoutes = () => {
           }
         />
 
-
-        
-                     <Route
+        <Route
           path="/public/get_connected"
           element={
             <PrivateRoute>
               <DashboardLayout>
-            <GetConnected/>
+                <GetConnected />
               </DashboardLayout>
             </PrivateRoute>
           }
         />
 
-                          <Route
+        <Route
           path="/public/projects"
           element={
             <PrivateRoute>
               <DashboardLayout>
-            <Projects/>
+                <Projects />
               </DashboardLayout>
             </PrivateRoute>
           }
         />
 
+        <Route
+          path="/donation/type"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <DonationType />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
 
-        
+        <Route
+          path="/donation/reports"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <DonationReports />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
 
+        <Route
+          path="/donation/transaction-history"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <DonationTransaction />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Notifications />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/profile/view"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Profile />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
 
         {/* Redirect unknown paths */}
         <Route path="*" element={<Navigate to="/login" replace />} />

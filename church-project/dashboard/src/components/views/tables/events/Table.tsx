@@ -88,9 +88,9 @@ export default function EventTable() {
             borderRadius: 15,
             backgroundColor:
               event.status === "Active"
-                ? "rgba(0,123,255,0.15)"
-                : "rgba(128,128,128,0.15)",
-            color: event.status === "Active" ? "#007bff" : "rgba(77, 76, 76, 0.88)",
+                ? "var(--positive)"
+                : "var(--negative)",
+            color: "var(--primarywhite)",
             fontWeight: 600,
             fontSize: "12px",
             userSelect: "none",

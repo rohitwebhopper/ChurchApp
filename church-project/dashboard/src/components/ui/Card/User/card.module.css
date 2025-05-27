@@ -1,49 +1,64 @@
 .card {
-    background-color: #fff;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    transition: 0.3s ease;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .label {
-    font-size: 0.875rem;
-    color: #666;
-  }
-  
-  .count {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 8px;
-  }
-  
-  .filter {
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
+  background-color: #fff;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+
+
+.summaryItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconWrapperUsers,
+.iconWrapperChurches {
+  background-color: #f3f4f6;
+  border-radius: 0.75rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrapperUsers {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.iconWrapperChurches {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.separator {
+  width: 1px;
+  height: 48px;
+  background-color: #e5e7eb;
+  margin: 0 1rem;
+}

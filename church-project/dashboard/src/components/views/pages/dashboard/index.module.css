@@ -1,12 +1,12 @@
 .cardSmall {
-  max-width: 100%;
+  max-width: 30%;
+  margin-left: -20px;
   margin-bottom: 24px;
 }
-
 .bottomContainer {
   display: flex;
   gap: 24px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .column {

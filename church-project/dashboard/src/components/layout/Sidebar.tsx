@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
 import { navItems } from "./Navigation/navmenu";
+import { useNavigate } from "react-router-dom";
 import styles from "./sidebar.module.css";
+import logo from "@/assets/churchlogo.svg";
+import { FiLogOut } from "react-icons/fi";
 
 const Sidebar: React.FC = () => {
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
@@ -30,6 +34,11 @@ const Sidebar: React.FC = () => {
       setSidebarOpen(false);
     }
   }, [location.pathname]);
+
+  const handleLogout = () => {
+    // localStorage.clear();
+    navigate("/login");
+  };
 
   return (
     <>
@@ -60,7 +69,10 @@ const Sidebar: React.FC = () => {
         }`}
       >
         <div className={styles.header}>
-          <h1 className={styles.logo}>Mon Eglise</h1>
+          <div className={styles.logoContainer}>
+            <img src={logo} alt="Logo" className={styles.logoImage} />
+            <h1 className={styles.logoText}>Mon Eglise</h1>
+          </div>
           <button
             onClick={() => setSidebarOpen(false)}
             className={styles.closeButton}
@@ -123,8 +135,7 @@ const Sidebar: React.FC = () => {
                     <ul>
                       {item.children.map((child, childIndex) => {
                         const ChildIcon = child.icon;
-                        const isChildCurrent =
-                          location.pathname === child.to;
+                        const isChildCurrent = location.pathname === child.to;
 
                         return (
                           <li key={childIndex}>
@@ -149,6 +160,16 @@ const Sidebar: React.FC = () => {
             return null;
           })}
         </nav>
+
+        {/* === Log Out Button === */}
+        <div className={styles.logoutSection}>
+          <div onClick={handleLogout} className={styles.logoutButton}>
+            <span className={styles.logouticon}>
+              <FiLogOut />
+            </span>
+            <span> Log Out</span>
+          </div>
+        </div>
       </aside>
     </>
   );

@@ -1,73 +1,89 @@
-
 .container {
-  width: 85%;
-}
-.container h2{
-  display: flex;
-  justify-content: center;
-}
-.pageTitle{
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--primary);
-}
-.permissionGroup {
-  margin-top: 2rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.sectionTitle {
+.pageTitle {
   font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #222;
-  border-bottom: 2px solid var(--primary); 
-  padding-bottom: 0.3rem;
-  max-width: max-content;
-}
-
-.permissionCategory {
+  font-weight: 600;
   margin-bottom: 1.5rem;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.permissionControls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.selectIcon, .deselectIcon {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.selectIcon:hover {
+  color: var(--primary);
+}
+.deselectIcon:hover {
+  color: red;
+}
+
+.permissionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.permissionCategory {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
 .permissionCategoryTitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
+}
+
+.permissionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 0.75rem;
-  color: #374151;
 }
 
 .permissionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.75rem 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
 }
 
 .permissionItem {
   display: flex;
   align-items: center;
-  background: #f9fafb; 
-  border: 1.5px solid #d1d5db; 
-  border-radius: 8px;
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  user-select: none;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+  transition: background 0.2s ease;
 }
 
 .permissionItem:hover {
-  background: #eef2ff; 
-  border-color: var(--primary);
+  background: #f0f8ff;
 }
 
-.permissionItem input[type='checkbox'] {
-  margin-right: 0.6rem;
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary); 
-  cursor: pointer;
-}
-
-.permissionLabelText {
-  font-size: 0.95rem;
-  color: #1f2937; 
+.buttonContainer {
+  margin-top: 2rem;
+  text-align: right;
 }

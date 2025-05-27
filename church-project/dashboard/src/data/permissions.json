@@ -1,4 +1,30 @@
 {
-  "user": ["create", "edit", "delete"],
-  "post": ["create", "edit", "delete", "publish"]
+  "dashboard": [
+    "users_count",
+    "churches_count",
+    "donation",
+    "prayer_requests",
+    "active_projects",
+    "saved_churches"
+  ],
+  "church": ["read", "add", "edit", "status", "delete"],
+  "users": ["read", "add", "edit", "status", "delete"],
+  "roles": ["read", "add", "edit", "delete"],
+  "activity": ["read"],
+  "sermons": ["upload", "delete"],
+  "event": ["read", "add", "edit", "status", "delete"],
+  "prayer_request": ["read", "delete"],
+  "get_connected": ["read", "delete"],
+  "projects": ["read", "add", "edit", "status", "delete"],
+  "donation_type": ["read", "delete"],
+  "reports": ["read", "delete"],
+  "transactions": ["read", "delete"],
+  "notifications": [
+    "all",
+    "all_churches",
+    "all_users",
+    "selected_churches",
+    "selected_users_of _churches"
+  ],
+  "notification_view": ["read", "delete"]
 }
