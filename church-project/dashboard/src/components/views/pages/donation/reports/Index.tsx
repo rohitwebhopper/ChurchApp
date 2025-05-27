@@ -100,7 +100,14 @@ const DonationReports = () => {
             <Dropdown
               options={churchOptions}
               value={selectedChurch}
-              onChange={setSelectedChurch}
+              // onChange={setSelectedChurch}
+              onChange={(value) => {
+                if (Array.isArray(value)) {
+                  setSelectedChurch(value[0] ?? ""); 
+                } else {
+                  setSelectedChurch(value);
+                }
+              }}
               variant="underline"
             />
           </div>

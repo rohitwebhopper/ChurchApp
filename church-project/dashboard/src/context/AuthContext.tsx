@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import type { ReactNode } from "react"; // <-- type-only import
 
 interface User {
@@ -20,7 +20,7 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = (email: string, password: string) => {
+  const login = (email: string) => {
     setUser({ email });
   };
 

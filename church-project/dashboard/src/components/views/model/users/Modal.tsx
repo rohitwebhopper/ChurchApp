@@ -40,9 +40,9 @@ const AddEditUser: React.FC<AddEditInterface> = ({ open, close, data }) => {
     console.log("Selected image:", file);
   };
 
-  const handleDocChange = (file: File | null) => {
-    console.log("Selected document:", file);
-  };
+  // const handleDocChange = (file: File | null) => {
+  //   console.log("Selected document:", file);
+  // };
 
   return (
     <Modal

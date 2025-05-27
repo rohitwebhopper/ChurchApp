@@ -35,19 +35,18 @@ const donations: DonationTypeInterface[] = [
 ];
 
 const DonationType = () => {
-  const [activeType, setActiveType] = useState<string>(""); // empty means no filter
+  const [activeType, setActiveType] = useState<string>("");
   const [search, setSearch] = useState("");
 
-  // Filter donations by type if activeType selected; else show all
   const filteredDonations = donations.filter(
     (d) =>
-      (activeType === "" || d.type === activeType) && // filter by type or show all
+      (activeType === "" || d.type === activeType) &&
       (d.donor.toLowerCase().includes(search.toLowerCase()) ||
         d.description.toLowerCase().includes(search.toLowerCase()))
   );
 
   const options = [
-    { label: "Select Type", value: "" }, // empty value for no filter
+    { label: "Select Type", value: "" },
     { label: "Tithe", value: "Tithe" },
     { label: "Offering", value: "Offering" },
     { label: "Project", value: "Project" },
@@ -89,7 +88,14 @@ const DonationType = () => {
             <Dropdown
               options={options}
               value={activeType}
-              onChange={setActiveType}
+              // onChange={setActiveType}
+              onChange={(value) => {
+                if (Array.isArray(value)) {
+                  setActiveType(value[0] ?? "");
+                } else {
+                  setActiveType(value);
+                }
+              }}
               variant="underline"
             />
           </div>
