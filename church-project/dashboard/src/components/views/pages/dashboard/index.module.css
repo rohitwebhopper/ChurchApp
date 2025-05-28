@@ -1,27 +1,42 @@
-.cardSmall {
-  max-width: 30%;
-  margin-left: -20px;
-  margin-bottom: 24px;
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 32px;
 }
+
+.cardGrid > * {
+  flex: 1 1 300px;
+  max-width: 100%;
+}
+
 .bottomContainer {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex: 1 1 300px;
   gap: 24px;
+  flex: 1 1 300px;
 }
 
 @media (max-width: 768px) {
+  .cardGrid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
   .bottomContainer {
     flex-direction: column;
     gap: 16px;
   }
+
   .column {
     flex: 1 1 100%;
   }

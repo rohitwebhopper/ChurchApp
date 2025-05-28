@@ -1,7 +1,6 @@
 .tableWrapper {
   width: 100%;
   border-radius: 8px;
-  border-top: 2px solid var(--primary, #ccc);
   background: #fff;
   font-family: var(--font-marcellus, sans-serif);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -48,17 +47,15 @@ th {
   position: sticky;
   top: 0;
   z-index: 4;
-  background-color: #fafafa;
+  background-color: #E4E5E6;
   font-weight: 600;
   border-bottom: 2px solid #ddd;
 }
 
 /* Sticky first column left */
 .leftSticky {
-  border-radius: 8px;
   position: sticky;
   left: 0;
-  background-color: #fff;
   z-index: 5;
   border-right: 1px solid #eaeaea;
   min-width: 150px;
@@ -71,7 +68,6 @@ th {
 /* Sticky actions column right */
 .fixedCell {
   position: sticky;
-  background: #fff;
   z-index: 5;
   border-left: 1px solid #eaeaea;
   min-width: 120px;

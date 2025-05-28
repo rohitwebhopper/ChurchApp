@@ -16,22 +16,22 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #333;
 }
 
 .filter {
-  padding: 8px 12px;
+  padding: 4px 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #f9f9f9;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.80rem;
 }
 
 .count {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 16px;
   color: #2c3e50;
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 200px;
+  max-height: 216px;
   overflow-y: auto;
 }
 

@@ -19,20 +19,6 @@ const FinanceCard = () => {
     <>
       <div className={styles.container}>
         <div className={styles.card}>
-          {/* Tabs */}
-          <div className={styles.tabs}>
-            {["Monthly", "Quartely", "Yearly"].map((item) => (
-              <button
-                key={item}
-                className={`${styles.tab} ${
-                  tab === item ? styles.tabActive : ""
-                }`}
-                onClick={() => setTab(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
 
           {/* Total Balance */}
           <div className={styles.balance}>
@@ -49,6 +35,19 @@ const FinanceCard = () => {
                   ↑ 42.9%
                 </span>
               </div>
+            </div>
+            <div className={styles.tabs}>
+              {["Monthly", "Quartely", "Yearly"].map((item) => (
+                <button
+                  key={item}
+                  className={`${styles.tab} ${
+                    tab === item ? styles.tabActive : ""
+                  }`}
+                  onClick={() => setTab(item)}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
 

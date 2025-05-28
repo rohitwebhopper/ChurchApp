@@ -29,7 +29,8 @@
 }
 
 .logoText {
-  font-size: 1.5rem;
+  margin-left: -8px;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary);
   user-select: none;
