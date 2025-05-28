@@ -1,27 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineBell, HiOutlineTrash } from "react-icons/hi";
+import { CiMail } from "react-icons/ci";
+import { IoMailUnreadOutline } from "react-icons/io5";
 import styles from "./index.module.css";
 
 interface Notification {
   id: number;
-  message: string;
+  type: "donationReceived" | "register";
+  user: string;
   isNew: boolean;
 }
 
 const initialNotifications: Notification[] = [
-  { id: 1, message: "New user registered", isNew: true },
-  { id: 2, message: "New user registered", isNew: true },
-  { id: 3, message: "New donation received", isNew: true },
-  { id: 4, message: "New donation received", isNew: true },
-  { id: 5, message: "New donation received", isNew: false },
-  { id: 6, message: "New donation received", isNew: false },
-  { id: 7, message: "New donation received", isNew: false },
-  { id: 9, message: "New donation received", isNew: false },
-  { id: 10, message: "New donation received", isNew: false },
-  { id: 11, message: "New donation received", isNew: false },
-  { id: 12, message: "New donation received", isNew: false },
-  { id: 13, message: "New donation received", isNew: false },
-  { id: 14, message: "New donation received", isNew: false },
+  { id: 1, type: "donationReceived", user: "John Doe", isNew: true },
+  { id: 2, type: "register", user: "Jane Smith", isNew: true },
+  { id: 3, type: "donationReceived", user: "Blessing M.", isNew: true },
+  { id: 3, type: "donationReceived", user: "Blessing M.", isNew: true },
+  { id: 4, type: "register", user: "Tolu A.", isNew: false },
+  { id: 5, type: "donationReceived", user: "Michael D.", isNew: false },
+  { id: 6, type: "donationReceived", user: "Michael D.", isNew: false },
+  { id: 7, type: "donationReceived", user: "Michael D.", isNew: false },
+  { id: 8, type: "donationReceived", user: "Michael D.", isNew: false },
 ];
 
 const NotificationDropdown = () => {
@@ -36,6 +35,13 @@ const NotificationDropdown = () => {
   const handleClearAll = () => setNotifications([]);
 
   const newCount = notifications.filter((n) => n.isNew).length;
+
+  const renderMessage = (n: Notification) => {
+    if (n.type === "donationReceived")
+      return `Donation received from ${n.user}`;
+    if (n.type === "register") return `${n.user} registered`;
+    return "";
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -85,8 +91,14 @@ const NotificationDropdown = () => {
                   }`}
                 >
                   <div className={styles.messageContent}>
-                    {n.isNew && <span className={styles.newLabel}>NEW</span>}
-                    <span>{n.message}</span>
+                    {n.isNew ? (
+                      <span className={styles.newLabel}>
+                        <IoMailUnreadOutline />
+                      </span>
+                    ) : (
+                      <CiMail className={styles.iconsize} />
+                    )}
+                    <span>{renderMessage(n)}</span>
                   </div>
                   <button
                     className={styles.removeBtn}

@@ -84,13 +84,13 @@
 }
 
 .profile:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--primary-active);
 }
 
 .profileimg {
-  width: 50px;
-  height: auto;
-  border-radius: 0.25rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
 }
 
 .profileName {

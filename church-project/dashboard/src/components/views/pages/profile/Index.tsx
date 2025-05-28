@@ -4,7 +4,7 @@ import Grid from "@/components/ui/Grid/Index";
 import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
 import { FormInput } from "@/components/ui/Form/Index";
 import Button from "@/components/ui/Button/Index";
-import logo from "@/assets/churchlogo.svg"
+import logo from "@/assets/profile/profile.jpg"
 
 const ProfilePage = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const ProfilePage = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Mon Eglise"
+                      placeholder="Admin"
                     />
                   </Grid.Column>
                   <Grid.Column span={{ base: 12, md: 6 }}>
@@ -93,7 +93,7 @@ const ProfilePage = () => {
             </Grid.Column>
           </Grid.Row>
 
-          <hr className={styles.divider} />
+          {/* <hr className={styles.divider} />
 
           <Grid.Row>
             <Grid.Column span={{ base: 12, md: 4 }}>
@@ -126,7 +126,7 @@ const ProfilePage = () => {
                 type="password"
               />
             </Grid.Column>
-          </Grid.Row>
+          </Grid.Row> */}
         </Grid>
 
         <div className={styles.buttonWrapper}>

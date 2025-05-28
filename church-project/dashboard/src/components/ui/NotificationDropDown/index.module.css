@@ -4,6 +4,7 @@
   right: 0;
   width: 320px;
   max-height: 300px;
+  background-color: var(--primarywhite);
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
@@ -65,15 +66,15 @@
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s ease;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--primary-active);
 }
 
 .notificationItem:hover {
-  background-color: #f8fafc;
+  background-color: var(--primary-active);
 }
 
 .newNotification {
-  background-color: #eff6ff;
+  background-color: var(--primary-soft);
   font-weight: 600;
 }
 
@@ -96,24 +97,23 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: none;
 }
 
 .newLabel {
-  font-size: 0.625rem;
-  color: #2563eb;
-  background-color: rgba(59, 130, 246, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 700;
+  border-radius: 6px;
+  font-size: 20px;
+  color: var(--primary);
+  background-color: var(--primary-active);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 4px #ffd6ac;
   }
   to {
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 8px var(--primary-hover);
   }
 }
 
@@ -173,6 +173,9 @@
   justify-content: center;
   min-width: 16px;
   height: 16px;
+}
+.iconsize {
+  font-size: 20px;
 }
 
 @keyframes ping {

@@ -1,7 +1,7 @@
 .tableWrapper {
   width: 100%;
   border-radius: 8px;
-  border-top: 2px solid var(--secondary, #ccc);
+  border-top: 2px solid var(--primary, #ccc);
   background: #fff;
   font-family: var(--font-marcellus, sans-serif);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -55,6 +55,7 @@ th {
 
 /* Sticky first column left */
 .leftSticky {
+  border-radius: 8px;
   position: sticky;
   left: 0;
   background-color: #fff;
@@ -127,7 +128,7 @@ th {
 
 .primary:hover {
   background-color: #007bff22;
-  color: #007bff;
+  color: var(--primary);
 }
 
 .danger:hover {

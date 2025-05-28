@@ -1,11 +1,13 @@
 @import "tailwindcss";
 :root {
-  --primary: #3b82f6;
+  --primary: #f8951d;
+  --primary-active: #fff5eb;
+  --primary-hover: #f8961de6;
+  --primary-shadow: #fff5eb;
   --warning: #ffc107;
-  --softprimary:rgba(0, 123, 255, 0.2);
-  --sidebarindicator: #23ff91;
-  --primarywhite:#ffff;
-  --primary-hover: #2563eb;
+  --softprimary: hsl(30, 100%, 93%);
+  --sidebarindicator: #ffe4be;
+  --primarywhite: #ffff;
   --secondary: #6366f1;
   --secondary_black: #696969b2;
   --positive: #10b981;
@@ -17,4 +19,3 @@
   --fontfamily: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   --font-marcellus: "Marcellus", "Roboto", "Inter", sans-serif;
 }
-

@@ -48,7 +48,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--primary-hover);
   background-color: #ffffff;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
 }
@@ -106,7 +106,7 @@
 }
 
 .navLink:hover {
-  background-color: #f1f5f9;
+  background-color: var(--primary-active);
   color: var(--primary);
 }
 
@@ -145,7 +145,7 @@
 }
 
 .menuButton:hover {
-  background-color: #1d4ed8;
+  background-color: #d5d8e0;
 }
 
 @media (min-width: 768px) {
@@ -193,7 +193,7 @@
 }
 
 .dropdownToggle:hover {
-  background-color: #f1f5f9;
+  background-color: var(--primary-active);
   color: var(--primary);
 }
 
@@ -247,7 +247,7 @@
 }
 
 .dropdownItem:hover {
-  background-color: #e2e8f0;
+  background-color: var(--primary-shadow);
   color: var(--primary);
 }
 
@@ -273,13 +273,13 @@
 }
 
 .activeLink {
-  background-color: #e0f2fe;
-  color: #0369a1;
+  background-color: var(--primary);
+  color: var(--primary-active);
   font-weight: 600;
 }
 
 .activeChild {
-  background-color: #e7edf1c2;
+  background-color: var(--primary-active);
   color: var(--primary);
   font-weight: 500;
 }
