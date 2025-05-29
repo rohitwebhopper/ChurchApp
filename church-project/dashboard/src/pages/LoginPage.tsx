@@ -28,7 +28,7 @@ const ChurchLogin = () => {
       <div className={styles.card}>
         <div className="flex flex-col items-center">
           <ChurchIcon />
-          <h1 className={styles.title}>Admin Login</h1>
+          <h1 className={styles.title}>Mon Eglise</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
