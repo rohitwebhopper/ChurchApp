@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ModernTable from "@/components/ui/Table/Index";
 import type { Column, ActionButton } from "@/components/ui/Table/Index";
 import Pagination from "@/components/ui/Pagination/Index";
@@ -6,6 +7,7 @@ import type { ProjectTableData } from "@/components/interface/Projects";
 import AddEditProjects from "../../model/projects/Modal";
 
 const ProjectTable = () => {
+  const { t } = useTranslation();
   const [openModal, setOpenModal] = useState(false);
   const [selectedProject, setSelectedProject] =
     useState<ProjectTableData | null>(null);
@@ -42,10 +44,10 @@ const ProjectTable = () => {
   };
 
   const columns: Column<ProjectTableData>[] = [
-    { key: "name", label: "Project Name" },
-    { key: "description", label: "Description" },
-    { key: "setAmount", label: "Set Amount" },
-    { key: "receivedAmount", label: "Received Amount" },
+    { key: "name", label: t("translate.projectName") },
+    { key: "description", label: t("translate.description") },
+    { key: "setAmount", label: t("translate.setAmount") },
+    { key: "receivedAmount", label: t("translate.receivedAmount") },
 
     {
       key: "active",
@@ -63,11 +65,11 @@ const ProjectTable = () => {
             userSelect: "none",
           }}
         >
-          {row.active ? "Yes" : "No"}
+          {row.active ? t("translate.yes") : t("translate.no")}
         </span>
       ),
     },
-    { key: "createdAt", label: "Created At" },
+    { key: "createdAt", label: t("translate.createdAt") },
   ];
 
   const actions: ActionButton<ProjectTableData>[] = [

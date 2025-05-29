@@ -4,8 +4,9 @@ import type { Column, ActionButton } from "@components/ui/Table/Index";
 import type { Church } from "@/components/interface/ChurchInterface";
 import AddEditChurch from "../../model/church/Modal";
 import Pagination from "@/components/ui/Pagination/Index";
-
+import { useTranslation } from "react-i18next";
 export default function ChurchManagement() {
+  const { t } = useTranslation();
   const [churches, setChurches] = useState<Church[]>([
     {
       id: 1,
@@ -65,20 +66,20 @@ export default function ChurchManagement() {
     };
 
   const columns: Column<Church>[] = [
-    { key: "name", label: "Church Name" },
-    { key: "email", label: "Email" },
-    { key: "phone", label: "Phone" },
-    { key: "regNo", label: "Reg No" },
-    { key: "bankname", label: "Bank Name" },
-    { key: "accno", label: "Account No" },
-    { key: "isccode", label: "IFSC" },
-    { key: "payeename", label: "Payee Name" },
-    { key: "location", label: "Location" },
-    { key: "churchrule", label: "Church Rule" },
+    { key: "name", label: "translate.churchName" },
+    { key: "email", label: "translate.email" },
+    { key: "phone", label: "translate.phone" },
+    { key: "regNo", label: "translate.regNo" },
+    { key: "bankname", label: "translate.bankName" },
+    { key: "accno", label: "translate.accountNo" },
+    { key: "isccode", label: "translate.ifsc" },
+    { key: "payeename", label: "translate.payeeName" },
+    { key: "location", label: "translate.location" },
+    { key: "churchrule", label: "translate.churchRule" },
 
     {
       key: "status",
-      label: "Status",
+      label: "translate.status",
       render: (c) => (
         <span
           style={{
@@ -96,7 +97,7 @@ export default function ChurchManagement() {
             userSelect: "none",
           }}
         >
-          {c.status}
+          {t(`translate.${c.status}`)}
         </span>
       ),
 

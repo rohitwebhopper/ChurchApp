@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./card.module.css";
+import { useTranslation } from "react-i18next";
 
 const prayerCounts = {
   monthly: 52,
@@ -17,15 +18,18 @@ const requests = [
   { name: "Ava", text: "A breakthrough in finances." },
 ];
 
-const filterOptions = ["monthly", "quarterly", "yearly"];
-
 export default function PrayerStatsCard() {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<FilterOption>("monthly");
-
+  const filterOptions = [
+    t("translate.monthly"),
+    t("translate.quarterly"),
+    t("translate.yearly"),
+  ];
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Recent Prayer Requests</h2>
+        <h2 className={styles.title}>{t("translate.recentPrayerRequests")}</h2>
         <select
           className={styles.filter}
           value={filter}
@@ -40,7 +44,7 @@ export default function PrayerStatsCard() {
       </div>
 
       <div className={styles.count}>
-        {prayerCounts[filter].toLocaleString()} Total
+        {prayerCounts[filter].toLocaleString()} {t("translate.total")}
       </div>
 
       <div className={styles.requestList}>

@@ -2,16 +2,26 @@ import Grid from "@/components/ui/Grid/Index";
 import SearchInput from "@/components/ui/SearchInput/Index";
 import GetConnectedTable from "@/components/views/tables/getConnected/Table";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MdOutlineConnectWithoutContact } from "react-icons/md";
 
-const GetConnectedPage = ()=>{
-      const [searchTerm, setSearchTerm] = useState("");
-    return (
-        <>
-          <div className="mb-6">
-        <div className="flex items-center gap-2 mb-4" style={{color:"var(--secondary_black)"}}>
+const GetConnectedPage = () => {
+  const { t } = useTranslation();
+  const [searchTerm, setSearchTerm] = useState("");
+  return (
+    <>
+      <div className="mb-6">
+        <div
+          className="flex items-center gap-2 mb-4"
+          style={{ color: "var(--secondary_black)" }}
+        >
           <MdOutlineConnectWithoutContact className="text-2xl text-primary" />
-          <h2 className="text-xl " style={{fontFamily:"var( --font-marcellus)", fontWeight:"600"}}>Get Connected</h2>
+          <h2
+            className="text-xl "
+            style={{ fontFamily: "var( --font-marcellus)", fontWeight: "600" }}
+          >
+            {t("translate.getConnected")}
+          </h2>
         </div>
 
         <Grid gap="md">
@@ -20,16 +30,15 @@ const GetConnectedPage = ()=>{
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder="Search users..."
+                placeholder={t("translate.searchUsers")}
               />
             </Grid.Column>
-        
           </Grid.Row>
         </Grid>
       </div>
-        <GetConnectedTable/>
-        </>
-    )
-}
+      <GetConnectedTable />
+    </>
+  );
+};
 
-export default GetConnectedPage
+export default GetConnectedPage;

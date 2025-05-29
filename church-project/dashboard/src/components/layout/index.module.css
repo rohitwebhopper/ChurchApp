@@ -23,7 +23,9 @@
 .logo:hover {
   transform: scale(1.05);
 }
-
+.text-purple-600 {
+  color: #126cdc !important;
+}
 .rightUtilities {
   display: flex;
   gap: 1.25rem;
@@ -104,6 +106,61 @@
   .profileName {
     display: inline;
   }
+}
+
+.languageSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+.globeIcon {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.languageButtons {
+  display: flex;
+  position: relative;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #f9fafb;
+  position: relative;
+}
+
+.langBtn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.langBtn:hover {
+  color: var(--primary);
+}
+
+.active {
+  color: white !important;
+}
+
+.activeIndicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background-color: var(--primary);
+  border-radius: 0.5rem;
+  z-index: 0;
+  transition: transform 0.3s ease;
 }
 
 /* End Navbar CSS */

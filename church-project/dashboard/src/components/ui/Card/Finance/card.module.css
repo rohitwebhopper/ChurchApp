@@ -31,7 +31,7 @@
 }
 
 .tabActive {
-  background-color: #6366f1;
+  background-color: var(--primary);
   color: white;
   border-color: transparent;
 }
@@ -46,11 +46,14 @@
 .balanceIcon {
   width: 4.5rem;
   height: 2.5rem;
-  background-color: #ede9fe;
+  background-color: var(--primary);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.eurosign{
+  color: var(--primarywhite) ;
 }
 
 .chartArea {
@@ -67,7 +70,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 6px solid #6366f1;
+  border: 6px solid var(--primary);
   border-left-color: #e5e7eb;
   display: flex;
   align-items: center;

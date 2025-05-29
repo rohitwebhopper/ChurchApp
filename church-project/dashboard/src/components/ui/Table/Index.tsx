@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Index.module.css";
 import type { IconType } from "react-icons";
+import { useTranslation } from "react-i18next";
 import { FaTrash, FaEdit, FaToggleOn, FaToggleOff } from "react-icons/fa";
 
 export type Column<T> = {
@@ -32,6 +33,8 @@ function Table<T extends Record<string, any>>({
   actions = [],
   keyField,
 }: ModernTableProps<T>) {
+  const { t } = useTranslation();
+
   const visibleColumns = columns.filter(({ hideIfEmpty, key }) => {
     if (!hideIfEmpty) return true;
     return data.some((item) => {
@@ -44,11 +47,11 @@ function Table<T extends Record<string, any>>({
     ActionType,
     { icon: IconType; tooltip: string; getActive?: (item: T) => boolean }
   > = {
-    update: { icon: FaEdit, tooltip: "Edit" },
-    delete: { icon: FaTrash, tooltip: "Delete" },
+    update: { icon: FaEdit, tooltip: t("translate.edit") },
+    delete: { icon: FaTrash, tooltip: t("translate.delete") },
     toggle: {
       icon: FaToggleOn,
-      tooltip: "Toggle",
+      tooltip: t("translate.toggle"),
       getActive: (item) => Boolean(item.status === "Active" || item.active),
     },
   };
@@ -95,7 +98,7 @@ function Table<T extends Record<string, any>>({
                   style={{ width }}
                   className={index === 0 ? styles.leftSticky : ""}
                 >
-                  {label}
+                  {t(label)}
                 </th>
               ))}
               {actions?.length > 0 && (
@@ -103,7 +106,7 @@ function Table<T extends Record<string, any>>({
                   className={`${styles.fixedCell} ${styles.rightSticky}`}
                   style={{ width: "120px" }}
                 >
-                  Actions
+                  {t("translate.actions")}
                 </th>
               )}
             </tr>
@@ -111,7 +114,9 @@ function Table<T extends Record<string, any>>({
           <tbody>
             {data.length === 0 ? (
               <tr>
-                <td colSpan={visibleColumns.length + 1}>No data found</td>
+                <td colSpan={visibleColumns.length + 1}>
+                  {t("translate.noData")}
+                </td>
               </tr>
             ) : (
               data.map((item) => (
@@ -130,15 +135,15 @@ function Table<T extends Record<string, any>>({
                       >
                         {render ? render(item) : item[key]}
                         {index === 0 && item.upcoming && (
-                          <span className={styles.upcomingBadge}>Upcoming</span>
+                          <span className={styles.upcomingBadge}>
+                            {t("translate.upcoming")}
+                          </span>
                         )}
                       </div>
                     </td>
                   ))}
                   {actions?.length > 0 && (
-                    <td
-                      className={`${styles.fixedCell} ${styles.rightSticky}`}
-                    >
+                    <td className={`${styles.fixedCell} ${styles.rightSticky}`}>
                       <div className={styles.actionsContainer}>
                         {actions.map((action, idx) =>
                           renderActionButton(action, item, idx)

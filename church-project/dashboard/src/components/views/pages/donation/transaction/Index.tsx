@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Grid from "@/components/ui/Grid/Index";
 import type { DonorTransact } from "@/components/interface/DonorTransaction";
 import TransactionTable from "@/components/views/tables/donation/transaction/Table";
@@ -42,6 +43,7 @@ const transactions: DonorTransact[] = [
 ];
   
 const DonorTransactions = () => {
+  const { t } = useTranslation();
 
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
     null,
@@ -78,7 +80,7 @@ const DonorTransactions = () => {
                 fontWeight: "600",
               }}
             >
-              Donor Transaction
+              {t("translate.donorTransaction")}
             </h2>
           </div>
         </Grid.Column>

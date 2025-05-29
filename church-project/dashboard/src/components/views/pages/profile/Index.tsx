@@ -5,8 +5,10 @@ import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
 import { FormInput } from "@/components/ui/Form/Index";
 import Button from "@/components/ui/Button/Index";
 import logo from "@/assets/profile/profile.jpg"
+import { useTranslation } from "react-i18next";
 
 const ProfilePage = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,7 +55,7 @@ const ProfilePage = () => {
                   <Grid.Column span={{ base: 12, md: 6 }}>
                     <FormInput
                       size="small"
-                      label="Full Name"
+                      label={t("translate.fullName")}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -64,7 +66,7 @@ const ProfilePage = () => {
                   <Grid.Column span={{ base: 12, md: 6 }}>
                     <FormInput
                       size="small"
-                      label="Email Address"
+                      label={t("translate.emailAddress")}
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -79,7 +81,7 @@ const ProfilePage = () => {
                   <Grid.Column span={{ base: 12, md: 6 }}>
                     <FormInput
                       size="small"
-                      label="Phone Number"
+                      label={t("translate.phoneNumber")}
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
@@ -131,7 +133,7 @@ const ProfilePage = () => {
 
         <div className={styles.buttonWrapper}>
           <Button size="small" type="submit" variant="positive">
-            Save Changes
+            {t("translate.saveChanges")}
           </Button>
         </div>
       </form>

@@ -5,8 +5,11 @@ import SearchInput from "@/components/ui/SearchInput/Index";
 import AddEditUser from "@/components/views/model/users/Modal";
 import UserTable from "@/components/views/tables/users/Table";
 import Grid from "@/components/ui/Grid/Index";
+import { useTranslation } from "react-i18next";
 
-const UserManagment = () => {
+const UserManagement = () => {
+  const { t } = useTranslation();
+
   const [openModal, SetOpenModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -15,9 +18,17 @@ const UserManagment = () => {
   return (
     <>
       <div className="mb-6">
-        <div className="flex items-center gap-2 mb-4" style={{color:"var(--secondary_black)"}}>
+        <div
+          className="flex items-center gap-2 mb-4"
+          style={{ color: "var(--secondary_black)" }}
+        >
           <FiUsers className="text-2xl text-primary" />
-          <h2 className="text-xl " style={{fontFamily:"var( --font-marcellus)", fontWeight:"600"}}>Users</h2>
+          <h2
+            className="text-xl"
+            style={{ fontFamily: "var( --font-marcellus)", fontWeight: "600" }}
+          >
+            {t("translate.users")}
+          </h2>
         </div>
 
         <Grid gap="md">
@@ -26,7 +37,7 @@ const UserManagment = () => {
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder="Search users..."
+                placeholder={t("translate.searchUsersPlaceholder")}
               />
             </Grid.Column>
             <Grid.Column
@@ -38,7 +49,7 @@ const UserManagment = () => {
                 variant="primary"
                 onClick={() => SetOpenModal(true)}
               >
-                Add User
+                {t("translate.addUser")}
               </Button>
             </Grid.Column>
           </Grid.Row>
@@ -51,4 +62,4 @@ const UserManagment = () => {
   );
 };
 
-export default UserManagment;
+export default UserManagement;

@@ -2,6 +2,7 @@ import React from "react";
 import { FaUserShield, FaEdit, FaTrash } from "react-icons/fa";
 import styles from "./index.module.css";
 import type { Role } from "@/components/interface/RoleInterface";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   role: Role;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const RoleCard: React.FC<Props> = ({ role, onEdit, onDelete }) => {
+  const { t } = useTranslation();
   const maxVisible = 5;
   const visiblePermissions = role.permissions.slice(0, maxVisible);
   const hiddenCount = role.permissions.length - maxVisible;
@@ -43,10 +45,16 @@ const RoleCard: React.FC<Props> = ({ role, onEdit, onDelete }) => {
         <div className={styles.actions}>
           {role.name !== "Admin" && (
             <>
-              <button onClick={() => onEdit(role.id)} title="Edit">
+              <button
+                onClick={() => onEdit(role.id)}
+                title={t("translate.edit")}
+              >
                 <FaEdit />
               </button>
-              <button onClick={() => onDelete(role.id)} title="Delete">
+              <button
+                onClick={() => onDelete(role.id)}
+                title={t("translate.delete")}
+              >
                 <FaTrash />
               </button>
             </>

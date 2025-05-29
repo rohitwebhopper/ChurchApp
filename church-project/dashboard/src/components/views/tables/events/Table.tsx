@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
 import type { ChurchEvent } from "@/components/interface/ChurchEvent";
@@ -7,38 +8,39 @@ import Pagination from "@/components/ui/Pagination/Index";
 
 
 export default function EventTable() {
+  const { t } = useTranslation();
  const [events, setEvents] = useState<ChurchEvent[]>([
-  {
-    id: "1",
-    image:
-      "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
-    title: "Sunday Worship",
-    event_date: "2025-06-01",
-    event_time: "10:00 AM",
-    location: "Grace Church Hall",
-    hosted_by: "Pastor John",
-    description: "A powerful Sunday gathering.",
-    upcoming: false,
-    status: "Active",
-    latitude: 28.6139, 
-    longitude: 77.2090,
-  },
-  {
-    id: "2",
-    image:
-      "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
-    title: "Youth Rally",
-    event_date: "2025-06-15",
-    event_time: "5:00 PM",
-    location: "Hope Church Ground",
-    hosted_by: "Youth Team",
-    description: "A night of music, faith, and fun.",
-    upcoming: true,
-    status: "InActive",
-    latitude: 19.0760, 
-    longitude: 72.8777,
-  },
-]);
+   {
+     id: "1",
+     image:
+       "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
+     title: "Sunday Worship",
+     event_date: "2025-06-01",
+     event_time: "10:00 AM",
+     location: "Grace Church Hall",
+     hosted_by: "Pastor John",
+     description: "A powerful Sunday gathering.",
+     upcoming: false,
+     status: "Active",
+     latitude: 28.6139,
+     longitude: 77.209,
+   },
+   {
+     id: "2",
+     image:
+       "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
+     title: "Youth Rally",
+     event_date: "2025-06-15",
+     event_time: "5:00 PM",
+     location: "Hope Church Ground",
+     hosted_by: "Youth Team",
+     description: "A night of music, faith, and fun.",
+     upcoming: true,
+     status: "Inactive",
+     latitude: 19.076,
+     longitude: 72.8777,
+   },
+ ]);
 
   const [openModal, setOpenModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<ChurchEvent | null>(null);
@@ -73,11 +75,11 @@ export default function EventTable() {
         />
       ),
     },
-    { key: "title", label: "Title" },
-    { key: "event_date", label: "Date" },
-    { key: "event_time", label: "Time" },
-    { key: "location", label: "Location" },
-    { key: "hosted_by", label: "Hosted By" },
+    { key: "title", label: t("translate.title") },
+    { key: "event_date", label: t("translate.date") },
+    { key: "event_time", label: t("translate.time") },
+    { key: "location", label: t("translate.location") },
+    { key: "hosted_by", label: t("translate.hostedBy") },
     {
       key: "status",
       label: "Status",
@@ -87,16 +89,14 @@ export default function EventTable() {
             padding: "4px 10px",
             borderRadius: 15,
             backgroundColor:
-              event.status === "Active"
-                ? "var(--positive)"
-                : "var(--negative)",
+              event.status === "Active" ? "var(--positive)" : "var(--negative)",
             color: "var(--primarywhite)",
             fontWeight: 600,
             fontSize: "12px",
             userSelect: "none",
           }}
         >
-          {event.status}
+          {t(`translate.${event.status}`)}
         </span>
       ),
     },
@@ -120,7 +120,7 @@ export default function EventTable() {
             e.id === event.id
               ? {
                   ...e,
-                  status: e.status === "Active" ? "InActive" : "Active",
+                  status: e.status === "Active" ? "Inactive" : "Active",
                 }
               : e
           )

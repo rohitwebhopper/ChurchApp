@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
 import { navItems } from "./Navigation/navmenu";
@@ -8,6 +9,7 @@ import logo from "@/assets/churchlogo.svg";
 import { FiLogOut } from "react-icons/fi";
 
 const Sidebar: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -39,6 +41,8 @@ const Sidebar: React.FC = () => {
     // localStorage.clear();
     navigate("/login");
   };
+
+  
 
   return (
     <>
@@ -96,7 +100,13 @@ const Sidebar: React.FC = () => {
                   }`}
                 >
                   <Icon className={styles.linkIcon} />
-                  <span>{item.label}</span>
+                  <span>
+                    {t(
+                      `nav.${item.label
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]/g, "")}`
+                    )}
+                  </span>
                 </Link>
               );
             }
@@ -116,7 +126,11 @@ const Sidebar: React.FC = () => {
                   >
                     <span className={styles.dropdownLabel}>
                       <Icon className={styles.linkIcon} />
-                      {item.label}
+                      {t(
+                        `nav.${item.label
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]/g, "")}`
+                      )}
                     </span>
                     <HiChevronDown
                       className={`${styles.chevronIcon} ${
@@ -146,7 +160,11 @@ const Sidebar: React.FC = () => {
                               }`}
                             >
                               <ChildIcon className={styles.childIcon} />
-                              {child.label}
+                              {t(
+                                `nav.${child.label
+                                  .toLowerCase()
+                                  .replace(/[^a-z0-9]/g, "")}`
+                              )}
                             </Link>
                           </li>
                         );
@@ -167,7 +185,7 @@ const Sidebar: React.FC = () => {
             <span className={styles.logouticon}>
               <FiLogOut />
             </span>
-            <span> Log Out</span>
+            <span>{t("nav.logout")}</span>
           </div>
         </div>
       </aside>

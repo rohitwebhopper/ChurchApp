@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaChurch } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import Button from "@/components/ui/Button/Index";
 import Grid from "@/components/ui/Grid/Index";
 import SearchInput from "@/components/ui/SearchInput/Index";
@@ -7,6 +8,7 @@ import AddEditChurch from "@/components/views/model/church/Modal";
 import ChurchManagementTable from "@/components/views/tables/church/Table";
 
 const ChurchManagment = () => {
+  const { t } = useTranslation();
   const [openModal, SetOpenModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -14,9 +16,17 @@ const ChurchManagment = () => {
   return (
     <>
       <div className="mb-6">
-        <div className="flex items-center gap-2 mb-4" style={{color:"var(--secondary_black)"}}>
+        <div
+          className="flex items-center gap-2 mb-4"
+          style={{ color: "var(--secondary_black)" }}
+        >
           <FaChurch className="text-2xl text-primary" />
-          <h2 className="text-xl" style={{fontFamily:"var( --font-marcellus)", fontWeight:"600"}}>Church</h2>
+          <h2
+            className="text-xl"
+            style={{ fontFamily: "var( --font-marcellus)", fontWeight: "600" }}
+          >
+            {t("translate.church")}
+          </h2>
         </div>
 
         <Grid gap="md">
@@ -25,7 +35,7 @@ const ChurchManagment = () => {
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder="Search users..."
+                placeholder={t("translate.searchUsers")}
               />
             </Grid.Column>
             <Grid.Column
@@ -37,7 +47,7 @@ const ChurchManagment = () => {
                 variant="primary"
                 onClick={() => SetOpenModal(true)}
               >
-                Add Church
+                {t("translate.addChurch")}
               </Button>
             </Grid.Column>
           </Grid.Row>

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
 import type { GetConnectedEntry } from "@/components/interface/GetConnected";
 import Pagination from "@/components/ui/Pagination/Index";
 
-
 export default function GetConnectedTable() {
+  const { t } = useTranslation();
   const [entries, setEntries] = useState<GetConnectedEntry[]>([
     {
       id: "1",
@@ -34,11 +35,11 @@ export default function GetConnectedTable() {
   ]);
 
   const columns: Column<GetConnectedEntry>[] = [
-    { key: "name", label: "Name" },
-    { key: "phone", label: "Phone" },
-    { key: "email", label: "Email" },
-    { key: "address", label: "Address" },
-    { key: "createdAt", label: "Created At" },
+    { key: "name", label: t("translate.name") },
+    { key: "phone", label: t("translate.phone") },
+    { key: "email", label: t("translate.email") },
+    { key: "address", label: t("translate.address") },
+    { key: "createdAt", label: t("translate.createdAt") },
   ];
 
   const actions: ActionButton<GetConnectedEntry>[] = [
@@ -61,7 +62,11 @@ export default function GetConnectedTable() {
         actions={actions}
         keyField="id"
       />
-      <Pagination currentPage={1} totalPages={5} onPageChange={handlePageChange} />
+      <Pagination
+        currentPage={1}
+        totalPages={5}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

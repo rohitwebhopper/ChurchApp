@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { HiOutlineBell, HiOutlineTrash } from "react-icons/hi";
 import { CiMail } from "react-icons/ci";
 import { IoMailUnreadOutline } from "react-icons/io5";
@@ -24,6 +25,7 @@ const initialNotifications: Notification[] = [
 ];
 
 const NotificationDropdown = () => {
+  const { t } = useTranslation();
   const [notifications, setNotifications] =
     useState<Notification[]>(initialNotifications);
   const [open, setOpen] = useState(false);
@@ -38,8 +40,9 @@ const NotificationDropdown = () => {
 
   const renderMessage = (n: Notification) => {
     if (n.type === "donationReceived")
-      return `Donation received from ${n.user}`;
-    if (n.type === "register") return `${n.user} registered`;
+      return t("translate.donationReceived", { user: n.user });
+    if (n.type === "register")
+      return t("translate.userRegistered", { user: n.user });
     return "";
   };
 
@@ -73,14 +76,14 @@ const NotificationDropdown = () => {
       {open && (
         <div className={styles.dropdown}>
           <div className={styles.dropdownHeader}>
-            <span>Notifications</span>
+            <span>{t("translate.notificationsTitle")}</span>
             <button className={styles.clearBtn} onClick={handleClearAll}>
-              Clear All
+              {t("translate.clearAll")}
             </button>
           </div>
 
           {notifications.length === 0 ? (
-            <div className={styles.empty}>You're all caught up! 🎉</div>
+            <div className={styles.empty}>{t("translate.allCaughtUp")}</div>
           ) : (
             <ul className={styles.notificationList}>
               {notifications.map((n) => (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Grid from "@/components/ui/Grid/Index";
 import Dropdown from "@/components/ui/Dropdown/Index";
 import SearchInput from "@/components/ui/SearchInput/Index";
@@ -41,17 +42,16 @@ const donations: DonationRep[] = [
   },
 ];
 
-// Dropdown options
-const churchOptions = [
-  { label: "All Churches", value: "" },
-  { label: "Grace Church", value: "church-1" },
-  { label: "Hope Church", value: "church-2" },
-];
-
 const DonationReports = () => {
+  const { t } = useTranslation();
   const [selectedChurch, setSelectedChurch] = useState("");
   const [search, setSearch] = useState("");
 
+  const churchOptions = [
+    { label: t("translate.allChurches"), value: "" },
+    { label: "Grace Church", value: "church-1" },
+    { label: "Hope Church", value: "church-2" },
+  ];
   const filteredDonations = donations.filter((donation) => {
     const matchesChurch =
       !selectedChurch || donation.churchId === selectedChurch;
@@ -80,7 +80,7 @@ const DonationReports = () => {
                 fontWeight: "600",
               }}
             >
-              Reports
+              {t("translate.reports")}
             </h2>
           </div>
         </Grid.Column>
@@ -91,7 +91,7 @@ const DonationReports = () => {
           <SearchInput
             value={search}
             onChange={setSearch}
-            placeholder="Search Church..."
+            placeholder={t("translate.searchChurch")}
           />
         </Grid.Column>
 
@@ -103,7 +103,7 @@ const DonationReports = () => {
               // onChange={setSelectedChurch}
               onChange={(value) => {
                 if (Array.isArray(value)) {
-                  setSelectedChurch(value[0] ?? ""); 
+                  setSelectedChurch(value[0] ?? "");
                 } else {
                   setSelectedChurch(value);
                 }

@@ -2,18 +2,20 @@ import Table from "@/components/ui/Table/Index";
 import type { ActionButton, Column } from "@components/ui/Table/Index";
 import type { DonationType } from "@/components/interface/Donation";
 import Pagination from "@/components/ui/Pagination/Index";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: DonationType[];
 }
 
 const DonationTable: React.FC<Props> = ({ data }) => {
+  const { t } = useTranslation();
   const columns: Column<DonationType>[] = [
-    { key: "donor", label: "Donor" },
-    { key: "amount", label: "Amount" },
-    { key: "type", label: "Type" },
-    { key: "date", label: "Date" },
-    { key: "description", label: "Description" },
+    { key: "donor", label: t("translate.donor") },
+    { key: "amount", label: t("translate.amount") },
+    { key: "type", label: t("translate.type") },
+    { key: "date", label: t("translate.date") },
+    { key: "description", label: t("translate.description") },
   ];
 
   const actions: ActionButton<DonationType>[] = [

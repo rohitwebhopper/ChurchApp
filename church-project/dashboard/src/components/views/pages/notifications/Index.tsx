@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./index.module.css";
 import type { Option } from "@/components/ui/Dropdown/Index";
 import Dropdown from "@/components/ui/Dropdown/Index";
@@ -25,6 +26,8 @@ const mockUsers: User[] = [
 ];
 
 const NotificationsPage = () => {
+  const { t } = useTranslation();
+
   const [targetMode, setTargetMode] = useState<TargetMode>("all");
   const [selectedChurches, setSelectedChurches] = useState<string[]>([]);
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
@@ -56,35 +59,35 @@ const NotificationsPage = () => {
       },
     };
     console.log("Sending Notification:", payload);
-    alert("Notification sent! (Check console)");
+    alert(t("notificationSentAlert"));
   };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.pageTitle}>Send Notification</h2>
+      <h2 className={styles.pageTitle}>{t("translate.sendNotification")}</h2>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Title</label>
+        <label className={styles.label}>{t("translate.title")}</label>
         <input
           className={styles.input}
-          placeholder="Enter notification title..."
+          placeholder={t("translate.enterNotificationTitle")}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Message</label>
+        <label className={styles.label}>{t("translate.message")}</label>
         <textarea
           className={styles.textarea}
-          placeholder="Write your message here..."
+          placeholder={t("translate.writeYourMessageHere")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
 
       <div className={styles.formGroup}>
-        <label className={styles.label}>Send To</label>
+        <label className={styles.label}>{t("translate.sendTo")}</label>
         <select
           className={styles.select}
           value={targetMode}
@@ -94,12 +97,14 @@ const NotificationsPage = () => {
             setSelectedUsers([]);
           }}
         >
-          <option value="all">All (Churches & Users)</option>
-          <option value="allChurches">All Churches</option>
-          <option value="allUsers">All Users</option>
-          <option value="selectedChurches">Selected Churches</option>
+          <option value="all">{t("translate.allChurchesUsers")}</option>
+          <option value="allChurches">{t("translate.allChurches")}</option>
+          <option value="allUsers">{t("translate.allUsers")}</option>
+          <option value="selectedChurches">
+            {t("translate.selectedChurches")}
+          </option>
           <option value="selectedUsers">
-            Selected Users of Selected Churches
+            {t("translate.selectedUsersOfSelectedChurches")}
           </option>
         </select>
       </div>
@@ -107,34 +112,36 @@ const NotificationsPage = () => {
       {(targetMode === "selectedChurches" ||
         targetMode === "selectedUsers") && (
         <div className={styles.formGroup}>
-          <label className={styles.label}>Select Churches</label>
+          <label className={styles.label}>
+            {t("translate.selectChurches")}
+          </label>
           <Dropdown
             options={churchOptions}
             value={selectedChurches}
             onChange={(val) => setSelectedChurches(val as string[])}
             isMulti
             variant="default"
-            placeholder="Select churches..."
+            placeholder={t("translate.selectChurchesPlaceholder")}
           />
         </div>
       )}
 
       {targetMode === "selectedUsers" && selectedChurches.length > 0 && (
         <div className={styles.formGroup}>
-          <label className={styles.label}>Select Users</label>
+          <label className={styles.label}>{t("translate.selectUsers")}</label>
           <Dropdown
             options={userOptions}
             value={selectedUsers}
             onChange={(val) => setSelectedUsers(val as string[])}
             isMulti
             variant="default"
-            placeholder="Select users..."
+            placeholder={t("translate.selectUsersPlaceholder")}
           />
         </div>
       )}
 
       <button className={styles.sendButton} onClick={handleSend}>
-        Send Notification
+        {t("translate.sendNotification")}
       </button>
     </div>
   );

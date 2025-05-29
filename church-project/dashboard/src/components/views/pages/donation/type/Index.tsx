@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next"; 
 import SearchInput from "@/components/ui/SearchInput/Index";
 import Grid from "@/components/ui/Grid/Index";
 import type { DonationType as DonationTypeInterface } from "@/components/interface/Donation";
@@ -37,6 +38,7 @@ const donations: DonationTypeInterface[] = [
 const DonationType = () => {
   const [activeType, setActiveType] = useState<string>("");
   const [search, setSearch] = useState("");
+  const { t } = useTranslation();
 
   const filteredDonations = donations.filter(
     (d) =>
@@ -46,7 +48,7 @@ const DonationType = () => {
   );
 
   const options = [
-    { label: "Select Type", value: "" },
+    { label: t("translate.selectType"), value: "" },
     { label: "Tithe", value: "Tithe" },
     { label: "Offering", value: "Offering" },
     { label: "Project", value: "Project" },
@@ -68,7 +70,7 @@ const DonationType = () => {
                 fontWeight: "600",
               }}
             >
-              Donations
+              {t("translate.donations")}
             </h2>
           </div>
         </Grid.Column>

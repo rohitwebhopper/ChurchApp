@@ -1,4 +1,5 @@
-import  { useState } from "react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
 import AddEditUser from "@components/views/model/users/Modal";
@@ -13,6 +14,8 @@ type Church = {
 };
 
 export default function UserTable() {
+
+const { t } = useTranslation();
   const [churches, setChurches] = useState<Church[]>([
     {
       id: 1,
@@ -54,10 +57,10 @@ export default function UserTable() {
   };
 
   const columns: Column<Church>[] = [
-    { key: "name", label: "Name" },
-    { key: "phone", label: "Phone" },
-    { key: "email", label: "Email" },
-    { key: "address", label: "Address" },
+    { key: "name", label: t("translate.name") },
+    { key: "phone", label: t("translate.phone") },
+    { key: "email", label: t("translate.email") },
+    { key: "address", label: t("translate.address") },
     {
       key: "status",
       label: "Status",
@@ -72,13 +75,13 @@ export default function UserTable() {
                 : c.status === "Inactive"
                 ? "var(--negative)"
                 : "var(--warning)",
-            color:"var(--primarywhite)",
+            color: "var(--primarywhite)",
             fontWeight: "600",
             fontSize: "12px",
             userSelect: "none",
           }}
         >
-          {c.status}
+          {t(`translate.${c.status}`)}
         </span>
       ),
       hideIfEmpty: true,

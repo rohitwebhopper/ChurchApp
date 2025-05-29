@@ -1,6 +1,7 @@
 import DatePicker from "react-datepicker";
 import { MdClear } from "react-icons/md";
 import styles from "./index.module.css";
+import { useTranslation } from "react-i18next";
 
 interface DateRangeFilterProps {
   startDate: Date | null;
@@ -13,6 +14,7 @@ const DateRangeFilter = ({
   endDate,
   onChange,
 }: DateRangeFilterProps) => {
+  const { t } = useTranslation();
   const handleClear = () => {
     onChange([null, null]);
   };
@@ -26,7 +28,7 @@ const DateRangeFilter = ({
         endDate={endDate}
         selectsRange
         inline={false}
-        placeholderText="Select a date range"
+        placeholderText={t("translate.selectDateRange")}
         className={styles.datePickerInput}
         showMonthDropdown
         showYearDropdown

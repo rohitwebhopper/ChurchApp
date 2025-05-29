@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./card.module.css";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { HiOutlineCurrencyDollar } from "react-icons/hi";
+import { FaEuroSign } from "react-icons/fa";
 
 const data = [
   { name: "Jan", value: 20 },
@@ -13,23 +14,25 @@ const data = [
   { name: "Jul", value: 40 },
 ];
 const FinanceCard = () => {
+  const { t } = useTranslation();
   const [tab, setTab] = useState("Income");
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.card}>
-
           {/* Total Balance */}
           <div className={styles.balance}>
             <div className={styles.balanceIcon}>
-              <HiOutlineCurrencyDollar className="text-purple-600 text-xl" />
+              <FaEuroSign className={styles.eurosign} />
             </div>
             <div>
-              <p className="text-gray-500 text-sm">Total Donation</p>
+              <p className="text-gray-500 text-sm">
+                {t("translate.totalDonation")}
+              </p>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-semibold text-gray-800">
-                  ₹459.10
+                  459.10
                 </span>
                 <span className="text-green-500 font-medium text-sm">
                   ↑ 42.9%
@@ -37,7 +40,11 @@ const FinanceCard = () => {
               </div>
             </div>
             <div className={styles.tabs}>
-              {["Monthly", "Quartely", "Yearly"].map((item) => (
+              {[
+                t("translate.monthly"),
+                t("translate.quarterly"),
+                t("translate.yearly"),
+              ].map((item) => (
                 <button
                   key={item}
                   className={`${styles.tab} ${
@@ -60,7 +67,7 @@ const FinanceCard = () => {
                 <Line
                   type="monotone"
                   dataKey="value"
-                  stroke="#6366f1"
+                  stroke="var(--primary)"
                   strokeWidth={3}
                   dot={{ r: 4 }}
                   activeDot={{ r: 6 }}
@@ -71,10 +78,14 @@ const FinanceCard = () => {
 
           {/* Income Info */}
           <div className={styles.incomeCircle}>
-            <div className={styles.circle}>₹65</div>
+            <div className={styles.circle}>€65</div>
             <div>
-              <p className="font-semibold text-gray-700">Donation this week</p>
-              <p className="text-sm text-gray-400"> ₹39k less than last week</p>
+              <p className="font-semibold text-gray-700">
+                {t("translate.donationThisWeek")}
+              </p>
+              <p className="text-sm text-gray-400">
+                €39k {t("translate.lessThanLastWeek")}
+              </p>
             </div>
           </div>
         </div>

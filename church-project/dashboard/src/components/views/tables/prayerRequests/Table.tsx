@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ModernTable from "@components/ui/Table/Index";
 import type { Column, ActionButton } from "@components/ui/Table/Index";
 import type { PrayerRequest } from "@/components/interface/PrayerRequest";
@@ -6,6 +7,7 @@ import Pagination from "@/components/ui/Pagination/Index";
 
 
 const PrayerRequestTable = () => {
+  const { t } = useTranslation();
   const [requests, setRequests] = useState<PrayerRequest[]>([
     {
       id: 1,
@@ -40,13 +42,13 @@ const PrayerRequestTable = () => {
   ]);
 
   const columns: Column<PrayerRequest>[] = [
-    { key: "name", label: "Name" },
-    { key: "phone", label: "Phone" },
-    { key: "email", label: "Email" },
-    { key: "typeOfPrayer", label: "Type of Prayer" },
-    { key: "offering", label: "Offering" },
-    { key: "description", label: "Description" },
-    { key: "createdAt", label: "Created At" },
+    { key: "name", label: t("translate.name") },
+    { key: "phone", label: t("translate.phone") },
+    { key: "email", label: t("translate.email") },
+    { key: "typeOfPrayer", label: t("translate.typeOfPrayer") },
+    { key: "offering", label: t("translate.offering") },
+    { key: "description", label: t("translate.description") },
+    { key: "createdAt", label: t("translate.createdAt") },
   ];
 
   const actions: ActionButton<PrayerRequest>[] = [

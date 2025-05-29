@@ -1,5 +1,5 @@
 .container {
-  max-height: 420px; 
+  height:100vh; 
   overflow-y: auto;
   padding-right: 10px;
   padding: 20px;
@@ -19,11 +19,7 @@
   font-family: var(--font-marcellus);
 }
 
-.timeline {
-  position: relative;
-  border-left: 3px solid #d1d5db;
-  padding-left: 40px;
-}
+
 
 .block {
   display: flex;
@@ -35,7 +31,7 @@
   font-size: 14px;
   margin-top: 6px;
   color: #6b7280;
-  width: 80px;
+  width: 110px;
 }
 
 .icon {

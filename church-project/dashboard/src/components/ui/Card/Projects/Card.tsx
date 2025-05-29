@@ -1,4 +1,5 @@
 import styles from "./card.module.css";
+import { useTranslation } from "react-i18next";
 
 const projects = [
   { projectName: "Youth Outreach", church: "Grace Church" },
@@ -9,9 +10,10 @@ const projects = [
 ];
 
 export default function ActiveProjectsCard() {
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>Active Projects - Churches</h2>
+      <h2 className={styles.title}>{t("translate.activeProjectsChurches")}</h2>
       <div className={styles.projectList}>
         {projects.map((proj, index) => (
           <div key={index} className={styles.projectItem}>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./index.module.css";
 import videoFile from "@/assets/Envirnmenttestvedio.mp4";
 import previewImg from "@/assets/sermon-on-the-mount-thumbnail.jpg";
@@ -42,6 +43,7 @@ const initialVideos: VideoData[] = [
 ];
 
 const SermonsGallery: React.FC = () => {
+  const { t } = useTranslation();
   const [videos, setVideos] = useState<VideoData[]>(initialVideos);
   const [selectedVideoId, setSelectedVideoId] = useState<number | null>(null);
   const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
@@ -118,7 +120,7 @@ const SermonsGallery: React.FC = () => {
   return (
     <>
       <div className={styles.galleryContainer}>
-        <h2 className={styles.galleryTitle}>Sermons Gallery</h2>
+        <h2 className={styles.galleryTitle}>{t("translate.sermonsGallery")}</h2>
         <Grid gap="md">
           <Grid.Row>
             {videos.map((video) => {
@@ -129,53 +131,56 @@ const SermonsGallery: React.FC = () => {
                 (!videoRef.paused || videoRef.currentTime > 0);
 
               return (
-         <Grid.Column
-  key={video.id}
-  span={{ base: 12, sm: 6, md: 4 }}
-  className={styles.card}
->
-  <div onClick={() => handleCardClick(video.id)}>
-    <div className={styles.thumbnailWrapper}>
-      <video
-        ref={(el: any) => (videoRefs.current[video.id] = el)}
-        src={typeof video.file === "string" ? video.file : undefined}
-        className={styles.videoPlayer}
-        controls
-        style={{ display: isVisible ? "block" : "none" }}
-        onClick={(e) => e.stopPropagation()}
-        onPlay={() => handlePlay(video.id)}
-        onPause={() => handlePause(video.id)}
-      />
-      {!isVisible && video.previewImage && (
-        <img
-          src={video.previewImage}
-          alt={video.title}
-          className={styles.thumbnail}
-        />
-      )}
-    </div>
+                <Grid.Column
+                  key={video.id}
+                  span={{ base: 12, sm: 6, md: 4 }}
+                  className={styles.card}
+                >
+                  <div onClick={() => handleCardClick(video.id)}>
+                    <div className={styles.thumbnailWrapper}>
+                      <video
+                        ref={(el: any) => (videoRefs.current[video.id] = el)}
+                        src={
+                          typeof video.file === "string"
+                            ? video.file
+                            : undefined
+                        }
+                        className={styles.videoPlayer}
+                        controls
+                        style={{ display: isVisible ? "block" : "none" }}
+                        onClick={(e) => e.stopPropagation()}
+                        onPlay={() => handlePlay(video.id)}
+                        onPause={() => handlePause(video.id)}
+                      />
+                      {!isVisible && video.previewImage && (
+                        <img
+                          src={video.previewImage}
+                          alt={video.title}
+                          className={styles.thumbnail}
+                        />
+                      )}
+                    </div>
 
-    <div className={styles.cardHeader}>
-      <div className={styles.cardTitle}>{video.title}</div>
-   
-    </div>
+                    <div className={styles.cardHeader}>
+                      <div className={styles.cardTitle}>{video.title}</div>
+                    </div>
 
-    <div className={styles.cardDescription}>{video.description}</div>
-    <div className={styles.deletebtn}>
-      <Tooltip text="Delete this video" position="left">
-    <FaTrash
-      className={styles.deleteIcon}
-      onClick={(e) => {
-        e.stopPropagation();
-        handleDelete(video.id);
-      }}
-    />
-  </Tooltip>
-    </div>
-
-  </div>
-</Grid.Column>
-
+                    <div className={styles.cardDescription}>
+                      {video.description}
+                    </div>
+                    <div className={styles.deletebtn}>
+                      <Tooltip text="Delete this video" position="left">
+                        <FaTrash
+                          className={styles.deleteIcon}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(video.id);
+                          }}
+                        />
+                      </Tooltip>
+                    </div>
+                  </div>
+                </Grid.Column>
               );
             })}
           </Grid.Row>
@@ -184,13 +189,12 @@ const SermonsGallery: React.FC = () => {
 
       <FloatingUploadButton onClick={openModal} />
 
-
-        <UploadModal
+      <UploadModal
         isModalOpen={isModalOpen}
-          onClose={closeModal}
-          onAddVideo={handleAddVideo}
-          lastId={videos.length ? videos[videos.length - 1].id : 0}
-        />
+        onClose={closeModal}
+        onAddVideo={handleAddVideo}
+        lastId={videos.length ? videos[videos.length - 1].id : 0}
+      />
     </>
   );
 };

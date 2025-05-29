@@ -10,5 +10,5 @@ export interface ChurchEvent {
   upcoming: boolean;
   latitude: number;
   longitude: number;
-  status: "Active" | "InActive";
+  status: "Active" | "Inactive";
 }

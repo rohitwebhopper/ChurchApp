@@ -1,4 +1,5 @@
 import styles from "./card.module.css";
+import { useTranslation } from "react-i18next";
 
 const savedChurches = [
   { name: "Grace Fellowship", savedBy: 312 },
@@ -9,9 +10,10 @@ const savedChurches = [
 ];
 
 export default function SavedChurchesCard() {
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>Most Saved Churches</h2>
+      <h2 className={styles.title}>{t("translate.mostSavedChurches")}</h2>
       <div className={styles.churchList}>
         {savedChurches.map((church, index) => (
           <div key={index} className={styles.churchItem}>
@@ -19,7 +21,7 @@ export default function SavedChurchesCard() {
               {index + 1}. {church.name}
             </div>
             <div className={styles.userCount}>
-              {church.savedBy.toLocaleString()} users
+              {church.savedBy.toLocaleString()} {t("translate.users")}
             </div>
           </div>
         ))}
