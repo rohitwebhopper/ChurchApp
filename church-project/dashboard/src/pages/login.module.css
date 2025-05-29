@@ -19,6 +19,7 @@
   
   .title {
     font-size: 1.5rem;
+    margin-bottom: 12px;
     font-weight: bold;
     color: #1f2937;
     font-family: var(--font-marcellus);
