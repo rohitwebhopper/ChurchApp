@@ -1,7 +1,6 @@
 import { HiOutlineHome, HiOutlineLockClosed } from "react-icons/hi";
 import { FiUsers } from "react-icons/fi";
 import { FaChurch } from "react-icons/fa";
-import { FaUserShield } from "react-icons/fa6";
 import { LuSquareActivity } from "react-icons/lu";
 import { GoVersions } from "react-icons/go";
 import { MdOndemandVideo } from "react-icons/md";
@@ -52,7 +51,6 @@ export const navItems: NavItem[] = [
     children: [
       { label: "Church", to: "/management/church", icon: FaChurch },
       { label: "Users", to: "/management/user", icon: FiUsers },
-      { label: "Roles", to: "/management/roles", icon: FaUserShield },
       { label: "Activity", to: "/management/activity", icon: LuSquareActivity },
     ],
   },
