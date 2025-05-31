@@ -123,12 +123,10 @@ th {
 }
 
 .primary:hover {
-  background-color: #007bff22;
   color: var(--primary);
 }
 
 .danger:hover {
-  background-color: #dc354522;
   color: #f8951d;
 }
 
