@@ -1,12 +1,13 @@
 .profilePage {
   margin: 0 auto;
 }
-.container{
+.container {
   background-color: #fff;
   padding: 2rem;
   width: 50%;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 .title {
   padding: 1rem 0rem;
@@ -15,7 +16,6 @@
   color: var(--primary);
   font-family: var(--font-marcellus);
 }
-
 
 .form {
   border-radius: 1.25rem;
@@ -37,6 +37,12 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
