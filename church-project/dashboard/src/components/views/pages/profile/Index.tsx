@@ -52,8 +52,8 @@ const ProfilePage = () => {
             </Grid.Column>
 
             <Grid.Column span={{ base: 12, md: 8 }}>
-              <div className="flex">
-                <div className="w-85 me-5 ">
+              <div className={styles.flexGroup}>
+                <div className={styles.inputWrapper}>
                   <FormInput
                     size="small"
                     label={t("translate.fullName")}
@@ -64,7 +64,7 @@ const ProfilePage = () => {
                     placeholder="Admin"
                   />
                 </div>
-                <div className="w-85">
+                <div className={styles.inputWrapper}>
                   <FormInput
                     size="small"
                     label={t("translate.emailAddress")}
@@ -77,8 +77,9 @@ const ProfilePage = () => {
                   />
                 </div>
               </div>
-              <div className="flex ">
-                <div className="w-85 me-5">
+
+              <div className={styles.flexGroup}>
+                <div className={styles.inputWrapper}>
                   <FormInput
                     size="small"
                     label={t("translate.phoneNumber")}
@@ -90,37 +91,40 @@ const ProfilePage = () => {
                     required
                   />
                 </div>
-                <div className="w-85">
+                <div className={styles.inputWrapper}>
                   <FormInput
                     size="small"
                     label="Gender"
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
-                    type="tel"
                   />
                 </div>
               </div>
-              <div className="w-85">
-                <FormInput
-                  size="small"
-                  label="D.O.B"
-                  name="gender"
-                  value={formData.dob}
-                  onChange={handleChange}
-                  type="date"
-                />
-              </div>
-                <div className={styles.buttonWrapper}>
-                  <Button size="small" type="submit">
-                    {t("translate.saveChanges")}
-                  </Button>
+
+              <div className={styles.flexGroup}>
+                <div className={styles.inputWrapper}>
+                  <FormInput
+                    size="small"
+                    label="D.O.B"
+                    name="dob"
+                    value={formData.dob}
+                    onChange={handleChange}
+                    type="date"
+                  />
                 </div>
+              </div>
+
+              <div className={styles.buttonWrapper}>
+                <Button size="small" type="submit">
+                  {t("translate.saveChanges")}
+                </Button>
+              </div>
             </Grid.Column>
           </Grid.Row>
 
+          {/* Uncomment if you want password section */}
           {/* <hr className={styles.divider} />
-
           <Grid.Row>
             <Grid.Column span={{ base: 12, md: 4 }}>
               <FormInput
