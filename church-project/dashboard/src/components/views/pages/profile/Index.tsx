@@ -52,8 +52,8 @@ const ProfilePage = () => {
             </Grid.Column>
 
             <Grid.Column span={{ base: 12, md: 8 }}>
-              <div className="flex justify-between">
-                <div className="w-85">
+              <div className="flex">
+                <div className="w-85 me-5 ">
                   <FormInput
                     size="small"
                     label={t("translate.fullName")}
@@ -77,8 +77,8 @@ const ProfilePage = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-between">
-                <div className="w-85">
+              <div className="flex ">
+                <div className="w-85 me-5">
                   <FormInput
                     size="small"
                     label={t("translate.phoneNumber")}
