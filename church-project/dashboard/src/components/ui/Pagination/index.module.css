@@ -29,11 +29,11 @@
 }
 
 .paginationBtn.active {
-  background-color: var(--primary);
+  background-color: var(--secondary_black);
   color: white;
   font-weight: bold;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--softprimary); 
+  box-shadow: 0 0 0 4px var(--secondary_shadow); 
 }
 
 .paginationBtn.disabled {

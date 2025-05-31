@@ -253,10 +253,10 @@ const UploadModal: React.FC<UploadModalProps> = ({
           <Grid.Row>
             <Grid.Column span={{ base: 12 }}>
               <div className={styles.btnlyt}>
-                <Button type="submit">Upload</Button>
                 <Button variant="negative" type="button" onClick={onClose}>
                   Cancel
                 </Button>
+                <Button type="submit">Upload</Button>
               </div>
             </Grid.Column>
           </Grid.Row>

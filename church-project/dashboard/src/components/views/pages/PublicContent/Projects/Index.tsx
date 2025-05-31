@@ -18,7 +18,7 @@ const ProjectsPage = () => {
       <div className="mb-6">
         <div
           className="flex items-center gap-2 mb-4"
-          style={{ color: "var(--secondary_black)" }}
+          style={{ color: "var(--primary)" }}
         >
           <GoProjectSymlink className="text-2xl text-primary" />
           <h2
