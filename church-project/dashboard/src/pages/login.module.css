@@ -3,8 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom right, #f8951d, #ffb95f, #f8951d);
+    /* background: linear-gradient(to bottom right, #f8951d, #ffb95f, #f8951d); */
     padding: 1.5rem;
+    background-image: url("../../public/church.jpg");
+    background-size: cover;
+    background-position: 100% 100%;
   }
   
   .card {
@@ -13,13 +16,13 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 24rem;
-    padding: 1rem;
+    padding: 3rem 1.5rem;
     text-align: center;
   }
   
   .title {
     font-size: 1.5rem;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     font-weight: bold;
     color: var(--primary);
     font-family: var(--font-marcellus);
