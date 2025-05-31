@@ -1,10 +1,10 @@
-export interface PrayerRequest  {
+export interface PrayerRequest {
   id: number;
   name: string;
   phone: number;
   email: string;
   typeOfPrayer: string;
-  offering: string;
+  prayerFee: string;
   description: string;
   createdAt: string;
 };

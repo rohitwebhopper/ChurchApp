@@ -18,8 +18,7 @@ export default function ChurchManagement() {
       accno: 1234567890,
       isccode: "FNB12345",
       status: "Pending",
-      payeename: "Grace Church",
-      location: "123 Faith St, Springfield",
+      address: "123 Faith St, Springfield",
       churchrule: "Rulebook v1.0",
     },
     {
@@ -32,8 +31,7 @@ export default function ChurchManagement() {
       accno: 9876543210,
       status: "Active",
       isccode: "UBK56789",
-      payeename: "Trinity Chapel",
-      location: "456 Worship Way, Riverdale",
+      address: "456 Worship Way, Riverdale",
       churchrule: "Guidelines 2024",
     },
     {
@@ -46,8 +44,7 @@ export default function ChurchManagement() {
       accno: 1122334455,
       status: "Pending",
       isccode: "KTB43210",
-      payeename: "New Life Church",
-      location: "789 Renewal Rd, Centerville",
+      address: "789 Renewal Rd, Centerville",
       churchrule: "Bylaws Rev. 3",
     },
   ]);
@@ -66,15 +63,14 @@ export default function ChurchManagement() {
     };
 
   const columns: Column<Church>[] = [
+    { key: "regNo", label: "translate.regNo" },
     { key: "name", label: "translate.churchName" },
     { key: "email", label: "translate.email" },
     { key: "phone", label: "translate.phone" },
-    { key: "regNo", label: "translate.regNo" },
     { key: "bankname", label: "translate.bankName" },
     { key: "accno", label: "translate.accountNo" },
-    { key: "isccode", label: "translate.ifsc" },
-    { key: "payeename", label: "translate.payeeName" },
-    { key: "location", label: "translate.location" },
+    { key: "isccode", label: "translate.swift" },
+    { key: "address", label: "translate.address" },
     { key: "churchrule", label: "translate.churchRule" },
 
     {

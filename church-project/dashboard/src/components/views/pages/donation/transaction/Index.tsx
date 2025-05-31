@@ -8,40 +8,29 @@ import { FaHistory } from "react-icons/fa";
 
 const transactions: DonorTransact[] = [
   {
-    id: 1,
-    transactionNumber: "TXN-20250501-001",
+    id: "1",
     donor: "John Doe",
     amount: 1000,
-    date: "2025-05-01",
-    description: "Monthly Tithe",
-    type: "Tithe",
-    churchName: "Grace Church",
+    transactionNumber: "TXN001",
     paymentMethod: "Paystack",
+    date: "2025-05-31",
+    type: "Tithe",
+    churchSharePercentage: 80,
+    adminSharePercentage: 20,
   },
   {
-    id: 2,
-    transactionNumber: "TXN-20250510-002",
+    id: "2",
     donor: "Jane Smith",
     amount: 500,
-    date: "2025-05-10",
-    description: "Special Offering",
+    transactionNumber: "TXN002",
+    paymentMethod: "Paystack",
+    date: "2025-05-30",
     type: "Offering",
-    churchName: "Hope Church",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    id: 3,
-    transactionNumber: "TXN-20250515-003",
-    donor: "Rahul Sharma",
-    amount: 1500,
-    date: "2025-05-15",
-    description: "Roof Repair Donation",
-    type: "Project",
-    churchName: "Grace Church",
-    paymentMethod: "Card",
+    churchSharePercentage: 70,
+    adminSharePercentage: 30,
   },
 ];
-  
+
 const DonorTransactions = () => {
   const { t } = useTranslation();
 

@@ -6,8 +6,10 @@ import Grid from "@/components/ui/Grid/Index";
 import Modal from "@/components/ui/Modal/Index";
 import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
 import type { AddEditInterface } from "@/components/interface/ModalInterface";
+import { useTranslation } from "react-i18next";
 
 const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
+    const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,7 +19,7 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
     accno: "",
     isccode: "",
     payeename: "",
-    location: "",
+    address: "",
     churchrule: "",
   });
 
@@ -87,7 +89,7 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Church Name"
+                label={t("translate.churchName")}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -123,9 +125,9 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Location"
-                name="location"
-                value={formData.location}
+                label="Address"
+                name="address"
+                value={formData.address}
                 onChange={handleChange}
                 placeholder="Enter location"
                 required
@@ -173,26 +175,11 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Payee Name"
-                name="payeename"
-                value={formData.payeename}
-                onChange={handleChange}
-                placeholder="Enter payee name"
-                required
-              />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column span={{ base: 12 }}>
-              <FormInput
-                size="small"
                 label="Church Rule"
                 name="churchrule"
                 value={formData.churchrule}
                 onChange={handleChange}
                 placeholder="Enter church rule"
-                required
               />
             </Grid.Column>
           </Grid.Row>

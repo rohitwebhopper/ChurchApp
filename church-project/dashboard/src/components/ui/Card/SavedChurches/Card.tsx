@@ -13,7 +13,7 @@ export default function SavedChurchesCard() {
   const { t } = useTranslation();
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>{t("translate.mostSavedChurches")}</h2>
+      <h2 className={styles.title}>{t("translate.savedChurches")}</h2>
       <div className={styles.churchList}>
         {savedChurches.map((church, index) => (
           <div key={index} className={styles.churchItem}>

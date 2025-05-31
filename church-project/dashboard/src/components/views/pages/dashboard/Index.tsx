@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import styles from "./index.module.css";
 import { MdEventNote } from "react-icons/md";
 import UserCard from "@/components/ui/Card/User/Card";
+import { PiHandsPrayingBold } from "react-icons/pi";
+import { GoProjectSymlink } from "react-icons/go";
 
 
 const DashboardComponent = () => {
@@ -30,6 +32,18 @@ const DashboardComponent = () => {
           icon={MdEventNote}
           count="150"
           label={t("translate.totalevents")}
+          iconWrapperClass="iconWrapperChurches"
+        />
+        <UserCard
+          icon={PiHandsPrayingBold}
+          count="20"
+          label={t("translate.totalprayers")}
+          iconWrapperClass="iconWrapperChurches"
+        />{" "}
+        <UserCard
+          icon={GoProjectSymlink}
+          count="50"
+          label={t("translate.totalprojects")}
           iconWrapperClass="iconWrapperChurches"
         />
       </div>

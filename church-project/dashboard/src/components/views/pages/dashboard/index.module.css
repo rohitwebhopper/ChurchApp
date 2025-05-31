@@ -1,15 +1,16 @@
 .cardGrid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
   margin-bottom: 32px;
 }
 
+/* Ensure consistent layout for children */
 .cardGrid > * {
-  flex: 1 1 250px;
-  max-width: 100%;
+  width: 100%;
 }
 
+/* Optional: Adjust bottom container styling */
 .bottomContainer {
   display: flex;
   gap: 24px;
@@ -25,9 +26,17 @@
   flex: 1 1 300px;
 }
 
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .cardGrid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 

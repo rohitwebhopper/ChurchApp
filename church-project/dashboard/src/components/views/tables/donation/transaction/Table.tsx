@@ -12,10 +12,30 @@ const TransactionTable: React.FC<Props> = ({ data }) => {
   const columns: Column<DonorTransact>[] = [
     { key: "donor", label: t("translate.donor") },
     { key: "amount", label: t("translate.amount") },
-    { key: "transactionNumber", label: t("translate.txnNo") }, 
+    { key: "transactionNumber", label: t("translate.txnNo") },
     { key: "paymentMethod", label: t("translate.paymentMethod") },
+    { key: "type", label: t("translate.type") },
+    {
+      key: "churchSharePercentage",
+      label: t("translate.churchShare"),
+      render: (row) =>
+        `${row.churchSharePercentage}% (€${(
+          (row.amount * row.churchSharePercentage) /
+          100
+        ).toFixed(2)})`,
+    },
+    {
+      key: "adminSharePercentage",
+      label: t("translate.adminShare"),
+      render: (row) =>
+        `${row.adminSharePercentage}% (€${(
+          (row.amount * row.adminSharePercentage) /
+          100
+        ).toFixed(2)})`,
+    },
     { key: "date", label: t("translate.date") },
   ];
+  
     
     
         const actions: ActionButton<DonorTransact>[] = [

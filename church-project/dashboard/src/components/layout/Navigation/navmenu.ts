@@ -3,7 +3,7 @@ import { FiUsers } from "react-icons/fi";
 import { FaChurch } from "react-icons/fa";
 import { LuSquareActivity } from "react-icons/lu";
 import { GoVersions } from "react-icons/go";
-import { MdOndemandVideo } from "react-icons/md";
+import { MdOndemandVideo, MdOutlineVolunteerActivism } from "react-icons/md";
 import { MdEventNote } from "react-icons/md";
 import { PiHandsPrayingBold } from "react-icons/pi";
 import { MdOutlineConnectWithoutContact } from "react-icons/md";
@@ -50,7 +50,7 @@ export const navItems: NavItem[] = [
     icon: HiOutlineLockClosed,
     children: [
       { label: "Church", to: "/management/church", icon: FaChurch },
-      { label: "Users", to: "/management/user", icon: FiUsers },
+      { label: "Users (Member)", to: "/management/user", icon: FiUsers },
       { label: "Activity", to: "/management/activity", icon: LuSquareActivity },
     ],
   },
@@ -67,6 +67,11 @@ export const navItems: NavItem[] = [
         label: "Prayer Requests",
         to: "/public/prayer_requests",
         icon: PiHandsPrayingBold,
+      },
+      {
+        label: "Prayer Type",
+        to: "/public/prayer_type",
+        icon: MdOutlineVolunteerActivism,
       },
       {
         label: "Get Connected",

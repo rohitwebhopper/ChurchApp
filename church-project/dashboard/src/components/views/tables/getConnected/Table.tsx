@@ -39,7 +39,7 @@ export default function GetConnectedTable() {
     { key: "phone", label: t("translate.phone") },
     { key: "email", label: t("translate.email") },
     { key: "address", label: t("translate.address") },
-    { key: "createdAt", label: t("translate.createdAt") },
+    { key: "createdAt", label: "Date" },
   ];
 
   const actions: ActionButton<GetConnectedEntry>[] = [

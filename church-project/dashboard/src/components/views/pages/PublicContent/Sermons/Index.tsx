@@ -8,7 +8,7 @@ import UploadModal from "@/components/views/model/sermons/Index";
 import FloatingUploadButton from "@/components/ui/FloatingButton/Index";
 import { FaTrash } from "react-icons/fa";
 import Tooltip from "@/components/ui/ToolTip/Index";
-
+import Dropdown from "@/components/ui/Dropdown/Index";
 
 interface VideoData {
   id: number;
@@ -16,6 +16,7 @@ interface VideoData {
   description?: string;
   file: string | null;
   previewImage?: string | null;
+  churchName: string;
 }
 
 const initialVideos: VideoData[] = [
@@ -25,6 +26,7 @@ const initialVideos: VideoData[] = [
     description: "Inspiring message about faith and hope.",
     file: videoFile,
     previewImage: previewImg,
+    churchName: "Grace Community Church",
   },
   {
     id: 2,
@@ -32,6 +34,7 @@ const initialVideos: VideoData[] = [
     description: "Midweek study focusing on Bible teachings.",
     file: videoFile,
     previewImage: previewImg,
+    churchName: "Holy Trinity Chapel",
   },
   {
     id: 3,
@@ -39,8 +42,18 @@ const initialVideos: VideoData[] = [
     description: "Youth fellowship and spiritual growth.",
     file: videoFile,
     previewImage: previewImg,
+    churchName: "New Life Ministries",
+  },
+  {
+    id: 4,
+    title: "All Churches Worship Night",
+    description: "A combined worship service for all churches.",
+    file: videoFile,
+    previewImage: previewImg,
+    churchName: "Grace Community Church",
   },
 ];
+
 
 const SermonsGallery: React.FC = () => {
   const { t } = useTranslation();
@@ -50,10 +63,18 @@ const SermonsGallery: React.FC = () => {
 
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
   const playbackTimes = useRef<{ [key: number]: number }>({});
+  const [activeType, setActiveType] = useState<string>("");
 
   const handleCardClick = (id: number) => {
     setSelectedVideoId(id);
   };
+
+  const options = [
+    { label: t("translate.selectChurch"), value: "" },
+    { label: "Grace Community Church", value: "Grace Community Church" },
+    { label: "Holy Trinity Chapel", value: "Holy Trinity Chapel" },
+    { label: "New Life Ministries", value: "New Life Ministries" },
+  ];
 
   const handlePlay = (currentId: number) => {
     setPlayingVideoId(currentId);
@@ -108,22 +129,43 @@ const SermonsGallery: React.FC = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-
   const handleDelete = (id: number) => {
-  setVideos((prev) => prev.filter((video) => video.id !== id));
-  if (selectedVideoId === id) {
-    setSelectedVideoId(null);
-  }
-};
+    setVideos((prev) => prev.filter((video) => video.id !== id));
+    if (selectedVideoId === id) {
+      setSelectedVideoId(null);
+    }
+  };
+
+  const filteredVideos = activeType
+    ? videos.filter((video) => video.churchName === activeType)
+    : videos;
 
 
   return (
     <>
       <div className={styles.galleryContainer}>
         <h2 className={styles.galleryTitle}>{t("translate.sermonsGallery")}</h2>
+        <div className="flex justify-end mb-8">
+          <div className="w-50 ">
+            <Dropdown
+              options={options}
+              value={activeType}
+              // onChange={setActiveType}
+              onChange={(value) => {
+                if (Array.isArray(value)) {
+                  setActiveType(value[0] ?? "");
+                } else {
+                  setActiveType(value);
+                }
+              }}
+              variant="underline"
+            />
+          </div>
+        </div>
+
         <Grid gap="md">
           <Grid.Row>
-            {videos.map((video) => {
+            {filteredVideos.map((video) => {
               const videoRef = videoRefs.current[video.id];
               const isVisible =
                 selectedVideoId === video.id &&

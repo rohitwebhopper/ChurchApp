@@ -22,7 +22,7 @@ const EventModal = ({ open, close, data }: Props) => {
     event_date: "",
     event_time: "",
     location: "",
-    hosted_by: "",
+    churchName: "",
     description: "",
     upcoming: false,
     latitude: 0,
@@ -118,7 +118,7 @@ const handleChange = (
                 size="small"
                 label="Hosted By"
                 name="hosted_by"
-                value={formData.hosted_by}
+                value={formData.churchName}
                 onChange={handleChange}
                 placeholder="Enter host name"
                 required

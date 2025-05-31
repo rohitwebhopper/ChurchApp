@@ -18,6 +18,7 @@ const Activity = lazy(() => import("@/pages/managment/Activity"));
 const SermonsPage = lazy(() => import("@/pages/PublicContent/Sermons"));
 const EventsPage = lazy(() => import("@/pages/PublicContent/Events"));
 const PrayerRequest = lazy(() => import("@/pages/PublicContent/PrayerRequest"));
+const PrayerType = lazy(() => import("@/pages/PublicContent/PrayerType"));
 const GetConnected = lazy(() => import("@/pages/PublicContent/GetConnected"));
 const Projects = lazy(() => import("@/pages/PublicContent/Projects"));
 const DonationType = lazy(() => import("@/pages/donation/type/Index"));
@@ -120,6 +121,17 @@ const AppRoutes = () => {
             <PrivateRoute>
               <DashboardLayout>
                 <PrayerRequest />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/public/prayer_type"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <PrayerType />
               </DashboardLayout>
             </PrivateRoute>
           }

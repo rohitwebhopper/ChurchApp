@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiUsers } from "react-icons/fi";
-import Button from "@/components/ui/Button/Index";
+// import Button from "@/components/ui/Button/Index";
 import SearchInput from "@/components/ui/SearchInput/Index";
 import AddEditUser from "@/components/views/model/users/Modal";
 import UserTable from "@/components/views/tables/users/Table";
@@ -40,7 +40,7 @@ const UserManagement = () => {
                 placeholder={t("translate.searchUsersPlaceholder")}
               />
             </Grid.Column>
-            <Grid.Column
+            {/* <Grid.Column
               span={{ base: 12, md: 6 }}
               className="flex justify-end mt-3 md:mt-0"
             >
@@ -51,7 +51,7 @@ const UserManagement = () => {
               >
                 {t("translate.addUser")}
               </Button>
-            </Grid.Column>
+            </Grid.Column> */}
           </Grid.Row>
         </Grid>
       </div>

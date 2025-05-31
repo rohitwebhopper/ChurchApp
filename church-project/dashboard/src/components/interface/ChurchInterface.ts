@@ -7,8 +7,7 @@ export interface Church {
   bankname: string;
   accno: number;
   isccode: string;
-  payeename: string;
-  location: string;
+  address: string;
   churchrule: string;
   status?: "Active" | "Inactive" | "Pending";
 }

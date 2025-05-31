@@ -10,6 +10,7 @@ type Church = {
   email: string;
   phone: string;
   address: string;
+  churchname: string;
   status: "Active" | "Inactive" | "Pending";
 };
 
@@ -24,6 +25,7 @@ const { t } = useTranslation();
       status: "Active",
       phone: "9876543210",
       address: "Zirakpur",
+      churchname: "Grace Community Church",
     },
     {
       id: 2,
@@ -32,6 +34,7 @@ const { t } = useTranslation();
       status: "Pending",
       phone: "9876543210",
       address: "Punjab",
+      churchname: "Holy Trinity Chapel",
     },
     {
       id: 3,
@@ -40,6 +43,7 @@ const { t } = useTranslation();
       status: "Active",
       phone: "9876543210",
       address: "Chandigarh",
+      churchname: "New Life Ministries",
     },
   ]);
 
@@ -58,9 +62,10 @@ const { t } = useTranslation();
 
   const columns: Column<Church>[] = [
     { key: "name", label: t("translate.name") },
-    { key: "phone", label: t("translate.phone") },
     { key: "email", label: t("translate.email") },
+    { key: "phone", label: t("translate.phone") },
     { key: "address", label: t("translate.address") },
+    { key: "churchname", label: t("translate.churchName") },
     {
       key: "status",
       label: "Status",

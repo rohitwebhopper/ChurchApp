@@ -4,6 +4,13 @@ import Grid from "@/components/ui/Grid/Index";
 import { FormInput, FormTextArea } from "@/components/ui/Form/Index";
 import styles from "./index.module.css";
 import Button from "@/components/ui/Button/Index";
+import Dropdown from "@/components/ui/Dropdown/Index";
+
+const churchOptions = [
+  { label: "Grace Community Church", value: "Grace Community Church" },
+  { label: "Holy Trinity Chapel", value: "Holy Trinity Chapel" },
+  { label: "New Life Ministries", value: "New Life Ministries" },
+];
 
 interface VideoData {
   id: number;
@@ -11,6 +18,7 @@ interface VideoData {
   description: string;
   file: string;
   previewImage: string;
+  churchName: string;
 }
 
 interface UploadModalProps {
@@ -25,17 +33,26 @@ interface FormData {
   description: string;
   videoFile: File | null;
   thumbnailFile: File | null;
+  churchName: string;
 }
 
-const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVideo, lastId }) => {
+const UploadModal: React.FC<UploadModalProps> = ({
+  isModalOpen,
+  onClose,
+  onAddVideo,
+  lastId,
+}) => {
   const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
     videoFile: null,
     thumbnailFile: null,
+    churchName: "",
   });
 
-  const [thumbnailPreviewURL, setThumbnailPreviewURL] = useState<string | null>(null);
+  const [thumbnailPreviewURL, setThumbnailPreviewURL] = useState<string | null>(
+    null
+  );
   const [videoPreviewURL, setVideoPreviewURL] = useState<string | null>(null);
   const [error, setError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +75,9 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
     setThumbnailPreviewURL(null);
   }, [formData.thumbnailFile]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -84,7 +103,8 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const { title, description, videoFile, thumbnailFile } = formData;
+    const { title, description, videoFile, thumbnailFile, churchName } =
+      formData;
 
     if (!title || !description || !videoFile || !thumbnailFile) {
       setError("Please fill all fields and select files.");
@@ -97,6 +117,7 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
       description: description.trim(),
       file: URL.createObjectURL(videoFile),
       previewImage: URL.createObjectURL(thumbnailFile),
+      churchName: churchName,
     };
 
     onAddVideo(newVideo);
@@ -104,7 +125,12 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
   };
 
   return (
-    <Modal isOpen={isModalOpen} title="Upload New Video" onClose={onClose} size="medium">
+    <Modal
+      isOpen={isModalOpen}
+      title="Upload New Video"
+      onClose={onClose}
+      size="medium"
+    >
       <form onSubmit={handleSubmit} className={styles.form}>
         <Grid gap="sm">
           <Grid.Row>
@@ -136,8 +162,34 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
           </Grid.Row>
 
           <Grid.Row>
+            <Grid.Column className="mb-4" span={{ base: 12 }}>
+              <label className={styles.label}>
+                Select Church <span className="text-red-500">*</span>
+              </label>
+              <Dropdown
+                options={churchOptions}
+                value={formData.churchName}
+                onChange={(value) => {
+                  if (Array.isArray(value)) {
+                    setFormData((prev) => ({
+                      ...prev,
+                      churchName: value[0] ?? "",
+                    }));
+                  } else {
+                    setFormData((prev) => ({ ...prev, churchName: value }));
+                  }
+                }}
+                placeholder="Choose a church"
+                variant="default"
+              />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
             <Grid.Column span={{ base: 12 }}>
-              <label className={styles.label}>Thumbnail Image <span className="text-red-500">*</span></label>
+              <label className={styles.label}>
+                Thumbnail Image <span className="text-red-500">*</span>
+              </label>
               <input
                 type="file"
                 accept="image/*"
@@ -157,7 +209,9 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
 
           <Grid.Row>
             <Grid.Column span={{ base: 12 }}>
-              <label className={styles.label}>Video File (mp4, 3gp) <span className="text-red-500">*</span></label>
+              <label className={styles.label}>
+                Video File (mp4, 3gp) <span className="text-red-500">*</span>
+              </label>
               <div className={styles.fileUploadWrapper}>
                 <Button
                   size="small"
@@ -196,17 +250,16 @@ const UploadModal: React.FC<UploadModalProps> = ({ isModalOpen, onClose, onAddVi
             </Grid.Row>
           )}
 
-          <Grid.Row >
-              <Grid.Column  span={{base:12}}>
-            <div className={styles.btnlyt} >
-              
-              <Button  type="submit" >Upload</Button>
-              <Button variant="negative" type="button"  onClick={onClose}>Cancel</Button>
-            </div>
-              </Grid.Column>
-           
+          <Grid.Row>
+            <Grid.Column span={{ base: 12 }}>
+              <div className={styles.btnlyt}>
+                <Button type="submit">Upload</Button>
+                <Button variant="negative" type="button" onClick={onClose}>
+                  Cancel
+                </Button>
+              </div>
+            </Grid.Column>
           </Grid.Row>
-
         </Grid>
       </form>
     </Modal>

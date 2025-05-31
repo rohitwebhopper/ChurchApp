@@ -4,7 +4,6 @@
   padding: 1.75rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   width: 100%;
-  max-width: 266.5px;
 }
 
 .summaryItem {
@@ -42,6 +41,6 @@
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: 0.820rem;
   color: #6b7280;
 }

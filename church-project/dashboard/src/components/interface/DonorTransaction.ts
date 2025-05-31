@@ -1,11 +1,13 @@
 export interface DonorTransact {
-  id: number;
-  transactionNumber: string;
+  id: string;
   donor: string;
   amount: number;
+  transactionNumber: string;
+  paymentMethod: string;
   date: string;
-  description: string;
-  type: "Tithe" | "Offering" | "Project";
-  churchName: string;
-  paymentMethod: "Paystack" | "Bank Transfer" | "Card";
+  type: "Tithe" | "Offering" | "Project"; 
+  churchSharePercentage: number; 
+  adminSharePercentage: number; 
 }
+
+
