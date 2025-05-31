@@ -107,13 +107,13 @@
 
 
 .deleteIcon {
-  color: #dc3545;
+  color: #8b8b8b;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .deleteIcon:hover {
-  color: #a71d2a;
+  color: #f8951d;
 }
 .deletebtn{
   display: flex;
