@@ -4,7 +4,7 @@ import Grid from "@/components/ui/Grid/Index";
 import ProfileImageUpload from "@/components/ui/ProfileUpload/Index";
 import { FormInput } from "@/components/ui/Form/Index";
 import Button from "@/components/ui/Button/Index";
-import logo from "@/assets/profile/profile.jpg"
+import logo from "@/assets/profile/profile.jpg";
 import { useTranslation } from "react-i18next";
 
 const ProfilePage = () => {
@@ -16,6 +16,8 @@ const ProfilePage = () => {
     password: "",
     newPassword: "",
     confirmPassword: "",
+    gender: "",
+    dob:"",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +39,10 @@ const ProfilePage = () => {
       <h2 className={styles.title}>Mon Eglise</h2>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <Grid gap="lg">
+        <Grid className={styles.container}>
           <Grid.Row>
             <Grid.Column
-              span={{ base: 12, md: 4 }}
+              span={{ base: 12, md: 12 }}
               className={styles.imageWrapper}
             >
               <ProfileImageUpload
@@ -48,50 +50,79 @@ const ProfilePage = () => {
                 onChange={handleImageChange}
               />
             </Grid.Column>
-
-            <Grid.Column span={{ base: 12, md: 8 }}>
-              <Grid gap="md">
-                <Grid.Row>
-                  <Grid.Column span={{ base: 12, md: 6 }}>
-                    <FormInput
-                      size="small"
-                      label={t("translate.fullName")}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Admin"
-                    />
-                  </Grid.Column>
-                  <Grid.Column span={{ base: 12, md: 6 }}>
-                    <FormInput
-                      size="small"
-                      label={t("translate.emailAddress")}
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      type="email"
-                      placeholder="admin@gmail.com"
-                      required
-                    />
-                  </Grid.Column>
-                </Grid.Row>
-
-                <Grid.Row>
-                  <Grid.Column span={{ base: 12, md: 6 }}>
-                    <FormInput
-                      size="small"
-                      label={t("translate.phoneNumber")}
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      type="tel"
-                      placeholder="*****"
-                      required
-                    />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <FormInput
+                size="small"
+                label={t("translate.fullName")}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Admin"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <FormInput
+                size="small"
+                label={t("translate.emailAddress")}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                type="email"
+                placeholder="admin@gmail.com"
+                required
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <FormInput
+                size="small"
+                label={t("translate.phoneNumber")}
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                type="tel"
+                placeholder="*****"
+                required
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <FormInput
+                size="small"
+                label="Gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                type="tel"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <FormInput
+                size="small"
+                label="D.O.B"
+                name="gender"
+                value={formData.dob}
+                onChange={handleChange}
+                type="date"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column span={{ base: 12, md: 12 }}>
+              <div className={styles.buttonWrapper}>
+                <Button size="small" type="submit">
+                  {t("translate.saveChanges")}
+                </Button>
+              </div>
             </Grid.Column>
           </Grid.Row>
 
@@ -130,12 +161,6 @@ const ProfilePage = () => {
             </Grid.Column>
           </Grid.Row> */}
         </Grid>
-
-        <div className={styles.buttonWrapper}>
-          <Button size="small" type="submit" variant="positive">
-            {t("translate.saveChanges")}
-          </Button>
-        </div>
       </form>
     </div>
   );

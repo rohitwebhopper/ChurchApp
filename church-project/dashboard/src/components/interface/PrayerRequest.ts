@@ -5,6 +5,7 @@ export interface PrayerRequest {
   email: string;
   typeOfPrayer: string;
   prayerFee: string;
+  churchName: string;
   description: string;
   createdAt: string;
 };

@@ -4,46 +4,72 @@ import SearchInput from "@/components/ui/SearchInput/Index";
 import PrayerRequestTable from "@/components/views/tables/prayerRequests/Table";
 import { useState } from "react";
 import { PiHandsPrayingBold } from "react-icons/pi";
+import Dropdown from "@/components/ui/Dropdown/Index";
 
-const PrayerRequestPage = ()=>{
+const PrayerRequestPage = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeType, setActiveType] = useState<string>("");
 
-    return (
-      <>
-        <div className="mb-6">
-          <div
-            className="flex items-center gap-2 mb-4"
-            style={{ color: "var(--primary)" }}
+  const options = [
+    { label: t("translate.selectChurch"), value: "" },
+    { label: "Grace Community Church", value: "Grace Community Church" },
+    { label: "Holy Trinity Chapel", value: "Holy Trinity Chapel" },
+    { label: "New Life Ministries", value: "New Life Ministries" },
+  ];
+
+  return (
+    <>
+      <div className="mb-6">
+        <div
+          className="flex items-center gap-2 mb-4"
+          style={{ color: "var(--primary)" }}
+        >
+          <PiHandsPrayingBold className="text-2xl text-primary" />
+          <h2
+            className="text-xl"
+            style={{
+              fontFamily: "var( --font-marcellus)",
+              fontWeight: "600",
+            }}
           >
-            <PiHandsPrayingBold className="text-2xl text-primary" />
-            <h2
-              className="text-xl"
-              style={{
-                fontFamily: "var( --font-marcellus)",
-                fontWeight: "600",
-              }}
-            >
-              {" "}
-              {t("translate.prayerRequests")}
-            </h2>
-          </div>
-
-          <Grid gap="md">
-            <Grid.Row className="items-center">
-              <Grid.Column span={{ base: 12, md: 6 }}>
-                <SearchInput
-                  value={searchTerm}
-                  onChange={setSearchTerm}
-                  placeholder={t("translate.searchRequest")}
-                />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+            {" "}
+            {t("translate.prayerRequests")}
+          </h2>
         </div>
-        <PrayerRequestTable />
-      </>
-    );
-}
 
-export default PrayerRequestPage
+        <Grid gap="md">
+          <Grid.Row className="items-center">
+            <Grid.Column span={{ base: 12, md: 6 }}>
+              <SearchInput
+                value={searchTerm}
+                onChange={setSearchTerm}
+                placeholder={t("translate.searchRequest")}
+              />
+            </Grid.Column>
+            <Grid.Column className="flex justify-end" span={{ base: 12, md: 6 }}>
+              <div className="w-50">
+                <Dropdown
+                  options={options}
+                  value={activeType}
+                  // onChange={setActiveType}
+                  onChange={(value) => {
+                    if (Array.isArray(value)) {
+                      setActiveType(value[0] ?? "");
+                    } else {
+                      setActiveType(value);
+                    }
+                  }}
+                  variant="underline"
+                />
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
+      <PrayerRequestTable />
+    </>
+  );
+};
+
+export default PrayerRequestPage;

@@ -16,6 +16,7 @@ const PrayerRequestTable = () => {
       email: "john@example.com",
       typeOfPrayer: "Thanks giving prayer",
       prayerFee: "€500",
+      churchName: "Grace Community Church",
       description: "Praying for recovery from surgery.",
       createdAt: "2025-05-20",
     },
@@ -26,6 +27,7 @@ const PrayerRequestTable = () => {
       email: "jane@example.com",
       typeOfPrayer: "Help assistance Prayer",
       prayerFee: "€300",
+      churchName: "Holy Trinity Chapel",
       description: "Blessings for family unity.",
       createdAt: "2025-05-21",
     },
@@ -36,6 +38,7 @@ const PrayerRequestTable = () => {
       email: "rahul@example.com",
       typeOfPrayer: "Prayer for protection",
       prayerFee: "€0",
+      churchName: "New Life Ministries",
       description: "Seeking wisdom for career decisions.",
       createdAt: "2025-05-22",
     },
@@ -43,11 +46,12 @@ const PrayerRequestTable = () => {
 
   const columns: Column<PrayerRequest>[] = [
     { key: "name", label: t("translate.name") },
-    { key: "phone", label: t("translate.phone") },
     { key: "email", label: t("translate.email") },
-    { key: "typeOfPrayer", label: t("translate.typeOfPrayer") },
-    { key: "prayerFee", label: t("translate.prayerFee") },
+    { key: "phone", label: t("translate.phone") },
+    { key: "phone", label: t("translate.phone") },
+    { key: "churchName", label: t("translate.churchName") },
     { key: "description", label: t("translate.description") },
+    { key: "prayerFee", label: t("translate.prayerFee") },
     { key: "createdAt", label: t("translate.requestedAt") },
   ];
 

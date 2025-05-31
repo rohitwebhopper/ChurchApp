@@ -35,9 +35,10 @@ const ChurchManagment = () => {
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder={t("translate.searchUsers")}
+                placeholder={t("translate.searchChurch")}
               />
             </Grid.Column>
+
             <Grid.Column
               span={{ base: 12, md: 6 }}
               className="flex justify-end mt-3 md:mt-0"

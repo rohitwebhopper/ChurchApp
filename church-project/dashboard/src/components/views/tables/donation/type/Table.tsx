@@ -12,7 +12,11 @@ const DonationTable: React.FC<Props> = ({ data }) => {
   const { t } = useTranslation();
   const columns: Column<DonationType>[] = [
     { key: "donor", label: t("translate.donor") },
-    { key: "amount", label: t("translate.amount") },
+    {
+      key: "amount",
+      label: t("translate.amount"),
+      render: (row) => `€${row.amount}`,
+    },
     { key: "type", label: t("translate.type") },
     { key: "date", label: t("translate.date") },
     { key: "description", label: t("translate.description") },

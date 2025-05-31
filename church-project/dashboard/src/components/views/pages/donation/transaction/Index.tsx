@@ -5,11 +5,13 @@ import type { DonorTransact } from "@/components/interface/DonorTransaction";
 import TransactionTable from "@/components/views/tables/donation/transaction/Table";
 import DateRangeFilter from "@/components/ui/DateRange/Index";
 import { FaHistory } from "react-icons/fa";
+import Dropdown from "@/components/ui/Dropdown/Index";
 
 const transactions: DonorTransact[] = [
   {
     id: "1",
     donor: "John Doe",
+    churchName: "Grace Community Church",
     amount: 1000,
     transactionNumber: "TXN001",
     paymentMethod: "Paystack",
@@ -21,6 +23,7 @@ const transactions: DonorTransact[] = [
   {
     id: "2",
     donor: "Jane Smith",
+    churchName: "Holy Trinity Chapel",
     amount: 500,
     transactionNumber: "TXN002",
     paymentMethod: "Paystack",
@@ -39,6 +42,7 @@ const DonorTransactions = () => {
     null,
   ]);
   const [startDate, endDate] = dateRange;
+  const [activeType, setActiveType] = useState<string>("");
 
   const filtered = transactions.filter((t) => {
     const transactionDate = new Date(t.date);
@@ -48,11 +52,14 @@ const DonorTransactions = () => {
     const withinDateRange =
       (!start || transactionDate >= start) && (!end || transactionDate <= end);
 
-
-
-    return withinDateRange 
+    return withinDateRange;
   });
-
+  const options = [
+    { label: t("translate.selectChurch"), value: "" },
+    { label: "Grace Community Church", value: "Grace Community Church" },
+    { label: "Holy Trinity Chapel", value: "Holy Trinity Chapel" },
+    { label: "New Life Ministries", value: "New Life Ministries" },
+  ];
   return (
     <Grid gap="lg">
       <Grid.Row>
@@ -76,8 +83,24 @@ const DonorTransactions = () => {
       </Grid.Row>
 
       <Grid.Row>
-        <Grid.Column span={{ base: 12 }}>
-          <div className="flex justify-end">
+        <Grid.Column className="flex justify-end" span={{ base: 12 }}>
+          <div className="w-50 me-4 ">
+            <Dropdown
+              options={options}
+              value={activeType}
+              // onChange={setActiveType}
+              onChange={(value) => {
+                if (Array.isArray(value)) {
+                  setActiveType(value[0] ?? "");
+                } else {
+                  setActiveType(value);
+                }
+              }}
+              variant="underline"
+            />
+          </div>
+
+          <div className="mt-1" >
             <DateRangeFilter
               startDate={startDate}
               endDate={endDate}

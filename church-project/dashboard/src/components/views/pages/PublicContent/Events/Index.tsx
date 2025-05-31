@@ -51,8 +51,21 @@ const Events = () => {
                 placeholder={t("translate.searchUsers")}
               />
             </Grid.Column>
+
+            <Grid.Column
+              span={{ base: 12, md: 8 }}
+              className="flex justify-end mt-3 md:mt-0"
+            >
+              <Button
+                size="small"
+                variant="primary"
+                onClick={() => SetOpenModal(true)}
+              >
+                {t("translate.addEvent")}
+              </Button>
+            </Grid.Column>
             <Grid.Column span={{ base: 12, md: 1 }}>
-              <div className="w-50 ">
+              <div className="w-50">
                 <Dropdown
                   options={options}
                   value={activeType}
@@ -67,18 +80,6 @@ const Events = () => {
                   variant="underline"
                 />
               </div>
-            </Grid.Column>
-            <Grid.Column
-              span={{ base: 12, md: 8 }}
-              className="flex justify-end mt-3 md:mt-0"
-            >
-              <Button
-                size="small"
-                variant="primary"
-                onClick={() => SetOpenModal(true)}
-              >
-                {t("translate.addEvent")}
-              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>

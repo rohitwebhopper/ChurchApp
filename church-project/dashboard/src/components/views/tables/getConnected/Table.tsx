@@ -14,6 +14,8 @@ export default function GetConnectedTable() {
       phone: 9876543210,
       email: "david@example.com",
       address: "123 Main St, Springfield",
+      churchName: "Grace Community Church",
+      desctiption: "For Prayere Request",
       createdAt: "2025-05-20",
     },
     {
@@ -22,6 +24,8 @@ export default function GetConnectedTable() {
       phone: 9123456789,
       email: "asha@example.com",
       address: "456 Church Rd, Mumbai",
+      churchName: "Holy Trinity Chapel",
+      desctiption: "I Want to Invest in projects",
       createdAt: "2025-05-21",
     },
     {
@@ -30,6 +34,8 @@ export default function GetConnectedTable() {
       phone: 9988776655,
       email: "samuel@example.com",
       address: "789 Faith Ave, Delhi",
+      churchName: "New Life Ministries",
+      desctiption: "Send Me location of church",
       createdAt: "2025-05-22",
     },
   ]);
@@ -39,6 +45,8 @@ export default function GetConnectedTable() {
     { key: "phone", label: t("translate.phone") },
     { key: "email", label: t("translate.email") },
     { key: "address", label: t("translate.address") },
+    { key: "churchName", label: t("translate.churchName") },
+    { key: "desctiption", label: t("translate.description") },
     { key: "createdAt", label: "Date" },
   ];
 

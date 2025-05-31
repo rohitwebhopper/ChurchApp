@@ -11,7 +11,12 @@ const TransactionTable: React.FC<Props> = ({ data }) => {
   const { t } = useTranslation();
   const columns: Column<DonorTransact>[] = [
     { key: "donor", label: t("translate.donor") },
-    { key: "amount", label: t("translate.amount"), render: (row) => `€${row.amount}` },
+    { key: "churchName", label: t("translate.churchName") },
+    {
+      key: "amount",
+      label: t("translate.amount"),
+      render: (row) => `€${row.amount}`,
+    },
     { key: "transactionNumber", label: t("translate.txnNo") },
     { key: "paymentMethod", label: t("translate.paymentMethod") },
     { key: "type", label: t("translate.type") },
@@ -36,6 +41,7 @@ const TransactionTable: React.FC<Props> = ({ data }) => {
     { key: "date", label: t("translate.date") },
   ];
   
+
     
     
         const actions: ActionButton<DonorTransact>[] = [

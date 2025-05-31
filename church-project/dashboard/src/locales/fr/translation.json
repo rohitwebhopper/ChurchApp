@@ -6,7 +6,7 @@
     "regNo": "N° d’enregistrement",
     "bankName": "Nom de la banque",
     "accountNo": "N° de compte",
-    "swift": "CODE RAPIDE",
+    "swift": "Code rapide",
     "payeeName": "Nom du bénéficiaire",
     "location": "Emplacement",
     "churchRule": "Règle de l'église",
@@ -125,7 +125,7 @@
     "searchPrayerType": "Rechercher le type de prière...",
     "requestedAt": "Demandé à",
     "churchShare": "Partager l'Église",
-    "adminShare":"Partage administrateur"
+    "adminShare": "Partage administrateur"
   },
 
   "nav": {

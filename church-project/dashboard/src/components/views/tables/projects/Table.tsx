@@ -16,6 +16,7 @@ const ProjectTable = () => {
     {
       id: 1,
       name: "Church Renovation",
+      churchName: "Grace Community Church",
       description: "Renovating main church hall",
       setAmount: 100000,
       receivedAmount: 60000,
@@ -25,6 +26,7 @@ const ProjectTable = () => {
     {
       id: 2,
       name: "Youth Outreach",
+      churchName: "Holy Trinity Chapel",
       description: "Organizing youth rows and outreach",
       setAmount: 50000,
       receivedAmount: 20000,
@@ -45,6 +47,7 @@ const ProjectTable = () => {
 
   const columns: Column<ProjectTableData>[] = [
     { key: "name", label: t("translate.projectName") },
+    { key: "churchName", label: t("translate.churchName") },
     { key: "description", label: t("translate.description") },
     { key: "setAmount", label: t("translate.setAmount") },
     { key: "receivedAmount", label: t("translate.receivedAmount") },

@@ -1,9 +1,8 @@
 export interface Church {
-  id: number;
+  id: string;
   name: string;
   email: string;
   phone: number;
-  regNo: string;
   bankname: string;
   accno: number;
   isccode: string;

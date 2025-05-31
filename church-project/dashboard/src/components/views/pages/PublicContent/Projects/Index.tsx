@@ -6,13 +6,21 @@ import AddEditProjects from "@/components/views/model/projects/Modal";
 import ProjectTable from "@/components/views/tables/projects/Table";
 import { useState } from "react";
 import { GoProjectSymlink } from "react-icons/go";
+import Dropdown from "@/components/ui/Dropdown/Index";
 
 const ProjectsPage = () => {
   const { t } = useTranslation();
   const [openModal, SetOpenModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeType, setActiveType] = useState<string>("");
 
   const handleClose = () => SetOpenModal(false);
+  const options = [
+    { label: t("translate.selectChurch"), value: "" },
+    { label: "Grace Community Church", value: "Grace Community Church" },
+    { label: "Holy Trinity Chapel", value: "Holy Trinity Chapel" },
+    { label: "New Life Ministries", value: "New Life Ministries" },
+  ];
   return (
     <>
       <div className="mb-6">
@@ -42,7 +50,7 @@ const ProjectsPage = () => {
               />
             </Grid.Column>
             <Grid.Column
-              span={{ base: 12, md: 6 }}
+              span={{ base: 12, md: 5 }}
               className="flex justify-end mt-3 md:mt-0"
             >
               <Button
@@ -52,6 +60,23 @@ const ProjectsPage = () => {
               >
                 {t("translate.addProject")}
               </Button>
+            </Grid.Column>
+            <Grid.Column span={{ base: 12, md: 1 }}>
+              <div className="w-50">
+                <Dropdown
+                  options={options}
+                  value={activeType}
+                  // onChange={setActiveType}
+                  onChange={(value) => {
+                    if (Array.isArray(value)) {
+                      setActiveType(value[0] ?? "");
+                    } else {
+                      setActiveType(value);
+                    }
+                  }}
+                  variant="underline"
+                />
+              </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>
