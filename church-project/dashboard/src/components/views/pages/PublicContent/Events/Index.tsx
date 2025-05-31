@@ -8,17 +8,14 @@ import Button from "@/components/ui/Button/Index";
 import { MdEventNote } from "react-icons/md";
 import Dropdown from "@/components/ui/Dropdown/Index";
 
-
 const Events = () => {
   const { t } = useTranslation();
 
   const [openModal, SetOpenModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeType, setActiveType] = useState<string>("");
-  
 
   const handleClose = () => SetOpenModal(false);
-
 
   const options = [
     { label: t("translate.selectChurch"), value: "" },
@@ -53,18 +50,9 @@ const Events = () => {
             </Grid.Column>
 
             <Grid.Column
+              className="flex justify-end"
               span={{ base: 12, md: 8 }}
-              className="flex justify-end mt-3 md:mt-0"
             >
-              <Button
-                size="small"
-                variant="primary"
-                onClick={() => SetOpenModal(true)}
-              >
-                {t("translate.addEvent")}
-              </Button>
-            </Grid.Column>
-            <Grid.Column span={{ base: 12, md: 1 }}>
               <div className="w-50">
                 <Dropdown
                   options={options}
@@ -80,6 +68,15 @@ const Events = () => {
                   variant="underline"
                 />
               </div>
+            </Grid.Column>
+            <Grid.Column span={{ base: 12, md: 1 }} className="mt-3 md:mt-0">
+              <Button
+                size="small"
+                variant="primary"
+                onClick={() => SetOpenModal(true)}
+              >
+                {t("translate.addEvent")}
+              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>

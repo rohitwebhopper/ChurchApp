@@ -42,8 +42,8 @@ export default function GetConnectedTable() {
 
   const columns: Column<GetConnectedEntry>[] = [
     { key: "name", label: t("translate.name") },
-    { key: "phone", label: t("translate.phone") },
     { key: "email", label: t("translate.email") },
+    { key: "phone", label: t("translate.phone") },
     { key: "address", label: t("translate.address") },
     { key: "churchName", label: t("translate.churchName") },
     { key: "desctiption", label: t("translate.description") },

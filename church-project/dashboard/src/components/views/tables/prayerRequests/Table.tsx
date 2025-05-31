@@ -48,7 +48,6 @@ const PrayerRequestTable = () => {
     { key: "name", label: t("translate.name") },
     { key: "email", label: t("translate.email") },
     { key: "phone", label: t("translate.phone") },
-    { key: "phone", label: t("translate.phone") },
     { key: "churchName", label: t("translate.churchName") },
     { key: "description", label: t("translate.description") },
     { key: "prayerFee", label: t("translate.prayerFee") },

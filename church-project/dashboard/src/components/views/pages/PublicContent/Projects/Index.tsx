@@ -49,20 +49,12 @@ const ProjectsPage = () => {
                 placeholder={t("translate.searchProjects")}
               />
             </Grid.Column>
+
             <Grid.Column
-              span={{ base: 12, md: 5 }}
-              className="flex justify-end mt-3 md:mt-0"
+              className="flex justify-end"
+              span={{ base: 12, md: 6 }}
             >
-              <Button
-                size="small"
-                variant="primary"
-                onClick={() => SetOpenModal(true)}
-              >
-                {t("translate.addProject")}
-              </Button>
-            </Grid.Column>
-            <Grid.Column span={{ base: 12, md: 1 }}>
-              <div className="w-50">
+              <div className="w-50 me-4">
                 <Dropdown
                   options={options}
                   value={activeType}
@@ -77,6 +69,13 @@ const ProjectsPage = () => {
                   variant="underline"
                 />
               </div>
+              <Button
+                size="small"
+                variant="primary"
+                onClick={() => SetOpenModal(true)}
+              >
+                {t("translate.addProject")}
+              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>

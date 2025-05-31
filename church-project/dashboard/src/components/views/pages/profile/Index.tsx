@@ -17,7 +17,7 @@ const ProfilePage = () => {
     newPassword: "",
     confirmPassword: "",
     gender: "",
-    dob:"",
+    dob: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ const ProfilePage = () => {
         <Grid className={styles.container}>
           <Grid.Row>
             <Grid.Column
-              span={{ base: 12, md: 12 }}
+              span={{ base: 12, md: 4 }}
               className={styles.imageWrapper}
             >
               <ProfileImageUpload
@@ -50,79 +50,72 @@ const ProfilePage = () => {
                 onChange={handleImageChange}
               />
             </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <FormInput
-                size="small"
-                label={t("translate.fullName")}
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                placeholder="Admin"
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <FormInput
-                size="small"
-                label={t("translate.emailAddress")}
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                type="email"
-                placeholder="admin@gmail.com"
-                required
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <FormInput
-                size="small"
-                label={t("translate.phoneNumber")}
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                type="tel"
-                placeholder="*****"
-                required
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <FormInput
-                size="small"
-                label="Gender"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                type="tel"
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <FormInput
-                size="small"
-                label="D.O.B"
-                name="gender"
-                value={formData.dob}
-                onChange={handleChange}
-                type="date"
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column span={{ base: 12, md: 12 }}>
-              <div className={styles.buttonWrapper}>
-                <Button size="small" type="submit">
-                  {t("translate.saveChanges")}
-                </Button>
+
+            <Grid.Column span={{ base: 12, md: 8 }}>
+              <div className="flex justify-between">
+                <div className="w-85">
+                  <FormInput
+                    size="small"
+                    label={t("translate.fullName")}
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Admin"
+                  />
+                </div>
+                <div className="w-85">
+                  <FormInput
+                    size="small"
+                    label={t("translate.emailAddress")}
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="admin@gmail.com"
+                    required
+                  />
+                </div>
               </div>
+              <div className="flex justify-between">
+                <div className="w-85">
+                  <FormInput
+                    size="small"
+                    label={t("translate.phoneNumber")}
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    type="tel"
+                    placeholder="*****"
+                    required
+                  />
+                </div>
+                <div className="w-85">
+                  <FormInput
+                    size="small"
+                    label="Gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    type="tel"
+                  />
+                </div>
+              </div>
+              <div className="w-85">
+                <FormInput
+                  size="small"
+                  label="D.O.B"
+                  name="gender"
+                  value={formData.dob}
+                  onChange={handleChange}
+                  type="date"
+                />
+              </div>
+                <div className={styles.buttonWrapper}>
+                  <Button size="small" type="submit">
+                    {t("translate.saveChanges")}
+                  </Button>
+                </div>
             </Grid.Column>
           </Grid.Row>
 
