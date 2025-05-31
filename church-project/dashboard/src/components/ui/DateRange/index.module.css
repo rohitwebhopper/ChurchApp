@@ -1,50 +1,47 @@
 .container {
-    position: relative;
-    display: inline-block;
-    width: 246px; 
-    z-index: 9999 !important;
-  }
-  
-  .datePickerInput {
-    width: 100%;
-    padding: 5px 12px;
-    font-size: 1rem;
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    outline: none; 
-  }
-  
-  .datePickerInput:focus {
-    border-color: #bec0c2b1; 
-    box-shadow: 0 0 0 0px rgba(59, 130, 246, 0.2); 
-  }
-  
+  position: relative;
+  display: inline-block;
+  width: auto;
+  z-index: 9999 !important;
+}
 
-  .clearButton {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    font-size: 1.3rem;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  .clearButton:hover {
-    color: #ef4444; 
-  }
-  
-  .clearButton:focus {
-    outline: none;
-    color: #ef4444;
-  }
-  
- 
+.datePickerInput {
+  width: 100%;
+  padding: 5px 12px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  outline: none;
+}
+
+.datePickerInput:focus {
+  border-color: #bec0c2b1;
+  box-shadow: 0 0 0 0px rgba(59, 130, 246, 0.2);
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.clearButton:hover {
+  color: #ef4444;
+}
+
+.clearButton:focus {
+  outline: none;
+  color: #ef4444;
+}

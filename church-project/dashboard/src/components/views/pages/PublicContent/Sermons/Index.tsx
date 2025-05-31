@@ -9,6 +9,7 @@ import FloatingUploadButton from "@/components/ui/FloatingButton/Index";
 import { FaTrash } from "react-icons/fa";
 import Tooltip from "@/components/ui/ToolTip/Index";
 import Dropdown from "@/components/ui/Dropdown/Index";
+import { MdOndemandVideo } from "react-icons/md";
 
 interface VideoData {
   id: number;
@@ -53,7 +54,6 @@ const initialVideos: VideoData[] = [
     churchName: "Grace Community Church",
   },
 ];
-
 
 const SermonsGallery: React.FC = () => {
   const { t } = useTranslation();
@@ -140,28 +140,47 @@ const SermonsGallery: React.FC = () => {
     ? videos.filter((video) => video.churchName === activeType)
     : videos;
 
-
   return (
     <>
       <div className={styles.galleryContainer}>
-        <h2 className={styles.galleryTitle}>{t("translate.sermonsGallery")}</h2>
-        <div className="flex justify-end mb-8">
-          <div className="w-50 ">
-            <Dropdown
-              options={options}
-              value={activeType}
-              // onChange={setActiveType}
-              onChange={(value) => {
-                if (Array.isArray(value)) {
-                  setActiveType(value[0] ?? "");
-                } else {
-                  setActiveType(value);
-                }
-              }}
-              variant="underline"
-            />
-          </div>
-        </div>
+        <Grid.Row>
+          <Grid.Column span={{ base: 12, md: 6 }}>
+            <div
+              className="flex items-center gap-2 mb-4"
+              style={{ color: "var(--primary)" }}
+            >
+              <MdOndemandVideo className="text-2xl text-primary" />
+              <h2
+                className="text-xl"
+                style={{
+                  fontFamily: "var( --font-marcellus)",
+                  fontWeight: "600",
+                }}
+              >
+                {t("translate.sermonsGallery")}
+              </h2>
+            </div>
+          </Grid.Column>
+          <Grid.Column className="flex justify-end" span={{ base: 12, md: 6 }}>
+            <div className="flex mb-8">
+              <div className="w-50">
+                <Dropdown
+                  options={options}
+                  value={activeType}
+                  // onChange={setActiveType}
+                  onChange={(value) => {
+                    if (Array.isArray(value)) {
+                      setActiveType(value[0] ?? "");
+                    } else {
+                      setActiveType(value);
+                    }
+                  }}
+                  variant="underline"
+                />
+              </div>
+            </div>
+          </Grid.Column>
+        </Grid.Row>
 
         <Grid gap="md">
           <Grid.Row>

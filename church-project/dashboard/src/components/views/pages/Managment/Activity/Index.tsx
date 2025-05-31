@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import styles from "./index.module.css";
+import { LuSquareActivity } from "react-icons/lu";
 
 type SubEvent = {
   time: string;
@@ -61,9 +62,23 @@ export default function ActivityLog() {
 
   return (
     <>
-      <h2 className={styles.title}>{t("translate.activityLog")}</h2>
+      <div className="mb-6">
+        <div
+          className="flex items-center gap-2 mb-4"
+          style={{ color: "var(--primary)" }}
+        >
+          <LuSquareActivity className="text-2xl text-primary" />
+          <h2
+            className="text-xl"
+            style={{ fontFamily: "var( --font-marcellus)", fontWeight: "600" }}
+          >
+            {t("translate.activityLog")}
+          </h2>
+        </div>
+      </div>
+
       <div className={styles.container}>
-        <div >
+        <div>
           {activities.map((activity, i) => (
             <div key={i} className={styles.block}>
               <div className={styles.time}>
