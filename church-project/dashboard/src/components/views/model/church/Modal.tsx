@@ -9,12 +9,11 @@ import type { AddEditInterface } from "@/components/interface/ModalInterface";
 import { useTranslation } from "react-i18next";
 
 const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    regNo: "",
     bankname: "",
     accno: "",
     isccode: "",
@@ -100,9 +99,9 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Phone Number"
+                label="Email"
                 name="phonenumber"
-                value={formData.phone}
+                value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter phone number"
                 required
@@ -114,9 +113,9 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Registration Number"
+                label="Phone Number"
                 name="registrationnumber"
-                value={formData.regNo}
+                value={formData.phone}
                 onChange={handleChange}
                 placeholder="Enter registration number"
                 required
@@ -139,22 +138,22 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Bank Account No"
-                name="accountno"
-                value={formData.accno}
+                label="Bank Name"
+                name="bankname"
+                value={formData.bankname}
                 onChange={handleChange}
-                placeholder="Enter account number"
+                placeholder="Enter bank name"
                 required
               />
             </Grid.Column>
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="IFSC Code"
-                name="isccode"
-                value={formData.isccode}
+                label="Bank Account No"
+                name="accountno"
+                value={formData.accno}
                 onChange={handleChange}
-                placeholder="Enter IFSC code"
+                placeholder="Enter account number"
                 required
               />
             </Grid.Column>
@@ -164,11 +163,11 @@ const AddEditChurch: React.FC<AddEditInterface> = ({ open, close, data }) => {
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Bank Name"
-                name="bankname"
-                value={formData.bankname}
+                label="SWIFT Code"
+                name="isccode"
+                value={formData.isccode}
                 onChange={handleChange}
-                placeholder="Enter bank name"
+                placeholder="Enter IFSC code"
                 required
               />
             </Grid.Column>
