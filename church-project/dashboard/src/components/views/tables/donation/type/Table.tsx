@@ -18,8 +18,8 @@ const DonationTable: React.FC<Props> = ({ data }) => {
       render: (row) => `€${row.amount}`,
     },
     { key: "type", label: t("translate.type") },
-    { key: "date", label: t("translate.date") },
     { key: "description", label: t("translate.description") },
+    { key: "date", label: t("translate.date") },
   ];
 
   const actions: ActionButton<DonationType>[] = [
