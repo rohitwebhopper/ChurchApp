@@ -22,7 +22,7 @@ const EventModal = ({ open, close, data }: Props) => {
     event_date: "",
     event_time: "",
     location: "",
-    churchName: "",
+    church_id: "",
     description: "",
     upcoming: false,
     latitude: 0,
@@ -116,9 +116,9 @@ const handleChange = (
             <Grid.Column span={{ base: 12, md: 6 }}>
               <FormInput
                 size="small"
-                label="Hosted By"
-                name="hosted_by"
-                value={formData.churchName}
+                label="Church Name"
+                name="church_id"
+                value={formData.church_id}
                 onChange={handleChange}
                 placeholder="Enter host name"
                 required

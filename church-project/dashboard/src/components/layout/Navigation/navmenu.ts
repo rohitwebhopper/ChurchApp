@@ -58,27 +58,31 @@ export const navItems: NavItem[] = [
   {
     type: "dropdown",
     label: "Public Content",
-    basePath: "/public",
+    basePath: "/publicContent",
     icon: GoVersions,
     children: [
-      { label: "Sermons", to: "/public/sermons", icon: MdOndemandVideo },
-      { label: "Events", to: "/public/events", icon: MdEventNote },
+      { label: "Sermons", to: "/publicContent/sermons", icon: MdOndemandVideo },
+      { label: "Events", to: "/publicContent/events", icon: MdEventNote },
       {
         label: "Prayer Requests",
-        to: "/public/prayer_requests",
+        to: "/publicContent/prayer_requests",
         icon: PiHandsPrayingBold,
       },
       {
         label: "Prayer Type",
-        to: "/public/prayer_type",
+        to: "/publicContent/prayer_type",
         icon: MdOutlineVolunteerActivism,
       },
       {
         label: "Get Connected",
-        to: "/public/get_connected",
+        to: "/publicContent/get_connected",
         icon: MdOutlineConnectWithoutContact,
       },
-      { label: "Projects", to: "/public/projects", icon: GoProjectSymlink },
+      {
+        label: "Projects",
+        to: "/publicContent/projects",
+        icon: GoProjectSymlink,
+      },
     ],
   },
 

@@ -5,7 +5,7 @@ export interface ChurchEvent {
   event_date: string;
   event_time: string;
   location: string;
-  churchName: string;
+  church_id: string;
   description: string;
   upcoming: boolean;
   latitude: number;

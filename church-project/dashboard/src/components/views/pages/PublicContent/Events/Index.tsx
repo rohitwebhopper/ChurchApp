@@ -50,8 +50,8 @@ const Events = () => {
             </Grid.Column>
 
             <Grid.Column
-              className="flex justify-end"
-              span={{ base: 12, md: 8 }}
+              className="flex justify-end "
+              span={{ base: 12, md: 7 }}
             >
               <div className="w-50">
                 <Dropdown
@@ -69,7 +69,10 @@ const Events = () => {
                 />
               </div>
             </Grid.Column>
-            <Grid.Column span={{ base: 12, md: 1 }} className="mt-3 md:mt-0">
+            <Grid.Column
+              span={{ base: 12, md: 2 }}
+              className="mt-3 md:mt-0 flex justify-end"
+            >
               <Button
                 size="small"
                 variant="primary"

@@ -94,7 +94,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/sermons"
+          path="/publicContent/sermons"
           element={
             <PrivateRoute>
               <DashboardLayout>
@@ -105,7 +105,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/events"
+          path="/publicContent/events"
           element={
             <PrivateRoute>
               <DashboardLayout>
@@ -116,7 +116,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/prayer_requests"
+          path="/publicContent/prayer_requests"
           element={
             <PrivateRoute>
               <DashboardLayout>
@@ -127,7 +127,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/prayer_type"
+          path="/publicContent/prayer_type"
           element={
             <PrivateRoute>
               <DashboardLayout>
@@ -138,7 +138,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/get_connected"
+          path="/publicContent/get_connected"
           element={
             <PrivateRoute>
               <DashboardLayout>
@@ -149,7 +149,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/public/projects"
+          path="/publicContent/projects"
           element={
             <PrivateRoute>
               <DashboardLayout>
