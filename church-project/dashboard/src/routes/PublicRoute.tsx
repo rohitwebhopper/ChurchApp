@@ -10,7 +10,6 @@ const PublicRoute = ({ children }: PublicRouteProps) => {
   const { user } = useAuth();
 
   if (user) {
-    // Logged in user should not access login page — redirect to dashboard
     return <Navigate to="/dashboard" replace />;
   }
 

@@ -8,5 +8,5 @@ export const errorHandler = (
   _next: NextFunction
 ) => {
   const statusCode = err.status || 400;
-  sendError(res, err, err.message || "Something went wrong", statusCode);
+  sendError(res, err.message || "Something went wrong", statusCode);
 };

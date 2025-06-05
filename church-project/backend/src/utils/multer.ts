@@ -2,19 +2,17 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-interface DynamicUploadOptions {
+interface MultiUploadOptions {
   folder: string;
+  allowedTypes?: Record<string, string[]>;
 }
 
-export const uploadSingle = (
-  fieldName: string,
-  options: DynamicUploadOptions
-) => {
+export const uploadMulti = (options: MultiUploadOptions) => {
   const storage = multer.diskStorage({
-    destination: (_req, _file, cb) => {
-      const uploadPath = path.join(__dirname, "../uploads", options.folder);
-      fs.mkdirSync(uploadPath, { recursive: true });
-      cb(null, uploadPath);
+    destination: (_req, file, cb) => {
+      const folderPath = path.join(__dirname, "../uploads", options.folder);
+      fs.mkdirSync(folderPath, { recursive: true });
+      cb(null, folderPath);
     },
     filename: (_req, file, cb) => {
       const ext = path.extname(file.originalname);
@@ -25,30 +23,42 @@ export const uploadSingle = (
   });
 
   const fileFilter = (_req: any, file: Express.Multer.File, cb: any) => {
-    const allowedTypes = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+    const defaultAllowed = [
+      "image/png",
+      "image/jpeg",
+      "image/webp",
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    const allowedTypes =
+      options.allowedTypes?.[file.fieldname] || defaultAllowed;
 
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error("Only PNG and WebP images are allowed!"), false);
+      cb(new Error(`Invalid file type for ${file.fieldname}`), false);
     }
   };
 
-  return multer({ storage, fileFilter }).single(fieldName);
+  return multer({ storage, fileFilter }).fields([
+    { name: "image", maxCount: 1 },
+    { name: "agreement", maxCount: 1 },
+  ]);
 };
 
-export const ExistingImage = (imagePath: string | null) => {
-  if (!imagePath) return;
+export const ExistingFile = (filePath: string | null) => {
+  if (!filePath) return;
 
-  const normalizedPath = imagePath.replace(/^\/+/, "").replace(/^src\//, "");
-
+  const normalizedPath = filePath.replace(/^\/+/g, "").replace(/^src\//, "");
   const fullPath = path.join(process.cwd(), "src", normalizedPath);
 
   fs.unlink(fullPath, (err) => {
     if (err) {
-      console.warn(`Failed to delete old image (${fullPath}):`, err.message);
+      console.warn(`Failed to delete file (${fullPath}):`, err.message);
     } else {
-      console.log(`Deleted old image: ${fullPath}`);
+      console.log(`Deleted file: ${fullPath}`);
     }
   });
 };

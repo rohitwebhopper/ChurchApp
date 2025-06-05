@@ -4,23 +4,44 @@ import ChurchIcon from "@/assets/churchlogo.svg?react";
 import { HiOutlineUser, HiOutlineLockClosed } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import styles from "./login.module.css";
+import { useApi } from "@/context/ApiContext";
+import { useAuth } from "@/context/AuthContext";
+
+interface LoginResponse {
+  email: string;
+  token: string;
+  user: {
+    id: string;
+    name: string;
+    role: string;
+  };
+}
 
 const ChurchLogin = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
+  const { post, loading } = useApi();
   const [username, setUsername] = useState("admin@gmail.com");
   const [password, setPassword] = useState("123456");
-  const [loading, setLoading] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setFormError(null);
 
-    console.log("Login:", { username, password });
+    const data = {
+      email: username,
+      password,
+    };
 
-    setTimeout(() => {
-      setLoading(false);
+    const response = await post<LoginResponse>("/api/web/admin/login", data);
+
+    if (response && response.token) {
+      await login(response.email, response.token);
       navigate("/dashboard");
-    }, 1500); // simulate loading
+    } else {
+      setFormError("Login failed");
+    }
   };
 
   return (
@@ -55,6 +76,10 @@ const ChurchLogin = () => {
               className={styles.input}
             />
           </div>
+
+          {formError && (
+            <p className="text-center text-red-400 text-sm">{formError}</p>
+          )}
 
           <div className={styles.forgotLink}>
             <a href="#">Forgot password?</a>

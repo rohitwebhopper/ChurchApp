@@ -23,7 +23,6 @@ export const sendSuccess = <T>(
 
 export const sendError = (
   res: Response,
-  error: any,
   message = "Error",
   statusCode = 500
 ) => {
@@ -31,7 +30,6 @@ export const sendError = (
     success: false,
     message,
     data: null,
-    error: error?.message || String(error),
   };
   return res.status(statusCode).json(response);
 };

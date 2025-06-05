@@ -1,7 +1,7 @@
 import cors from "cors";
 
 const corsOptions: cors.CorsOptions = {
-  origin: ["http://localhost:3000", "https://yourapp.com"], // update with your origins
+  origin: ["http://localhost:5173", "https://yourapp.com"],
   credentials: true,
 };
 

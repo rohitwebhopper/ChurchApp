@@ -1,14 +1,16 @@
-import { formatImageUrl } from "@/utils/imageBaseUrl";
+import { formatUrl } from "@/utils/imageBaseUrl";
 import { Admin } from "@prisma/client";
+import { sanitizeValue } from "@/utils/sanitizeValue";
+import { formatDate } from "@/utils/formatDate";
 
 export const formatAdmin = (admin: Admin) => {
   return {
-    id: admin.id,
-    name: admin.name,
-    email: admin.email,
-    phone: admin.phone,
-    image: formatImageUrl(admin.image),
-    createdAt: admin.createdAt,
-    updatedAt: admin.updatedAt,
+    id: sanitizeValue(admin.id),
+    name: sanitizeValue(admin.name),
+    email: sanitizeValue(admin.email),
+    phone: sanitizeValue(admin.phone),
+    image: formatUrl(sanitizeValue(admin.image)),
+    createdAt: formatDate(admin.createdAt),
+    updatedAt: formatDate(admin.updatedAt),
   };
 };

@@ -1,13 +1,14 @@
-import { createContext, useContext, useState } from "react";
-import type { ReactNode } from "react"; // <-- type-only import
+import { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
 
 interface User {
   email: string;
+  token: string;
 }
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => void;
+  login: (email: string, token: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -18,13 +19,26 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    const storedUser = sessionStorage.getItem("token");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
-  const login = (email: string) => {
-    setUser({ email });
+  useEffect(() => {
+    if (user) {
+      sessionStorage.setItem("token", JSON.stringify(user));
+    } else {
+      sessionStorage.removeItem("token");
+    }
+  }, [user]);
+
+  const login = async (email: string, token: string) => {
+    setUser({ email, token });
   };
 
-  const logout = () => setUser(null);
+  const logout = () => {
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

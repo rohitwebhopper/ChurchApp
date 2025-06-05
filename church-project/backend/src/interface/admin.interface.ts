@@ -8,3 +8,8 @@ export interface AdminInput {
   image: string | null;
   role: Role;
 }
+
+export interface AdminLogin {
+  email: string;
+  password: string;
+}

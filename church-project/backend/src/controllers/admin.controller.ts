@@ -4,7 +4,10 @@ import { sendSuccess, sendError } from "@/middleware/apiHandlerResponse";
 import { formatAdmin } from "@/formatter/admin.formatter";
 import bcrypt from "bcryptjs";
 import { Role } from "@prisma/client";
-import { validateAdminRegistration } from "@/validation/admin.validation";
+import {
+  validateAdminRegistration,
+  validateLogin,
+} from "@/validation/admin.validation";
 
 export const AdminController = {
   register: async (req: Request, res: Response): Promise<Response | void> => {
@@ -34,11 +37,24 @@ export const AdminController = {
         "Admin registered successfully"
       );
     } catch (err: any) {
-      return sendError(
-        res,
-        err.message || "Unexpected error",
-        "Failed to register admin"
-      );
+      return sendError(res, err.message || "  Failed to register admin");
+    }
+  },
+
+  login: async (req: Request, res: Response): Promise<Response | void> => {
+    try {
+      if (!validateLogin(req, res)) return;
+
+      const { email, password } = req.body;
+
+      const { token, admin } = await AdminUsecase.loginAdmin({
+        email,
+        password,
+      });
+
+      return sendSuccess(res, { token, admin }, "Login successful");
+    } catch (err: any) {
+      return sendError(res, err.message || "Failed to login");
     }
   },
 };

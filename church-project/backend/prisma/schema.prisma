@@ -33,7 +33,7 @@ model Church {
   id                        String       @id @default(uuid())
   name                      String       @unique
   email                     String
-  phone_number              String
+  phone                     String
   address                   String
   bank_name                 String?
   bank_acc_no               String?
