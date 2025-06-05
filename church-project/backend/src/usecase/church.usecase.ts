@@ -29,6 +29,8 @@ export const ChurchUseCase = {
     if (!existingChurch) {
       throw new Error("Church not found");
     }
+    ExistingFile(existingChurch.image);
+    ExistingFile(existingChurch.agreement_url);
     return await ChurchRepository.delete(id);
   },
   async patchStatus(id: string, status: Status) {
